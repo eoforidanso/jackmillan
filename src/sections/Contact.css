@@ -1,0 +1,215 @@
+.contact {
+  background: linear-gradient(160deg, #060709 0%, #0b0e14 50%, #060709 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse, rgba(0,200,150,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.contact-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info .section-title { margin: 0 !important; }
+
+.contact-sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-detail {
+  background: var(--glass);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: background var(--transition), border-color var(--transition);
+}
+.contact-detail:hover { background: var(--glass-md); border-color: rgba(0,200,150,0.3); }
+
+.detail-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(0,200,150,0.1);
+  border: 1px solid rgba(0,239,184,0.25);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 3px;
+}
+.detail-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+/* Leagues */
+.contact-leagues { margin-top: 4px; }
+.leagues-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 10px;
+}
+.leagues-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.league-tag {
+  background: rgba(0,200,150,0.1);
+  border: 1px solid rgba(0,239,184,0.22);
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Form wrap */
+.contact-form-wrap {
+  background: var(--glass);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--glass-border-md);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.55); }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--glass-border-md);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--white);
+  font-family: inherit;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  -webkit-appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group select option { background: #0b0e14; color: var(--white); }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 0 0 3px rgba(0,200,150,0.12);
+}
+
+.form-group textarea { resize: vertical; min-height: 110px; }
+
+.form-submit {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity 0.2s ease;
+}
+.form-submit:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* Field error states */
+.has-error input,
+.has-error select,
+.has-error textarea {
+  border-color: rgba(239, 68, 68, 0.7) !important;
+  background: rgba(239, 68, 68, 0.06) !important;
+}
+.field-error {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.77rem;
+  color: #f87171;
+  font-weight: 500;
+}
+.server-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+/* Success state */
+.form-success { text-align: center; padding: 32px 20px; }
+.success-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(26,122,60,0.2);
+  border: 2px solid rgba(26,122,60,0.5);
+  color: #4ade80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 20px;
+}
+.form-success h3 { font-size: 1.4rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+.form-success p { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .contact-form-wrap { padding: 20px 16px; }
+  .contact-detail { padding: 12px 14px; gap: 10px; }
+  .detail-icon { width: 36px; height: 36px; flex-shrink: 0; }
+}

@@ -1,0 +1,99 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #071a0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.preloader.hiding {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: preloader-enter 0.5s ease forwards;
+}
+
+@keyframes preloader-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.preloader-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 20px;
+  border: 2px solid rgba(212, 160, 23, 0.3);
+  box-shadow: 0 0 40px rgba(26, 122, 60, 0.4);
+  animation: logo-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(26, 122, 60, 0.4); }
+  50%       { transform: scale(1.06); box-shadow: 0 0 60px rgba(26, 122, 60, 0.7); }
+}
+
+.preloader-name {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1;
+}
+.preloader-name span { color: #d4a017; }
+
+.preloader-academy {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: rgba(212, 160, 23, 0.75);
+  margin-top: -6px;
+}
+
+.preloader-bar {
+  width: 160px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloader-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1a7a3c, #d4a017, #1a7a3c);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: load-bar 1.7s ease-out forwards, shimmer 1.5s linear infinite;
+}
+
+@keyframes load-bar {
+  0%   { width: 0%; }
+  60%  { width: 85%; }
+  100% { width: 100%; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.preloader-tagline {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 2px;
+}

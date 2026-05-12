@@ -1,0 +1,94 @@
+.gallery {
+  background: var(--dark-grad);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,200,150,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.gallery-header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 48px;
+  position: relative;
+}
+.gallery-header .section-title { color: var(--white); }
+.gallery-header .section-title span { color: var(--gold); }
+.gallery-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 12px auto 0; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 220px 220px;
+  gap: 12px;
+  position: relative;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  transition: transform var(--transition), border-color var(--transition);
+}
+.gallery-item:hover { transform: scale(1.02); border-color: rgba(0,200,150,0.4); }
+.gallery-item.wide { grid-column: span 2; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.07); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6,7,9,0.88) 0%, rgba(6,7,9,0.2) 50%, transparent 100%);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  opacity: 0;
+  transition: opacity var(--transition);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+/* Remove blur from non-hover state so images look clean */
+.gallery-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+.gallery-overlay span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--glass);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 5px 14px;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 200px 200px;
+  }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-header { margin-bottom: 32px; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+  .gallery-item.wide { grid-column: span 1; }
+  .gallery-item { height: 200px; }
+}
