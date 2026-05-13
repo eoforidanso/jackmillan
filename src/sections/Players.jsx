@@ -1,5 +1,6 @@
 import './Players.css';
 
+const BASE = import.meta.env.BASE_URL;
 const players = [
   {
     name: 'Kwame Asante',
@@ -7,7 +8,7 @@ const players = [
     age: 21,
     destination: 'FC Brondby, Denmark',
     flag: '🇩🇰',
-    img: '/images/player1.png',
+    img: `${BASE}images/player1.png`,
   },
   {
     name: 'Emmanuel Boateng',
@@ -15,7 +16,7 @@ const players = [
     age: 19,
     destination: 'Sporting B, Portugal',
     flag: '🇵🇹',
-    img: '/images/player2.png',
+    img: `${BASE}images/player2.png`,
   },
   {
     name: 'Daniel Ofori',
@@ -23,7 +24,7 @@ const players = [
     age: 23,
     destination: 'Wisła Kraków, Poland',
     flag: '🇵🇱',
-    img: '/images/player3.png',
+    img: `${BASE}images/player3.png`,
   },
   {
     name: 'Isaac Mensah',
@@ -31,7 +32,7 @@ const players = [
     age: 20,
     destination: 'SK Slavia Prague, Czech Republic',
     flag: '🇨🇿',
-    img: '/images/player4.png',
+    img: `${BASE}images/player4.png`,
   },
 ];
 

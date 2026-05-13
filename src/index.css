@@ -3,9 +3,9 @@
 
 :root {
   /* ── Core brand ── */
-  --green:       #00c896;   /* Electric emerald */
-  --green-dark:  #009e77;   /* Deep emerald */
-  --green-vivid: #00efb8;   /* Neon emerald for glows */
+  --green:       #1a6fff;   /* Electric blue */
+  --green-dark:  #0044cc;   /* Deep blue */
+  --green-vivid: #1a6fff;   /* Neon blue for glows */
   --gold:        #f5a623;   /* Clean warm amber */
   --gold-light:  #fcd34d;   /* Light amber */
   --black:       #08090e;   /* Premium obsidian */
@@ -24,13 +24,13 @@
   --surface-3: #141d28;    /* Card surface */
 
   /* ── Glassmorphism tokens (emerald-tinted) ── */
-  --glass:           rgba(0, 200, 150, 0.07);
-  --glass-md:        rgba(0, 200, 150, 0.13);
+  --glass:           rgba(26, 111, 255, 0.07);
+  --glass-md:        rgba(26, 111, 255, 0.13);
   --glass-light:     rgba(255, 255, 255, 0.85);
-  --glass-border:    rgba(0, 239, 184, 0.16);
-  --glass-border-md: rgba(0, 239, 184, 0.28);
+  --glass-border:    rgba(26, 111, 255, 0.16);
+  --glass-border-md: rgba(26, 111, 255, 0.28);
   --glass-gold:      rgba(245, 166, 35, 0.15);
-  --glass-green:     rgba(0, 200, 150, 0.14);
+  --glass-green:     rgba(26, 111, 255, 0.14);
   --blur-sm:   blur(8px);
   --blur-md:   blur(16px);
   --blur-lg:   blur(28px);
@@ -38,10 +38,10 @@
 
   /* ── Section gradients ── */
   --dark-grad: linear-gradient(135deg, #060709 0%, #0b0e14 45%, #090c11 100%);
-  --mid-grad:  linear-gradient(135deg, #0b0e14 0%, #00c89618 50%, #0b0e14 100%);
+  --mid-grad:  linear-gradient(135deg, #0b0e14 0%, #1a6fff18 50%, #0b0e14 100%);
 
   /* ── Accent gradients ── */
-  --grad-green: linear-gradient(135deg, #00c896, #00efb8);
+  --grad-green: linear-gradient(135deg, #1a6fff, #0044cc);
   --grad-gold:  linear-gradient(135deg, #f5a623, #fcd34d);
 }
 
@@ -56,12 +56,22 @@ body {
   background: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-title, .section-title, .form-title,
+.hiw-step-title, .service-title, .team-name,
+.req-title, .faq-question, .testi-name,
+.impact-num, .stat-num {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 }
 
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
-section { padding: 88px 0; }
+section { padding: 80px 0; }
 
 .container {
   max-width: 1180px;
@@ -74,7 +84,7 @@ section { padding: 88px 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #00c896, #009e77);
+  background: linear-gradient(135deg, #1a6fff, #0044cc);
   color: #fff;
   font-weight: 700;
   padding: 14px 32px;
@@ -83,12 +93,12 @@ section { padding: 88px 0; }
   border: none;
   cursor: pointer;
   font-size: 1rem;
-  box-shadow: 0 4px 24px rgba(0,200,150,0.35);
+  box-shadow: 0 4px 24px rgba(26,111,255,0.35);
   letter-spacing: 0.2px;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(0,200,150,0.55);
+  box-shadow: 0 10px 36px rgba(26,111,255,0.55);
   filter: brightness(1.1);
 }
 
@@ -96,22 +106,22 @@ section { padding: 88px 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1.5px solid rgba(0,239,184,0.45);
-  color: #00efb8;
+  border: 1.5px solid rgba(26,111,255,0.45);
+  color: #1a6fff;
   font-weight: 700;
   padding: 13px 30px;
   border-radius: var(--radius);
   transition: all var(--transition);
-  background: rgba(0,200,150,0.07);
+  background: rgba(26,111,255,0.07);
   backdrop-filter: var(--blur-sm);
   cursor: pointer;
   font-size: 1rem;
 }
 .btn-outline:hover {
-  background: rgba(0,200,150,0.18);
-  border-color: rgba(0,239,184,0.75);
+  background: rgba(26,111,255,0.18);
+  border-color: rgba(26,111,255,0.75);
   color: #fff;
-  box-shadow: 0 0 20px rgba(0,200,150,0.25);
+  box-shadow: 0 0 20px rgba(26,111,255,0.25);
 }
 
 /* ── Section typography ── */
@@ -119,45 +129,81 @@ section { padding: 88px 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.73rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: #00c896;
-  background: rgba(0,200,150,0.1);
-  border: 1px solid rgba(0,200,150,0.22);
-  padding: 5px 14px;
+  color: #1a6fff;
+  background: rgba(26,111,255,0.08);
+  border: 1px solid rgba(26,111,255,0.2);
+  padding: 4px 14px;
   border-radius: 50px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.6rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
   color: var(--text);
 }
 .section-title span { color: var(--green); }
 
 .section-subtitle {
   color: var(--muted);
-  font-size: 1.05rem;
-  margin-top: 12px;
-  max-width: 600px;
-  line-height: 1.7;
+  font-size: 1rem;
+  margin-top: 14px;
+  max-width: 580px;
+  line-height: 1.72;
+  font-weight: 400;
+}
+
+/* ── Brand signature: premium section title accent for dark sections ── */
+.services .section-title,
+.hiw .section-title,
+.impact .section-title,
+.players .section-title,
+.testimonials .section-title,
+.gallery .section-title,
+.faq .section-title {
+  letter-spacing: -0.8px;
+}
+
+/* Signature underline on section title spans in dark sections */
+.services .section-title span,
+.hiw .section-title span,
+.players .section-title span,
+.testimonials .section-title span,
+.gallery .section-title span,
+.faq .section-title span {
+  position: relative;
+}
+.services .section-title span::after,
+.hiw .section-title span::after,
+.players .section-title span::after,
+.testimonials .section-title span::after,
+.gallery .section-title span::after,
+.faq .section-title span::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--green), rgba(26,111,255,0));
+  border-radius: 2px;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--surface-0); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#00c896, #009e77);
+  background: linear-gradient(#1a6fff, #0044cc);
   border-radius: 4px;
 }
 
 /* ── Mobile / Responsive global ── */
 @media (max-width: 768px) {
-  section { padding: 64px 0; }
+  section { padding: 60px 0; }
 
   .container { padding: 0 20px; }
 
@@ -169,7 +215,7 @@ section { padding: 88px 0; }
 }
 
 @media (max-width: 480px) {
-  section { padding: 52px 0; }
+  section { padding: 48px 0; }
   .container { padding: 0 16px; }
   .btn-primary,
   .btn-outline { width: 100%; justify-content: center; }

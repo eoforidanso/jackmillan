@@ -9,14 +9,14 @@
   position: absolute;
   top: 0; right: -100px;
   width: 500px; height: 500px;
-  background: radial-gradient(ellipse, rgba(0,200,150,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(26,111,255,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .testi-header {
   text-align: center;
   max-width: 620px;
-  margin: 0 auto 52px;
+  margin: 0 auto 44px;
   position: relative;
 }
 .testi-header .section-title { color: var(--white); }
@@ -42,30 +42,40 @@
   border: 1px solid var(--glass-border-md);
   border-left: 4px solid var(--green);
   border-radius: 20px;
-  padding: 44px 48px;
+  padding: 40px 44px;
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 36px;
+  grid-template-columns: 96px 1fr;
+  gap: 32px;
   align-items: start;
-  box-shadow: var(--glass-shadow), 0 0 40px rgba(0,200,150,0.07);
+  box-shadow: var(--glass-shadow), 0 0 40px rgba(26,111,255,0.07);
 }
 
 .testi-avatar {
-  width: 120px; height: 120px;
+  width: 96px; height: 96px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  border: 3px solid rgba(0,200,150,0.5);
-  box-shadow: 0 0 0 6px rgba(0,200,150,0.08);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: var(--blur-sm);
+  box-shadow: 0 0 0 6px rgba(26,111,255,0.06);
+}
+
+.testi-initials {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
 .testi-text {
-  font-size: 1.05rem;
-  line-height: 1.82;
-  color: rgba(255,255,255,0.85);
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.8);
   font-style: italic;
   margin-bottom: 24px;
+  font-weight: 400;
 }
 
 .testi-meta {
@@ -80,8 +90,8 @@
 .testi-role { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin-top: 2px; }
 
 .testi-year {
-  background: rgba(0,200,150,0.1);
-  border: 1px solid rgba(0,239,184,0.25);
+  background: rgba(26,111,255,0.1);
+  border: 1px solid rgba(26,111,255,0.25);
   color: var(--green);
   font-size: 0.75rem;
   font-weight: 700;
@@ -150,16 +160,17 @@
 }
 .testi-mini:hover, .testi-mini.active {
   background: var(--glass-md);
-  border-color: rgba(0,200,150,0.4);
+  border-color: rgba(26,111,255,0.4);
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
-.testi-mini img {
+.testi-mini img,
+.testi-mini-avatar {
   width: 40px; height: 40px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
   flex-shrink: 0;
-  border: 2px solid rgba(0,200,150,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .testi-mini div p { font-size: 0.8rem; font-weight: 700; color: var(--white); }
 .testi-mini div span { font-size: 0.7rem; color: rgba(255,255,255,0.5); }

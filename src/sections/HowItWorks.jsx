@@ -40,12 +40,9 @@ export default function HowItWorks() {
         <div className="hiw-steps">
           {steps.map((s, i) => (
             <div key={s.num} className="hiw-step">
-              <div className="step-num">{s.num}</div>
-              {i < steps.length - 1 && <div className="step-connector" />}
-              <div className="step-body">
-                <h3 className="step-title">{s.title}</h3>
-                <p className="step-desc">{s.desc}</p>
-              </div>
+              <div className="hiw-step-num">{s.num}</div>
+              <h3 className="hiw-step-title">{s.title}</h3>
+              <p className="hiw-step-desc">{s.desc}</p>
             </div>
           ))}
         </div>

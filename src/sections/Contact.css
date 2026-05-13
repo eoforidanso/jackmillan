@@ -10,7 +10,7 @@
   top: 0; left: 50%;
   transform: translateX(-50%);
   width: 800px; height: 500px;
-  background: radial-gradient(ellipse, rgba(0,200,150,0.1) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(26,111,255,0.1) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -55,13 +55,13 @@
   gap: 14px;
   transition: background var(--transition), border-color var(--transition);
 }
-.contact-detail:hover { background: var(--glass-md); border-color: rgba(0,200,150,0.3); }
+.contact-detail:hover { background: var(--glass-md); border-color: rgba(26,111,255,0.3); }
 
 .detail-icon {
   width: 40px; height: 40px;
   border-radius: 10px;
-  background: rgba(0,200,150,0.1);
-  border: 1px solid rgba(0,239,184,0.25);
+  background: rgba(26,111,255,0.1);
+  border: 1px solid rgba(26,111,255,0.25);
   color: var(--green);
   display: flex;
   align-items: center;
@@ -96,8 +96,8 @@
 }
 .leagues-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .league-tag {
-  background: rgba(0,200,150,0.1);
-  border: 1px solid rgba(0,239,184,0.22);
+  background: rgba(26,111,255,0.1);
+  border: 1px solid rgba(26,111,255,0.22);
   color: var(--green);
   font-size: 0.75rem;
   font-weight: 700;
@@ -151,7 +151,7 @@
   outline: none;
   border-color: var(--green);
   background: rgba(0,0,0,0.35);
-  box-shadow: 0 0 0 3px rgba(0,200,150,0.12);
+  box-shadow: 0 0 0 3px rgba(26,111,255,0.12);
 }
 
 .form-group textarea { resize: vertical; min-height: 110px; }

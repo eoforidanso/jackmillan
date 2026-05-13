@@ -16,7 +16,7 @@ export default function About() {
       <div className="container about-grid">
         <div className="about-image-wrap">
           <img
-            src="/images/about.jpg"
+            src={import.meta.env.BASE_URL + 'images/about.jpg'}
             alt="Soccer training in Accra"
             className="about-img"
             loading="lazy"
@@ -28,12 +28,12 @@ export default function About() {
         </div>
 
         <div className="about-content">
-          <p className="section-label">About JackMillan Soccer Academy</p>
+          <p className="section-label">About Jackmillan Football Academy</p>
           <h2 className="section-title">
             Accra&apos;s Most Trusted<br /><span>Football Agency</span>
           </h2>
           <p className="section-subtitle">
-            Founded in 2018, JackMillan Soccer Academy was born from a passion to unlock
+            Founded in 2018, Jackmillan Football Academy was born from a passion to unlock
             the immense footballing talent in Ghana and West Africa, providing structured
             pathways to professional leagues across Europe and overseas.
           </p>

@@ -78,21 +78,21 @@ export default function Contact() {
               <div className="detail-icon"><MapPin size={20} /></div>
               <div>
                 <p className="detail-label">Office</p>
-                <p className="detail-value">14 Osu Ringway Estate, Accra, Ghana</p>
+                <p className="detail-value">McCartney Hills, Accra, Ghana</p>
               </div>
             </div>
             <div className="contact-detail">
               <div className="detail-icon"><Phone size={20} /></div>
               <div>
                 <p className="detail-label">Phone</p>
-                <p className="detail-value">+233 24 000 0000</p>
+                <p className="detail-value">0233 244 649 017 / 0233 532 678 22</p>
               </div>
             </div>
             <div className="contact-detail">
               <div className="detail-icon"><Mail size={20} /></div>
               <div>
                 <p className="detail-label">Email</p>
-                <p className="detail-value">info@jackmillan.com</p>
+                <p className="detail-value">jackmillan2018@gmail.com</p>
               </div>
             </div>
           </div>

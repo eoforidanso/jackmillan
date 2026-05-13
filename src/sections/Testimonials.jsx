@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import './Testimonials.css';
 
+const BASE = import.meta.env.BASE_URL;
 const testimonials = [
   {
     name: 'Kofi Agyemang',
+    initials: 'KA',
+    color: '#00c896',
     role: 'Midfielder · Now at FC Midtjylland, Denmark',
-    img: '/images/player1.png',
     flag: '🇩🇰',
     quote:
       'JackMillan changed my life. I was playing in the Accra Metropolitan League with no clear path forward. Within six months of joining their programme, I had signed a two-year contract in Denmark. They handled everything — my visa, my housing, even my first training kit. I cannot thank them enough.',
@@ -14,19 +16,22 @@ const testimonials = [
   },
   {
     name: 'Samuel Nkrumah',
+    initials: 'SN',
+    color: '#f5a623',
     role: 'Striker · Now at Górnik Zabrze, Poland',
-    img: '/images/player2.png',
     flag: '🇵🇱',
     quote:
       'As a family we were worried about our son travelling so far at 18. JackMillan sat with us, explained every step, and gave us a dedicated welfare officer who checked in every week. The transparency and care they showed was beyond what we expected from an agency.',
     year: '2024',
     fromParent: true,
     parentName: 'Kweku Nkrumah (Father)',
+    parentInitials: 'KN',
   },
   {
     name: 'Abena Mensah',
+    initials: 'AM',
+    color: '#7c6ff7',
     role: 'Coach · Elite Stars Academy, Accra',
-    img: '/images/player3.png',
     flag: '🏫',
     quote:
       'We have partnered with JackMillan to place five of our academy graduates in European clubs over two years. Their network is genuine, their process is ethical, and most importantly — they actually deliver. Any academy serious about player development should be working with them.',
@@ -35,8 +40,9 @@ const testimonials = [
   },
   {
     name: 'Eric Darko',
+    initials: 'ED',
+    color: '#00c896',
     role: 'Winger · Now at Vejle BK, Denmark',
-    img: '/images/player4.png',
     flag: '🇩🇰',
     quote:
       'I had tried other agencies before JackMillan and had bad experiences — promises with no follow-through. JackMillan was completely different. Real contracts, real clubs, real support. I am now in my second season in the Danish Superliga and I owe that to this team.',
@@ -69,7 +75,15 @@ export default function Testimonials() {
           <div className="testi-quote-icon"><Quote size={40} /></div>
 
           <div className="testi-card">
-            <img src={t.img} alt={t.name} className="testi-avatar" loading="lazy" />
+            <div
+              className="testi-avatar"
+              style={{ background: `linear-gradient(135deg, ${t.color}22, ${t.color}44)`, border: `2px solid ${t.color}88` }}
+              aria-label={t.name}
+            >
+              <span className="testi-initials" style={{ color: t.color }}>
+                {t.fromParent ? t.parentInitials : t.initials}
+              </span>
+            </div>
             <div className="testi-body">
               <p className="testi-text">&ldquo;{t.quote}&rdquo;</p>
               <div className="testi-meta">
@@ -110,7 +124,14 @@ export default function Testimonials() {
               className={`testi-mini ${i === active ? 'active' : ''}`}
               onClick={() => setActive(i)}
             >
-              <img src={t2.img} alt={t2.name} />
+              <div
+                className="testi-mini-avatar"
+                style={{ background: `linear-gradient(135deg, ${t2.color}22, ${t2.color}44)`, border: `1.5px solid ${t2.color}88` }}
+              >
+                <span style={{ color: t2.color, fontSize: '0.72rem', fontWeight: 800 }}>
+                  {t2.fromParent ? t2.parentInitials : t2.initials}
+                </span>
+              </div>
               <div>
                 <p>{t2.fromParent ? t2.parentName : t2.name}</p>
                 <span>{t2.flag} {t2.year}</span>

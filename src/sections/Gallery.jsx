@@ -1,12 +1,16 @@
 import './Gallery.css';
 
+const BASE = import.meta.env.BASE_URL;
 const photos = [
-  { src: '/images/team.jpg', alt: 'JackMillan Soccer Academy squad on the pitch', wide: true },
-  { src: '/images/about.jpg', alt: 'Training session in Accra' },
-  { src: '/images/player1.png', alt: 'Player profile' },
-  { src: '/images/player2.png', alt: 'Player profile' },
-  { src: '/images/player3.png', alt: 'Player profile' },
-  { src: '/images/player4.png', alt: 'Player profile' },
+  { src: `${BASE}images/team.jpg`, alt: 'Jackmillan Football Academy squad on the pitch', wide: true },
+  { src: `${BASE}images/about.jpg`, alt: 'Training session in Accra' },
+  { src: `${BASE}images/a.jpg`, alt: 'Team talk on the pitch', wide: true },
+  { src: `${BASE}images/b.jpg`, alt: 'Training session with coach' },
+  { src: `${BASE}images/c.jpg`, alt: 'Academy squad photo' },
+  { src: `${BASE}images/player1.png`, alt: 'Player profile' },
+  { src: `${BASE}images/player2.png`, alt: 'Player profile' },
+  { src: `${BASE}images/player3.png`, alt: 'Player profile' },
+  { src: `${BASE}images/player4.png`, alt: 'Player profile' },
 ];
 
 export default function Gallery() {
@@ -16,7 +20,7 @@ export default function Gallery() {
         <div className="gallery-header">
           <p className="section-label">From the Ground Up</p>
           <h2 className="section-title">
-            Life at <span>JackMillan Soccer Academy</span>
+            Life at <span>Jackmillan Football Academy</span>
           </h2>
           <p className="section-subtitle">
             Real players, real stories — moments from our pitches in Accra to the

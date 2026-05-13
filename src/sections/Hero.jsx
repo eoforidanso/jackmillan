@@ -11,7 +11,7 @@ export default function Hero() {
           <span>Africa to Europe</span>
         </h1>
         <p className="hero-sub">
-          JackMillan Soccer Academy is Accra&apos;s premier football scouting academy — identifying,
+          Jackmillan Football Academy is Accra&apos;s premier football scouting academy — identifying,
           developing, and transferring elite Ghanaian talent to professional clubs
           in Europe and beyond.
         </p>

@@ -21,8 +21,8 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <a href="#home" className="footer-logo">
-            <img src="/images/logo.png" alt="JackMillan Soccer Academy" className="footer-logo-img" />
-            Jack<span className="gold">Millan</span> Soccer Academy
+            <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Jackmillan Football Academy" className="footer-logo-img" />
+            Jack<span className="gold">Millan</span> Football Academy
           </a>
           <p className="footer-tagline">
             Connecting Africa&apos;s finest football talent with professional clubs
@@ -53,7 +53,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
-          <p>&copy; {new Date().getFullYear()} JackMillan Soccer Academy. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Jackmillan Football Academy. All rights reserved.</p>
           <p className="footer-legal">
             Licensed FIFA Intermediary · Accra, Ghana · <a href="#">Privacy Policy</a> · <a href="#">Terms</a>
           </p>

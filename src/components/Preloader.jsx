@@ -16,9 +16,9 @@ export default function Preloader() {
   return (
     <div className={`preloader${hiding ? ' hiding' : ''}`} aria-hidden="true">
       <div className="preloader-inner">
-        <img src="/images/logo.png" alt="JackMillan Soccer Academy" className="preloader-logo" />
+        <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Jackmillan Football Academy" className="preloader-logo" />
         <p className="preloader-name">Jack<span>Millan</span></p>
-        <p className="preloader-academy">Soccer Academy</p>
+        <p className="preloader-academy">Football Academy</p>
         <div className="preloader-bar">
           <div className="preloader-fill" />
         </div>

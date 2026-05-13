@@ -4,8 +4,8 @@ import './FAQ.css';
 
 const faqs = [
   {
-    q: 'Is JackMillan Soccer Academy licensed and legitimate?',
-    a: 'Yes. JackMillan Soccer Academy operates as a FIFA-licensed intermediary agency, registered with the Ghana Football Association (GFA). All our agents hold valid intermediary licences and we comply fully with FIFA\'s regulations on intermediary activity. We can provide our licence documentation upon request.',
+    q: 'Is Jackmillan Football Academy licensed and legitimate?',
+    a: 'Yes. Jackmillan Football Academy operates as a FIFA-licensed intermediary agency, registered with the Ghana Football Association (GFA). All our agents hold valid intermediary licences and we comply fully with FIFA\'s regulations on intermediary activity. We can provide our licence documentation upon request.',
   },
   {
     q: 'How much does it cost to apply for scouting?',

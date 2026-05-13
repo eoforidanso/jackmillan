@@ -17,7 +17,7 @@
 .players-header {
   text-align: center;
   max-width: 640px;
-  margin: 0 auto 52px;
+  margin: 0 auto 44px;
   position: relative;
 }
 .players-header .section-title { color: var(--white); }
@@ -44,8 +44,8 @@
 
 .player-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,200,150,0.12);
-  border-color: rgba(0,200,150,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(26,111,255,0.12);
+  border-color: rgba(26,111,255,0.35);
 }
 
 .player-img-wrap { position: relative; }
@@ -62,7 +62,7 @@
 .player-position {
   position: absolute;
   top: 12px; left: 12px;
-  background: linear-gradient(135deg, #00c896, #009e77);
+  background: linear-gradient(135deg, #1a6fff, #0044cc);
   backdrop-filter: var(--blur-sm);
   color: #fff;
   font-size: 0.7rem;
@@ -71,7 +71,7 @@
   letter-spacing: 1px;
   padding: 4px 12px;
   border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(0,200,150,0.4);
+  box-shadow: 0 2px 12px rgba(26,111,255,0.4);
 }
 
 .player-info {
@@ -119,7 +119,7 @@
   gap: 4px;
   transition: background var(--transition), border-color var(--transition);
 }
-.dest-item:hover { background: var(--glass-md); border-color: rgba(0,200,150,0.35); }
+.dest-item:hover { background: var(--glass-md); border-color: rgba(26,111,255,0.35); }
 
 .dest-flag { font-size: 1.8rem; }
 .dest-country { font-weight: 700; font-size: 0.85rem; color: var(--white); }

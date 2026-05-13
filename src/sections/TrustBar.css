@@ -2,8 +2,8 @@
   background: rgba(6,7,9,0.98);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
-  border-bottom: 1px solid rgba(0,200,150,0.12);
-  border-top: 1px solid rgba(0,200,150,0.18);
+  border-bottom: 1px solid rgba(26,111,255,0.12);
+  border-top: 1px solid rgba(26,111,255,0.18);
   overflow: hidden;
   padding: 0;
 }
