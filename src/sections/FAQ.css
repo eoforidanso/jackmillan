@@ -23,7 +23,7 @@
 }
 .faq-header .section-title { color: var(--white); }
 .faq-header .section-title span { color: var(--gold); }
-.faq-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 12px auto 0; }
+.faq-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .faq-list {
   max-width: 820px;
@@ -71,7 +71,7 @@
 .faq-chevron {
   flex-shrink: 0;
   transition: transform 0.3s ease;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.70);
 }
 .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--green); }
 
@@ -84,8 +84,8 @@
 .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
 
 .faq-answer p {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.58);
+  font-size: 0.94rem;
+  color: rgba(255,255,255,0.85);
   line-height: 1.78;
   border-top: 1px solid var(--glass-border);
   padding-top: 16px;

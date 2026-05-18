@@ -1,7 +1,7 @@
 .footer {
   background: rgba(5,6,10,0.99);
   border-top: 1px solid var(--glass-border);
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.78);
 }
 
 .footer-grid {
@@ -30,7 +30,7 @@
   font-size: 0.88rem;
   line-height: 1.75;
   max-width: 280px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.78);
   text-align: center;
 }
 
@@ -43,7 +43,7 @@
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
   border: 1px solid var(--glass-border-md);
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.78);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,8 +69,8 @@
 .footer-col ul { display: flex; flex-direction: column; gap: 10px; list-style: none; padding: 0; margin: 0; }
 
 .footer-link {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.78);
   text-decoration: none;
   transition: color var(--transition);
 }
@@ -88,8 +88,8 @@
   flex-wrap: wrap;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.68);
 }
 
 .footer-legal a { color: var(--gold); text-decoration: none; }

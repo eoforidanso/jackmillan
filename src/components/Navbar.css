@@ -52,11 +52,11 @@
 .logo-gold { color: var(--gold); }
 .logo-text > span:first-child { color: var(--gold); }
 .logo-sub {
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.80);
   display: block;
   line-height: 1;
   margin-top: 1px;

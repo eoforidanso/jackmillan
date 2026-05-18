@@ -21,7 +21,7 @@
 }
 .req-header .section-title { color: var(--white); }
 .req-header .section-title span { color: var(--gold); }
-.req-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 12px auto 0; }
+.req-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .req-cards {
   display: grid;
@@ -67,7 +67,7 @@
   line-height: 1;
   margin-bottom: 4px;
 }
-.req-value span { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.5); }
+.req-value span { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.78); }
 
 .req-title {
   font-size: 0.82rem;
@@ -78,7 +78,7 @@
   margin: 6px 0 10px;
 }
 
-.req-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+.req-desc { font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.65; }
 
 /* Bottom two-col */
 .req-bottom {

@@ -23,7 +23,7 @@
 }
 .services-header .section-title { color: var(--white); }
 .services-header .section-title span { color: var(--gold); }
-.services-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 12px auto 0; }
+.services-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .services-grid {
   display: grid;
@@ -68,7 +68,7 @@
   color: var(--white);
 }
 
-.service-desc { color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.7; }
+.service-desc { color: rgba(255,255,255,0.85); font-size: 0.92rem; line-height: 1.7; }
 
 @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 580px) {

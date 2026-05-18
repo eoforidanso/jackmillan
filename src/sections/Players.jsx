@@ -34,6 +34,22 @@ const players = [
     flag: '🇨🇿',
     img: `${BASE}images/player4.png`,
   },
+  {
+    name: 'Gabriel Atsu',
+    position: 'Right Back / Attacking Mid',
+    age: null,
+    destination: 'Seeking European Move',
+    flag: '🇬🇭',
+    img: `${BASE}images/gabriel-atsu.jpeg`,
+  },
+  {
+    name: 'Mensah King Joseph',
+    position: 'Left Winger / Left Back',
+    age: 17,
+    destination: 'Seeking European Move',
+    flag: '🇬🇭',
+    img: `${BASE}images/mensah-king-joseph.jpeg`,
+  },
 ];
 
 const destinations = [
@@ -71,7 +87,7 @@ export default function Players() {
               </div>
               <div className="player-info">
                 <h3 className="player-name">{p.name}</h3>
-                <p className="player-age">Age {p.age}</p>
+                {p.age && <p className="player-age">Age {p.age}</p>}
                 <p className="player-dest">
                   {p.flag} {p.destination}
                 </p>

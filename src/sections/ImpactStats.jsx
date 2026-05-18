@@ -39,6 +39,8 @@ function StatItem({ value, suffix, label, sub, start }) {
   );
 }
 
+const BASE = import.meta.env.BASE_URL;
+
 export default function ImpactStats() {
   const ref = useRef(null);
   const [started, setStarted] = useState(false);
@@ -53,7 +55,7 @@ export default function ImpactStats() {
   }, []);
 
   return (
-    <section id="impact" className="impact" ref={ref}>
+    <section id="impact" className="impact" ref={ref} style={{ backgroundImage: `url('${BASE}images/hero-bg.jpg')` }}>
       <div className="impact-overlay" />
       <div className="container impact-inner">
         <p className="section-label" style={{ color: 'var(--gold)', textAlign: 'center' }}>Our Impact</p>

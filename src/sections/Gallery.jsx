@@ -11,6 +11,11 @@ const photos = [
   { src: `${BASE}images/player2.png`, alt: 'Player profile' },
   { src: `${BASE}images/player3.png`, alt: 'Player profile' },
   { src: `${BASE}images/player4.png`, alt: 'Player profile' },
+  { src: `${BASE}images/gabriel-atsu.jpeg`, alt: 'Gabriel Atsu – RB/AM, Jackmillan FC' },
+  { src: `${BASE}images/mensah-king-joseph.jpeg`, alt: 'Mensah King Joseph – LW/LB, Jack Milan FC' },
+  { src: `${BASE}images/player5.jpeg`, alt: 'Academy player in training drill' },
+  { src: `${BASE}images/player6.jpeg`, alt: 'Academy player in match day kit' },
+  { src: `${BASE}images/player7.jpeg`, alt: 'Academy player portrait' },
 ];
 
 export default function Gallery() {

@@ -1,7 +1,6 @@
 .impact {
   position: relative;
   overflow: hidden;
-  background-image: url('/images/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -72,7 +71,7 @@
 
 .impact-sub {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.78);
   line-height: 1.6;
 }
 

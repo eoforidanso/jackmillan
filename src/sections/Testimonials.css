@@ -21,7 +21,7 @@
 }
 .testi-header .section-title { color: var(--white); }
 .testi-header .section-title span { color: var(--gold); }
-.testi-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 12px auto 0; }
+.testi-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .testi-stage { position: relative; max-width: 860px; margin: 0 auto 36px; }
 
@@ -72,7 +72,7 @@
 .testi-text {
   font-size: 0.98rem;
   line-height: 1.85;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.78);
   font-style: italic;
   margin-bottom: 24px;
   font-weight: 400;

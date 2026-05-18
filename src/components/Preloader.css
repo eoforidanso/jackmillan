@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #071a0d;
+  background: #020610;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,13 +34,13 @@
   object-fit: contain;
   border-radius: 20px;
   border: 2px solid rgba(212, 160, 23, 0.3);
-  box-shadow: 0 0 40px rgba(26, 122, 60, 0.4);
+  box-shadow: 0 0 40px rgba(26, 111, 255, 0.4);
   animation: logo-pulse 1.8s ease-in-out infinite;
 }
 
 @keyframes logo-pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(26, 122, 60, 0.4); }
-  50%       { transform: scale(1.06); box-shadow: 0 0 60px rgba(26, 122, 60, 0.7); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(26, 111, 255, 0.4); }
+  50%       { transform: scale(1.06); box-shadow: 0 0 60px rgba(26, 111, 255, 0.7); }
 }
 
 .preloader-name {
@@ -72,7 +72,7 @@
 
 .preloader-fill {
   height: 100%;
-  background: linear-gradient(90deg, #1a7a3c, #d4a017, #1a7a3c);
+  background: linear-gradient(90deg, #1a6fff, #f5a623, #1a6fff);
   background-size: 200% 100%;
   border-radius: 2px;
   animation: load-bar 1.7s ease-out forwards, shimmer 1.5s linear infinite;

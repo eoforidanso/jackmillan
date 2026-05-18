@@ -21,7 +21,7 @@
 }
 .gallery-header .section-title { color: var(--white); }
 .gallery-header .section-title span { color: var(--gold); }
-.gallery-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 12px auto 0; }
+.gallery-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .gallery-grid {
   display: grid;
@@ -47,9 +47,11 @@
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  image-rendering: auto;
+  filter: contrast(1.05) saturate(1.1) brightness(1.02);
 }
-.gallery-item:hover img { transform: scale(1.07); }
+.gallery-item:hover img { transform: scale(1.07); filter: contrast(1.08) saturate(1.18) brightness(1.05); }
 
 .gallery-overlay {
   position: absolute;
