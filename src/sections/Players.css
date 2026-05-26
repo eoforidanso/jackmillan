@@ -1,5 +1,5 @@
 .players {
-  background: linear-gradient(160deg, #060709 0%, #0b0e14 55%, #080a10 100%);
+  background: linear-gradient(160deg, #030805 0%, #040e09 55%, #080a10 100%);
   position: relative;
   overflow: hidden;
 }
@@ -10,14 +10,14 @@
   top: 50%; left: -100px;
   transform: translateY(-50%);
   width: 400px; height: 600px;
-  background: radial-gradient(ellipse, rgba(245,166,35,0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(212,168,87,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .players-header {
   text-align: center;
   max-width: 640px;
-  margin: 0 auto 44px;
+  margin: 0 auto 48px;
   position: relative;
 }
 .players-header .section-title { color: var(--white); }
@@ -44,8 +44,8 @@
 
 .player-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(26,111,255,0.12);
-  border-color: rgba(26,111,255,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(10,61,46,0.12);
+  border-color: rgba(10,61,46,0.35);
 }
 
 .player-img-wrap { position: relative; }
@@ -64,7 +64,7 @@
 .player-position {
   position: absolute;
   top: 12px; left: 12px;
-  background: linear-gradient(135deg, #1a6fff, #0044cc);
+  background: linear-gradient(135deg, #0A3D2E, #062818);
   backdrop-filter: var(--blur-sm);
   color: #fff;
   font-size: 0.7rem;
@@ -73,7 +73,7 @@
   letter-spacing: 1px;
   padding: 4px 12px;
   border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(26,111,255,0.4);
+  box-shadow: 0 2px 12px rgba(10,61,46,0.4);
 }
 
 .player-info {
@@ -121,7 +121,7 @@
   gap: 4px;
   transition: background var(--transition), border-color var(--transition);
 }
-.dest-item:hover { background: var(--glass-md); border-color: rgba(26,111,255,0.35); }
+.dest-item:hover { background: var(--glass-md); border-color: rgba(10,61,46,0.35); }
 
 .dest-flag { font-size: 1.8rem; }
 .dest-country { font-weight: 700; font-size: 0.85rem; color: var(--white); }

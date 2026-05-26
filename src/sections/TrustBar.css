@@ -1,9 +1,9 @@
 .trust-bar {
-  background: rgba(6,7,9,0.98);
+  background: rgba(3,8,5,0.98);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
-  border-bottom: 1px solid rgba(26,111,255,0.12);
-  border-top: 1px solid rgba(26,111,255,0.18);
+  border-bottom: 1px solid rgba(10,61,46,0.12);
+  border-top: 1px solid rgba(10,61,46,0.18);
   overflow: hidden;
   padding: 0;
 }

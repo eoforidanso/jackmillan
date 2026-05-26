@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════════════
+   IMPACT STATS — Achievement Story Layout
+   ═══════════════════════════════════════════════════ */
+
 .impact {
   position: relative;
   overflow: hidden;
@@ -7,10 +11,40 @@
   padding: 96px 0;
 }
 
+/* ── Multi-layer overlay: dark + directional gradient + grain ── */
 .impact-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(6,7,9,0.92) 0%, rgba(0,80,55,0.75) 50%, rgba(8,8,20,0.92) 100%);
+  background:
+    linear-gradient(135deg,
+      rgba(3,8,5,0.94) 0%,
+      rgba(2,12,7,0.82) 50%,
+      rgba(3,8,5,0.94) 100%
+    );
+  pointer-events: none;
+}
+
+/* Subtle noise/grain texture via pseudo-element */
+.impact-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Soft radial glow from center */
+.impact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%,
+    rgba(10,61,46,0.08) 0%,
+    transparent 65%
+  );
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -22,62 +56,102 @@
 .impact-title {
   color: var(--white);
   text-align: center;
-  margin-bottom: 44px;
+  margin-bottom: 56px;
 }
 .impact-title span { color: var(--gold); }
 
+/* ── Story grid: hairlines instead of boxes ── */
 .impact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  /* No gap — borders act as separators */
 }
 
 .impact-stat {
-  background: rgba(26,111,255,0.07);
-  backdrop-filter: var(--blur-lg);
-  -webkit-backdrop-filter: var(--blur-lg);
-  border: 1px solid rgba(26,111,255,0.2);
-  border-radius: var(--radius);
-  padding: 32px 20px;
+  padding: 48px 32px;
   text-align: center;
-  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
-  box-shadow: inset 0 1px 0 rgba(26,111,255,0.1);
+  background: transparent;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background var(--transition);
+  position: relative;
 }
 
+/* Remove right border on last column */
+.impact-stat:nth-child(3n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last row (items 4,5,6) */
+.impact-stat:nth-child(n+4) {
+  border-bottom: none;
+}
+
+/* Subtle hover fill */
 .impact-stat:hover {
-  transform: translateY(-5px);
-  background: rgba(26,111,255,0.13);
-  border-color: rgba(26,111,255,0.4);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.35), 0 0 30px rgba(26,111,255,0.15), inset 0 1px 0 rgba(26,111,255,0.15);
+  background: rgba(10,61,46,0.06);
 }
 
+/* Glow accent on number on hover */
+.impact-stat:hover .impact-num {
+  text-shadow: 0 0 40px rgba(212,168,87,0.5);
+}
+
+/* ── Number — 40% larger ── */
 .impact-num {
-  font-size: 3rem;
+  font-size: clamp(3.6rem, 5vw, 4.6rem);
   font-weight: 900;
   color: var(--gold);
   line-height: 1;
   letter-spacing: -2px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  margin-bottom: 8px;
-  text-shadow: 0 0 40px rgba(212,160,23,0.3);
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(212,168,87,0.2);
+  transition: text-shadow var(--transition);
 }
 
+/* ── Label ── */
 .impact-label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.1px;
 }
 
+/* ── Sub-text — narrower, quieter ── */
 .impact-sub {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.78);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.48);
   line-height: 1.6;
+  max-width: 130px;
+  margin: 0 auto;
 }
 
-@media (max-width: 768px) { .impact-grid { grid-template-columns: repeat(2, 1fr); } }
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Reset nth-child borders for 2-col */
+  .impact-stat:nth-child(3n) {
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .impact-stat:nth-child(2n) {
+    border-right: none;
+  }
+  .impact-stat:nth-child(n+4) {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .impact-stat:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .impact-stat { padding: 36px 20px; }
+  .impact-num { font-size: clamp(2.8rem, 8vw, 3.6rem); }
+}
+
 @media (max-width: 480px) {
-  .impact-grid { grid-template-columns: 1fr; }
-  .impact-stat { padding: 28px 18px; }
+  .impact-grid { grid-template-columns: repeat(2, 1fr); }
+  .impact-stat { padding: 28px 16px; }
   .impact-num { font-size: 2.6rem; }
 }

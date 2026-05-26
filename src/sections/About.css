@@ -1,5 +1,5 @@
 .about {
-  background: linear-gradient(160deg, #eef4ff 0%, #e4eeff 50%, #eef4ff 100%);
+  background: linear-gradient(160deg, #F4F4F4 0%, #EFEFEF 50%, #F4F4F4 100%);
   position: relative;
   overflow: hidden;
 }
@@ -9,7 +9,7 @@
   position: absolute;
   top: -80px; right: -80px;
   width: 500px; height: 500px;
-  background: radial-gradient(ellipse, rgba(26,111,255,0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(10,61,46,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -25,24 +25,38 @@
 
 .about-img {
   width: 100%;
-  height: 500px;
+  aspect-ratio: 16 / 10;
+  min-height: 320px;
   object-fit: cover;
   border-radius: 20px;
   display: block;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+}
+
+/* Soft gradient overlay for readability */
+.about-img-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(6, 7, 14, 0.55) 100%
+  );
+  pointer-events: none;
 }
 
 .about-badge {
   position: absolute;
   bottom: 28px; left: -24px;
-  background: rgba(8,9,14,0.82);
+  background: rgba(3,8,5,0.82);
   backdrop-filter: var(--blur-lg);
   -webkit-backdrop-filter: var(--blur-lg);
-  border: 1px solid rgba(26,111,255,0.3);
+  border: 1px solid rgba(10,61,46,0.3);
   border-radius: 16px;
   padding: 18px 24px;
   text-align: center;
-  box-shadow: var(--glass-shadow), 0 0 30px rgba(26,111,255,0.15);
+  box-shadow: var(--glass-shadow), 0 0 30px rgba(10,61,46,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,6 +91,17 @@
 .about-content .section-title { margin: 0; }
 .about-content .section-title span { color: var(--green); }
 
+/* Mission statement */
+.about-mission {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.6;
+  border-left: 3px solid var(--green);
+  padding-left: 16px;
+  margin: 0;
+}
+
 .about-body {
   font-size: 0.95rem;
   color: var(--text);
@@ -103,7 +128,7 @@
 
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-img { height: 320px; }
+  .about-img { aspect-ratio: 16 / 9; min-height: auto; }
   .about-badge { left: 12px; bottom: 12px; }
 }
 @media (max-width: 480px) {

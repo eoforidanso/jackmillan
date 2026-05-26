@@ -18,15 +18,20 @@ const STAGGER_SELECTORS = [
   '.contact-detail',
   '.league-tag',
   '.trust-item',
+  '.about-list-item',
 ];
 
 const SINGLE_SELECTORS = [
   '.about-grid',
   '.about-content',
+  '.about-mission',
   '.testimonial-main',
   '.contact-form-wrap',
   '.contact-leagues',
   '.hero-stats',
+  '.services-header',
+  '.section-header',
+  '.about-image-wrap',
 ];
 
 export function initScrollReveal() {
@@ -53,7 +58,7 @@ export function initScrollReveal() {
     groups.forEach((els) => {
       els.forEach((el, i) => {
         el.classList.add('sr-hidden');
-        el.style.transitionDelay = `${i * 0.09}s`;
+        el.style.transitionDelay = `${i * 0.08}s`;
         observer.observe(el);
       });
     });

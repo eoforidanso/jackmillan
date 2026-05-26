@@ -3,10 +3,7 @@ import './About.css';
 
 const highlights = [
   'Licensed FIFA intermediary agents',
-  'Deep network with European club scouts',
   'Legal & visa support for every player',
-  'Performance analytics & video scouting',
-  'Post-transfer welfare & mentoring',
   'Ghanaian Football Association accredited',
 ];
 
@@ -21,6 +18,7 @@ export default function About() {
             className="about-img"
             loading="lazy"
           />
+          <div className="about-img-overlay" />
           <div className="about-badge">
             <span className="badge-num">7+</span>
             <span className="badge-text">Years of<br/>Excellence</span>
@@ -36,6 +34,10 @@ export default function About() {
             Founded in 2018, Jackmillan Football Academy was born from a passion to unlock
             the immense footballing talent in Ghana and West Africa, providing structured
             pathways to professional leagues across Europe and overseas.
+          </p>
+          <p className="about-mission">
+            We build honest, permanent bridges between Ghanaian football talent
+            and the professional game in Europe.
           </p>
           <p className="about-body">
             We work directly with players, families, and football academies to ensure

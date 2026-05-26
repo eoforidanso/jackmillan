@@ -1,50 +1,93 @@
-/* ─── Global Reset & Variables ─── */
+/* ═══════════════════════════════════════════════════
+   JM DESIGN SYSTEM — Global Tokens & Base Styles
+   ═══════════════════════════════════════════════════ */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── Core brand ── */
-  --green:       #1a6fff;   /* Electric blue */
-  --green-dark:  #0044cc;   /* Deep blue */
-  --green-vivid: #1a6fff;   /* Neon blue for glows */
-  --gold:        #f5a623;   /* Clean warm amber */
-  --gold-light:  #fcd34d;   /* Light amber */
-  --black:       #08090e;   /* Premium obsidian */
-  --white:       #f0f6ff;   /* Cool blue-white */
-  --gray:        #edf2ff;   /* Blue-tinted gray */
-  --text:        #0f172a;   /* Deep navy body text */
-  --muted:       #94a3c0;   /* Blue-tinted muted */
-  --radius:      14px;
-  --shadow:      0 4px 24px rgba(0,0,0,0.12);
-  --transition:  0.3s ease;
+  /* ── JM Brand Palette ── */
+  --jm-green:       #0A3D2E;   /* Primary — deep trustworthy green */
+  --jm-green-dark:  #062818;   /* Deep green for gradients / hover */
+  --jm-green-mid:   #0D5240;   /* Mid green for glass layers */
+  --jm-gold:        #D4A857;   /* Accent — prestige amber-gold */
+  --jm-gold-light:  #E8C07A;   /* Lighter gold */
+  --jm-white:       #FFFFFF;
+  --jm-ash:         #F4F4F4;   /* Soft section backgrounds */
+  --jm-slate:       #6A6A6A;   /* Secondary / dim text */
+  --jm-black:       #0A0A0A;
 
-  /* ── Dark surfaces ── */
-  --surface-0: #060709;    /* Deepest */
-  --surface-1: #0b0e14;    /* Primary dark */
-  --surface-2: #101620;    /* Secondary dark */
-  --surface-3: #141d28;    /* Card surface */
+  /* ── Semantic aliases (used throughout component CSS) ── */
+  --green:       var(--jm-green);
+  --green-dark:  var(--jm-green-dark);
+  --green-vivid: var(--jm-green-mid);
+  --gold:        var(--jm-gold);
+  --gold-light:  var(--jm-gold-light);
+  --black:       var(--jm-black);
+  --white:       var(--jm-white);
+  --gray:        var(--jm-ash);
+  --text:        #1A1A1A;
+  --muted:       var(--jm-slate);
 
-  /* ── Glassmorphism tokens (emerald-tinted) ── */
-  --glass:           rgba(26, 111, 255, 0.07);
-  --glass-md:        rgba(26, 111, 255, 0.13);
-  --glass-light:     rgba(255, 255, 255, 0.85);
-  --glass-border:    rgba(26, 111, 255, 0.16);
-  --glass-border-md: rgba(26, 111, 255, 0.28);
-  --glass-gold:      rgba(245, 166, 35, 0.15);
-  --glass-green:     rgba(26, 111, 255, 0.14);
-  --blur-sm:   blur(8px);
-  --blur-md:   blur(16px);
-  --blur-lg:   blur(28px);
-  --glass-shadow: 0 8px 40px rgba(0,0,0,0.45);
+  /* ── Radii ── */
+  --radius:      12px;   /* Cards */
+  --radius-btn:  8px;    /* Buttons */
+  --radius-pill: 50px;   /* Pills / badges */
+
+  /* ── Shadows ── */
+  --shadow:    0 4px 12px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.18);
+  --transition: 0.3s ease;
+
+  /* ── Dark surfaces (green-black) ── */
+  --surface-0: #020908;   /* Deepest */
+  --surface-1: #040e09;   /* Primary dark */
+  --surface-2: #071411;   /* Secondary dark */
+  --surface-3: #0a1a14;   /* Card surface */
+
+  /* ── Glass tokens ── */
+  --glass:           rgba(10,61,46,0.07);
+  --glass-md:        rgba(10,61,46,0.13);
+  --glass-light:     rgba(255,255,255,0.85);
+  --glass-border:    rgba(10,61,46,0.22);
+  --glass-border-md: rgba(10,61,46,0.36);
+  --glass-gold:      rgba(212,168,87,0.15);
+  --glass-green:     rgba(10,61,46,0.14);
+  --blur-sm:         blur(8px);
+  --blur-md:         blur(16px);
+  --blur-lg:         blur(28px);
+  --glass-shadow:    0 8px 40px rgba(0,0,0,0.35);
 
   /* ── Section gradients ── */
-  --dark-grad: linear-gradient(135deg, #060709 0%, #0b0e14 45%, #090c11 100%);
-  --mid-grad:  linear-gradient(135deg, #0b0e14 0%, #1a6fff18 50%, #0b0e14 100%);
+  --dark-grad: linear-gradient(135deg, #020908 0%, #040e09 45%, #030a07 100%);
+  --mid-grad:  linear-gradient(135deg, #040e09 0%, rgba(10,61,46,0.18) 50%, #040e09 100%);
 
   /* ── Accent gradients ── */
-  --grad-green: linear-gradient(135deg, #1a6fff, #0044cc);
-  --grad-gold:  linear-gradient(135deg, #f5a623, #fcd34d);
+  --grad-green: linear-gradient(135deg, #0A3D2E, #062818);
+  --grad-gold:  linear-gradient(135deg, #D4A857, #E8C07A);
+
+  /* ── Spacing scale (8-point) ── */
+  --sp-1:  8px;
+  --sp-2:  12px;
+  --sp-3:  16px;
+  --sp-4:  24px;
+  --sp-5:  32px;
+  --sp-6:  48px;
+  --sp-7:  64px;
+  --sp-8:  96px;
+
+  /* ── Type scale ── */
+  --text-xs:   0.8125rem;  /* 13px — metadata / labels */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px — body */
+  --text-lg:   1.125rem;   /* 18px — lead copy */
+  --text-xl:   1.25rem;    /* 20px — H3 card titles */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  2rem;       /* 32px — H2 section titles */
+  --text-4xl:  3rem;       /* 48px — H1 hero */
 }
 
+/* ── Base ── */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -52,20 +95,13 @@ html {
 
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: var(--text-base);
   color: var(--text);
-  background: var(--white);
+  background: var(--jm-white);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, h5, h6,
-.hero-title, .section-title, .form-title,
-.hiw-step-title, .service-title, .team-name,
-.req-title, .faq-question, .testi-name,
-.impact-num, .stat-num {
-  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 }
 
 img { max-width: 100%; display: block; }
@@ -73,178 +109,145 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 section { padding: 80px 0; }
 
+/* ── Container (1280px max, 32px gutters) ── */
 .container {
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--sp-5);
 }
 
-/* ── Buttons ── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #1a6fff, #0044cc);
-  color: #fff;
+/* ════════════════════════════════════
+   TYPOGRAPHY SYSTEM
+   H1 & H2 → Playfair Display (prestige)
+   H3 & below → Inter (clean)
+   ════════════════════════════════════ */
+
+h1, .hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: var(--text-4xl);
   font-weight: 700;
-  padding: 14px 32px;
-  border-radius: var(--radius);
-  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 0 4px 24px rgba(26,111,255,0.35);
-  letter-spacing: 0.2px;
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(26,111,255,0.55);
-  filter: brightness(1.1);
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1.5px solid rgba(26,111,255,0.45);
-  color: #1a6fff;
-  font-weight: 700;
-  padding: 13px 30px;
-  border-radius: var(--radius);
-  transition: all var(--transition);
-  background: rgba(26,111,255,0.07);
-  backdrop-filter: var(--blur-sm);
-  cursor: pointer;
-  font-size: 1rem;
-}
-.btn-outline:hover {
-  background: rgba(26,111,255,0.18);
-  border-color: rgba(26,111,255,0.75);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(26,111,255,0.25);
-}
-
-/* ── Section typography ── */
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a6fff;
-  background: rgba(26,111,255,0.08);
-  border: 1px solid rgba(26,111,255,0.2);
-  padding: 4px 14px;
-  border-radius: 50px;
-  margin-bottom: 14px;
-}
-
-.section-title {
-  font-size: clamp(1.75rem, 3.5vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.06;
   letter-spacing: -0.5px;
+}
+
+h2, .section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.3px;
   color: var(--text);
 }
 .section-title span { color: var(--green); }
 
+h3, .service-title,
+.team-name, .hiw-step-title, .req-title,
+.faq-question, .testi-name, .form-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Impact / stat numbers — Playfair for prestige feel */
+.impact-num, .strip-num {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ── Section typography helpers ── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--jm-gold);
+  background: rgba(212,168,87,0.08);
+  border: 1px solid rgba(212,168,87,0.3);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--sp-2);
+}
+
 .section-subtitle {
   color: var(--muted);
-  font-size: 1rem;
-  margin-top: 14px;
-  max-width: 580px;
+  font-size: var(--text-base);
+  margin-top: var(--sp-2);
+  max-width: 65ch;
   line-height: 1.72;
   font-weight: 400;
 }
 
-/* ── Brand signature: premium section title accent for dark sections ── */
-.services .section-title,
-.hiw .section-title,
-.impact .section-title,
-.players .section-title,
-.testimonials .section-title,
-.gallery .section-title,
-.faq .section-title {
-  letter-spacing: -0.8px;
-}
+/* ════════════════════════════════════
+   BUTTONS
+   ════════════════════════════════════ */
 
-/* Signature underline on section title spans in dark sections */
-.services .section-title span,
-.hiw .section-title span,
-.players .section-title span,
-.testimonials .section-title span,
-.gallery .section-title span,
-.faq .section-title span {
-  position: relative;
-}
-.services .section-title span::after,
-.hiw .section-title span::after,
-.players .section-title span::after,
-.testimonials .section-title span::after,
-.gallery .section-title span::after,
-.faq .section-title span::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -3px;
-  width: 100%; height: 2px;
-  background: linear-gradient(90deg, var(--green), rgba(26,111,255,0));
-  border-radius: 2px;
-}
-
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--surface-0); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(#1a6fff, #0044cc);
-  border-radius: 4px;
-}
-
-/* ── Mobile / Responsive global ── */
-@media (max-width: 768px) {
-  section { padding: 60px 0; }
-
-  .container { padding: 0 20px; }
-
-  .section-title { font-size: clamp(1.55rem, 6vw, 2.2rem); }
-  .section-subtitle { font-size: 0.95rem; }
-
-  .btn-primary,
-  .btn-outline { padding: 12px 24px; font-size: 0.92rem; }
-}
-
-@media (max-width: 480px) {
-  section { padding: 48px 0; }
-  .container { padding: 0 16px; }
-  .btn-primary,
-  .btn-outline { width: 100%; justify-content: center; }
-}
-
-/* ── Scroll Reveal ── */
-.sr-hidden {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.sr-hidden.sr-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ── Button ripple micro-interaction ── */
-.btn-primary,
-.btn-outline {
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  background: var(--jm-green);
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-base);
+  padding: 12px 20px;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  box-shadow: 0 4px 16px rgba(10,61,46,0.35);
   position: relative;
   overflow: hidden;
 }
+.btn-primary:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(10,61,46,0.5);
+}
+.btn-primary:active::after {
+  opacity: 1;
+  transform: scale(2.5);
+  transition: none;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  border: 1.5px solid rgba(10,61,46,0.45);
+  color: var(--jm-green);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-base);
+  padding: 11px 20px;
+  border-radius: var(--radius-btn);
+  background: rgba(10,61,46,0.05);
+  backdrop-filter: var(--blur-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-outline:hover {
+  background: rgba(10,61,46,0.12);
+  border-color: rgba(10,61,46,0.75);
+  color: var(--jm-green);
+  box-shadow: 0 0 20px rgba(10,61,46,0.18);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Ripple micro-interaction */
 .btn-primary::after,
 .btn-outline::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%);
   opacity: 0;
   transform: scale(0);
   transition: transform 0.45s ease, opacity 0.45s ease;
@@ -258,7 +261,85 @@ section { padding: 80px 0; }
   transition: none;
 }
 
-/* ── Card 3-D tilt ── */
+/* ── Dark-section override: outline button shows as white ── */
+.hero .btn-outline,
+.services .btn-outline,
+.impact .btn-outline {
+  border-color: rgba(255,255,255,0.45);
+  color: #fff;
+  background: rgba(255,255,255,0.07);
+}
+.hero .btn-outline:hover,
+.services .btn-outline:hover,
+.impact .btn-outline:hover {
+  border-color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.15);
+}
+
+/* ════════════════════════════════════
+   DARK SECTION TITLE ACCENTS
+   ════════════════════════════════════ */
+
+.services .section-title,
+.hiw .section-title,
+.impact .section-title,
+.players .section-title,
+.testimonials .section-title,
+.gallery .section-title,
+.faq .section-title {
+  color: var(--jm-white);
+}
+
+.services .section-title span,
+.hiw .section-title span,
+.players .section-title span,
+.testimonials .section-title span,
+.gallery .section-title span,
+.faq .section-title span {
+  color: var(--jm-gold);
+  position: relative;
+}
+.services .section-title span::after,
+.hiw .section-title span::after,
+.players .section-title span::after,
+.testimonials .section-title span::after,
+.gallery .section-title span::after,
+.faq .section-title span::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--jm-gold), rgba(212,168,87,0));
+  border-radius: 2px;
+}
+
+/* ════════════════════════════════════
+   SCROLLBAR
+   ════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-0); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--jm-green), var(--jm-green-dark));
+  border-radius: 4px;
+}
+
+/* ════════════════════════════════════
+   SCROLL REVEAL
+   ════════════════════════════════════ */
+.sr-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.sr-hidden.sr-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ════════════════════════════════════
+   3-D TILT CARDS
+   ════════════════════════════════════ */
 .service-card,
 .team-card,
 .player-card,
@@ -268,3 +349,19 @@ section { padding: 80px 0; }
   will-change: transform;
 }
 
+/* ════════════════════════════════════
+   RESPONSIVE GLOBALS
+   ════════════════════════════════════ */
+@media (max-width: 768px) {
+  section { padding: 64px 0; }
+  .container { padding: 0 var(--sp-4); }
+  h2, .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .section-subtitle { font-size: 0.95rem; }
+  .btn-primary, .btn-outline { padding: 12px 18px; font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 48px 0; }
+  .container { padding: 0 var(--sp-3); }
+  .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+}
