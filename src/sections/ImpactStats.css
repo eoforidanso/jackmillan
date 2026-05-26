@@ -58,7 +58,7 @@
   text-align: center;
   margin-bottom: 56px;
 }
-.impact-title span { color: var(--gold); }
+.impact-title span { color: var(--jm-blue); }
 
 /* ── Story grid: hairlines instead of boxes ── */
 .impact-grid {
@@ -94,19 +94,19 @@
 
 /* Glow accent on number on hover */
 .impact-stat:hover .impact-num {
-  text-shadow: 0 0 40px rgba(212,168,87,0.5);
+  text-shadow: 0 0 40px rgba(26,79,255,0.5);
 }
 
 /* ── Number — 40% larger ── */
 .impact-num {
   font-size: clamp(3.6rem, 5vw, 4.6rem);
   font-weight: 900;
-  color: var(--gold);
+  color: var(--jm-blue);
   line-height: 1;
   letter-spacing: -2px;
   font-family: 'Inter', sans-serif;
   margin-bottom: 10px;
-  text-shadow: 0 0 30px rgba(212,168,87,0.2);
+  text-shadow: 0 0 30px rgba(26,79,255,0.2);
   transition: text-shadow var(--transition);
 }
 

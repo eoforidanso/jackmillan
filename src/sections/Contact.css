@@ -96,9 +96,9 @@
 }
 .leagues-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .league-tag {
-  background: rgba(10,61,46,0.1);
-  border: 1px solid rgba(10,61,46,0.22);
-  color: var(--green);
+  background: rgba(26,79,255,0.07);
+  border: 1px solid rgba(26,79,255,0.28);
+  color: var(--jm-blue);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 4px 12px;

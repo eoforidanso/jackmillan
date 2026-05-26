@@ -21,7 +21,7 @@
   position: relative;
 }
 .hiw-header .section-title { color: var(--white); }
-.hiw-header .section-title span { color: var(--gold); }
+.hiw-header .section-title span { color: var(--blue); }
 .hiw-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .hiw-steps {
@@ -111,7 +111,7 @@
 }
 
 .hiw-cta h3 { font-size: 1.6rem; font-weight: 900; color: var(--white); margin-bottom: 10px; }
-.hiw-cta h3 span { color: var(--gold); }
+.hiw-cta h3 span { color: var(--blue); }
 .hiw-cta p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px; }
 .hiw-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 

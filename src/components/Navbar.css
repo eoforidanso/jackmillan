@@ -49,8 +49,8 @@
   line-height: 1.1;
 }
 .logo-main { font-size: 1.3rem; font-weight: 800; color: var(--white); }
-.logo-gold { color: var(--gold); }
-.logo-text > span:first-child { color: var(--gold); }
+.logo-gold { color: var(--blue); }
+.logo-text > span:first-child { color: var(--blue); }
 .logo-sub {
   font-size: 0.72rem;
   font-weight: 600;
@@ -81,31 +81,31 @@
   position: absolute;
   bottom: -4px; left: 0;
   width: 0; height: 2px;
-  background: var(--jm-gold);
+  background: var(--jm-blue);
   transition: width 0.25s ease;
   border-radius: 2px;
 }
-.nav-link:hover { color: var(--jm-gold); }
+.nav-link:hover { color: var(--jm-blue); }
 .nav-link:hover::after { width: 100%; }
 
 .nav-cta {
   margin-left: 8px;
   padding: 10px 20px;
   font-size: 0.88rem;
-  background: var(--jm-gold);
-  color: var(--jm-black);
+  background: var(--jm-blue);
+  color: #fff;
   border-radius: var(--radius-btn);
-  box-shadow: 0 4px 16px rgba(212,168,87,0.3);
+  box-shadow: 0 4px 16px rgba(26,79,255,0.35);
   font-weight: 700;
 }
 .nav-cta:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 6px 24px rgba(212,168,87,0.5);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 24px rgba(26,79,255,0.55);
   transform: translateY(-1px);
 }
 
 /* Active link — desktop */
-.nav-link.active { color: var(--jm-gold); }
+.nav-link.active { color: var(--jm-blue); }
 .nav-link.active::after { width: 100%; }
 
 .hamburger {
@@ -120,9 +120,9 @@
 }
 .hamburger:hover {
   background: rgba(255,255,255,0.12);
-  border-color: rgba(212,168,87,0.35);
+  border-color: rgba(26,79,255,0.4);
 }
-.hamburger.is-open { border-color: rgba(212,168,87,0.5); color: var(--jm-gold); }
+.hamburger.is-open { border-color: rgba(26,79,255,0.6); color: var(--jm-blue); }
 
 /* ══════════════════════════
    MOBILE — slide-down menu
@@ -137,7 +137,7 @@
     background: rgba(2,9,8,0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212,168,87,0.12);
+    border-bottom: 1px solid rgba(26,79,255,0.15);
     flex-direction: column;
     align-items: center;
     padding: 72px 24px 28px;
@@ -166,7 +166,7 @@
   /* No sliding underline on mobile — use color only */
   .nav-links .nav-link::after { display: none; }
   .nav-links .nav-link:hover,
-  .nav-links .nav-link.active { color: var(--jm-gold); }
+  .nav-links .nav-link.active { color: var(--jm-blue); }
 
   /* Stagger in: 80ms steps */
   .nav-links.open .nav-link {

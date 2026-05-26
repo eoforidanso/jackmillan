@@ -21,7 +21,7 @@
   position: relative;
 }
 .team-header .section-title { color: var(--white); }
-.team-header .section-title span { color: var(--gold); }
+.team-header .section-title span { color: var(--blue); }
 .team-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .team-grid {
@@ -95,16 +95,16 @@
 
 .team-body { padding: 20px; }
 .team-name { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 3px; }
-.team-role { font-size: 0.78rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.team-role { font-size: 0.78rem; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
 .team-bio { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 14px; }
 
 .team-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .team-tag {
   font-size: 0.7rem;
   font-weight: 600;
-  background: var(--glass-gold);
-  border: 1px solid rgba(212,160,23,0.25);
-  color: var(--gold);
+  background: var(--glass-blue);
+  border: 1px solid rgba(26,79,255,0.25);
+  color: var(--blue);
   padding: 3px 10px;
   border-radius: 20px;
 }

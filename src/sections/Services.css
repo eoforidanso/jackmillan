@@ -22,7 +22,7 @@
   position: relative;
 }
 .services-header .section-title { color: var(--white); }
-.services-header .section-title span { color: var(--gold); }
+.services-header .section-title span { color: var(--blue); }
 .services-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .services-grid {

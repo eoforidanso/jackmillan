@@ -22,7 +22,7 @@
   margin: 0 auto 48px;
 }
 .faq-header .section-title { color: var(--white); }
-.faq-header .section-title span { color: var(--gold); }
+.faq-header .section-title span { color: var(--blue); }
 .faq-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .faq-list {

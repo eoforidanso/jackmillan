@@ -58,7 +58,7 @@ export default function ImpactStats() {
     <section id="impact" className="impact" ref={ref} style={{ backgroundImage: `url('${BASE}images/hero-bg.jpg')` }}>
       <div className="impact-overlay" />
       <div className="container impact-inner">
-        <p className="section-label" style={{ color: 'var(--gold)', textAlign: 'center' }}>Our Impact</p>
+        <p className="section-label" style={{ textAlign: 'center' }}>Our Impact</p>
         <h2 className="section-title impact-title">
           Numbers That <span>Speak for Themselves</span>
         </h2>

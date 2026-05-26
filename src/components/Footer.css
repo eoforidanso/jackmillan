@@ -24,7 +24,7 @@
   color: var(--white);
 }
 .footer-logo-img { height: 40px; }
-.footer-logo .gold { color: var(--gold); }
+.footer-logo .gold { color: var(--blue); }
 
 .footer-tagline {
   font-size: 0.88rem;
@@ -92,7 +92,7 @@
   color: rgba(255,255,255,0.68);
 }
 
-.footer-legal a { color: var(--gold); text-decoration: none; }
+.footer-legal a { color: var(--blue); text-decoration: none; }
 .footer-legal a:hover { text-decoration: underline; }
 
 @media (max-width: 900px) {

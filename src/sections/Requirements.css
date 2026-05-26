@@ -20,7 +20,7 @@
   position: relative;
 }
 .req-header .section-title { color: var(--white); }
-.req-header .section-title span { color: var(--gold); }
+.req-header .section-title span { color: var(--blue); }
 .req-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .req-cards {
@@ -74,7 +74,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--gold);
+  color: var(--blue);
   margin: 6px 0 10px;
 }
 
@@ -89,7 +89,7 @@
   position: relative;
 }
 
-.req-positions, .req-qualities {
+.req-positions {
   background: var(--glass);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
@@ -98,11 +98,26 @@
   padding: 28px;
 }
 
-.req-positions h3, .req-qualities h3 {
+.req-qualities {
+  background: #ffffff;
+  border: 1px solid rgba(26,79,255,0.12);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(26,79,255,0.08);
+}
+
+.req-positions h3 {
   font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 16px;
   color: var(--white);
+}
+
+.req-qualities h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--jm-green);
 }
 
 .positions-grid { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -123,9 +138,9 @@
   align-items: center;
   gap: 10px;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.75);
+  color: rgba(2,9,8,0.75);
 }
-.q-icon { color: var(--green); flex-shrink: 0; }
+.q-icon { color: var(--jm-blue); flex-shrink: 0; }
 
 /* CTA Banner */
 .req-cta-banner {
@@ -145,7 +160,7 @@
 }
 
 .req-cta-text { display: flex; align-items: center; gap: 14px; color: var(--white); }
-.req-cta-text svg { flex-shrink: 0; color: var(--gold); }
+.req-cta-text svg { flex-shrink: 0; color: var(--blue); }
 .req-cta-text p { font-size: 1rem; color: rgba(255,255,255,0.82); }
 .req-cta-text strong { color: var(--white); }
 

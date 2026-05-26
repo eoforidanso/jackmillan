@@ -4,7 +4,7 @@ const BASE = import.meta.env.BASE_URL;
 
 export default function Hero() {
   return (
-    <section id="home" className="hero" style={{ backgroundImage: `url('${BASE}images/hero.png')` }}>
+    <section id="home" className="hero" style={{ backgroundImage: `url('${BASE}images/player1.png')` }}>
       <div className="hero-overlay" />
       <div className="hero-grid-bg" />
       <div className="hero-text-scrim" />

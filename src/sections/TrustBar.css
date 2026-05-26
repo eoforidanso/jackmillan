@@ -59,12 +59,12 @@
   transition: background var(--transition), border-color var(--transition);
   flex-shrink: 0;
 }
-.trust-item:hover { background: var(--glass-md); border-color: rgba(212,160,23,0.3); }
+.trust-item:hover { background: var(--glass-md); border-color: rgba(26,79,255,0.3); }
 
 .trust-abbr {
   font-size: 0.78rem;
   font-weight: 800;
-  color: var(--gold);
+  color: var(--blue);
   letter-spacing: 0.5px;
 }
 .trust-name {

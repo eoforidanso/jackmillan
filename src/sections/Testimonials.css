@@ -20,7 +20,7 @@
   position: relative;
 }
 .testi-header .section-title { color: var(--white); }
-.testi-header .section-title span { color: var(--gold); }
+.testi-header .section-title span { color: var(--blue); }
 .testi-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
 
 .testi-stage { position: relative; max-width: 860px; margin: 0 auto 36px; }
@@ -87,7 +87,7 @@
 }
 
 .testi-name { font-weight: 800; font-size: 1rem; color: var(--white); }
-.testi-role { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin-top: 2px; }
+.testi-role { font-size: 0.82rem; color: var(--blue); font-weight: 600; margin-top: 2px; }
 
 .testi-year {
   background: rgba(10,61,46,0.1);

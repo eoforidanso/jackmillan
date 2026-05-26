@@ -83,10 +83,8 @@ export default function Players() {
             <div key={p.name} className="player-card">
               <div className="player-img-wrap">
                 <img src={p.img} alt={p.name} className="player-img" loading="lazy" />
-                <span className="player-position">{p.position}</span>
               </div>
               <div className="player-info">
-                <h3 className="player-name">{p.name}</h3>
                 {p.age && <p className="player-age">Age {p.age}</p>}
                 <p className="player-dest">
                   {p.flag} {p.destination}

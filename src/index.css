@@ -9,8 +9,11 @@
   --jm-green:       #0A3D2E;   /* Primary — deep trustworthy green */
   --jm-green-dark:  #062818;   /* Deep green for gradients / hover */
   --jm-green-mid:   #0D5240;   /* Mid green for glass layers */
-  --jm-gold:        #D4A857;   /* Accent — prestige amber-gold */
+  --jm-gold:        #D4A857;   /* Prestige gold — decorative only */
   --jm-gold-light:  #E8C07A;   /* Lighter gold */
+  --jm-blue:        #1A4FFF;   /* Accent — Royal Blue */
+  --jm-blue-dark:   #1340D4;   /* Deep blue for hover/active */
+  --jm-blue-light:  #4D74FF;   /* Lighter blue for gradients */
   --jm-white:       #FFFFFF;
   --jm-ash:         #F4F4F4;   /* Soft section backgrounds */
   --jm-slate:       #6A6A6A;   /* Secondary / dim text */
@@ -22,6 +25,8 @@
   --green-vivid: var(--jm-green-mid);
   --gold:        var(--jm-gold);
   --gold-light:  var(--jm-gold-light);
+  --blue:        var(--jm-blue);
+  --blue-dark:   var(--jm-blue-dark);
   --black:       var(--jm-black);
   --white:       var(--jm-white);
   --gray:        var(--jm-ash);
@@ -52,6 +57,7 @@
   --glass-border:    rgba(10,61,46,0.22);
   --glass-border-md: rgba(10,61,46,0.36);
   --glass-gold:      rgba(212,168,87,0.15);
+  --glass-blue:      rgba(26,79,255,0.1);
   --glass-green:     rgba(10,61,46,0.14);
   --blur-sm:         blur(8px);
   --blur-md:         blur(16px);
@@ -164,9 +170,9 @@ h3, .service-title,
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--jm-gold);
-  background: rgba(212,168,87,0.08);
-  border: 1px solid rgba(212,168,87,0.3);
+  color: var(--jm-blue);
+  background: rgba(26,79,255,0.07);
+  border: 1px solid rgba(26,79,255,0.28);
   padding: 4px 14px;
   border-radius: var(--radius-pill);
   margin-bottom: var(--sp-2);
@@ -189,7 +195,7 @@ h3, .service-title,
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
-  background: var(--jm-green);
+  background: var(--jm-blue);
   color: #fff;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 700;
@@ -200,14 +206,14 @@ h3, .service-title,
   cursor: pointer;
   letter-spacing: 0.2px;
   transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
-  box-shadow: 0 4px 16px rgba(10,61,46,0.35);
+  box-shadow: 0 4px 16px rgba(26,79,255,0.35);
   position: relative;
   overflow: hidden;
 }
 .btn-primary:hover {
-  filter: brightness(1.04);
+  filter: brightness(1.08);
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(10,61,46,0.5);
+  box-shadow: 0 8px 28px rgba(26,79,255,0.5);
 }
 .btn-primary:active::after {
   opacity: 1;
@@ -296,7 +302,7 @@ h3, .service-title,
 .testimonials .section-title span,
 .gallery .section-title span,
 .faq .section-title span {
-  color: var(--jm-gold);
+  color: var(--jm-blue);
   position: relative;
 }
 .services .section-title span::after,
@@ -309,7 +315,7 @@ h3, .service-title,
   position: absolute;
   left: 0; bottom: -3px;
   width: 100%; height: 2px;
-  background: linear-gradient(90deg, var(--jm-gold), rgba(212,168,87,0));
+  background: linear-gradient(90deg, var(--jm-blue), rgba(26,79,255,0));
   border-radius: 2px;
 }
 

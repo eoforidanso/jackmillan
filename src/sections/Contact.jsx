@@ -64,9 +64,9 @@ export default function Contact() {
       <div className="container contact-grid">
         {/* Left info */}
         <div className="contact-info">
-          <p className="section-label" style={{ color: 'var(--gold)' }}>Get In Touch</p>
+          <p className="section-label">Get In Touch</p>
           <h2 className="section-title" style={{ color: 'var(--white)' }}>
-            Start Your <span style={{ color: 'var(--gold)' }}>Journey Today</span>
+            Start Your <span style={{ color: 'var(--jm-blue)' }}>Journey Today</span>
           </h2>
           <p className="contact-sub">
             Whether you&apos;re a player, parent, or academy director — reach out and
