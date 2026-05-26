@@ -51,7 +51,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-inner">
         <a href="#home" className="nav-logo" onClick={close}>
-          <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Jackmillan Football Academy" className="logo-img" />
+          <img src={import.meta.env.BASE_URL + 'images/logo.svg'} alt="Jackmillan Football Academy" className="logo-img" />
           <span className="logo-text">
             <span className="logo-main">Jack<span className="logo-gold">Millan</span></span>
             <span className="logo-sub">Football Academy</span>
