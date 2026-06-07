@@ -55,6 +55,7 @@ export default function Navbar() {
           <span className="logo-text">
             <span className="logo-main">Jack<span className="logo-gold">Millan</span></span>
             <span className="logo-sub">Football Academy</span>
+            <span className="logo-tagline">FIFA‑Licensed Scouting · Accra</span>
           </span>
         </a>
 
@@ -71,6 +72,9 @@ export default function Navbar() {
           ))}
           <a href="#contact" className="btn-primary nav-cta" onClick={close}>
             Get Scouted
+          </a>
+          <a href="/admin" className="nav-admin" title="Admin Dashboard">
+            ⚙️
           </a>
         </nav>
 

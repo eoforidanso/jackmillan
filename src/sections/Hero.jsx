@@ -1,8 +1,34 @@
+import { useEffect } from 'react';
 import './Hero.css';
 
 const BASE = import.meta.env.BASE_URL;
 
 export default function Hero() {
+
+  // Count-up animation for stat numbers
+  useEffect(() => {
+    const nums = document.querySelectorAll('.strip-num[data-target]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const suffix = el.innerHTML.match(/<sup>(.*?)<\/sup>/)?.[1] || '';
+        let start = 0;
+        const duration = 1400;
+        const step = Math.ceil(target / (duration / 16));
+        const timer = setInterval(() => {
+          start = Math.min(start + step, target);
+          el.innerHTML = `${start}<sup>${suffix}</sup>`;
+          if (start >= target) clearInterval(timer);
+        }, 16);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(n => observer.observe(n));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="home" className="hero" style={{ backgroundImage: `url('${BASE}images/player1.png')` }}>
       <div className="hero-overlay" />
@@ -17,20 +43,19 @@ export default function Hero() {
         </div>
 
         <h1 className="hero-title">
-          Where Elite African<br />
-          Talent Meets<br />
-          <span>European Football</span>
+          Africa&apos;s Finest.<br />
+          <span>Europe&apos;s Next Stars.</span>
         </h1>
 
         <p className="hero-sub">
-          Accra&apos;s most trusted FIFA-licensed scouting academy. We identify,
-          develop, and place Ghana&apos;s finest footballers into professional clubs
-          across Europe — with a proven 95% placement success rate.
+          Ghana&apos;s only FIFA-licensed scouting academy with verified placements
+          in professional clubs across 12 European nations.
+          No shortcuts. No false promises. Just results.
         </p>
 
         <div className="hero-actions">
-          <a href="#contact" className="btn-primary">Apply for Scouting</a>
-          <a href="#players" className="btn-outline">View Our Placements</a>
+          <a href="#contact" className="btn-primary btn-glass">Apply for Scouting</a>
+          <a href="#players" className="btn-outline btn-glass-outline">View Our Placements</a>
         </div>
 
         <div className="hero-scroll-cue" aria-hidden="true">
@@ -46,23 +71,31 @@ export default function Hero() {
 
           <div className="strip-stats">
             <div className="strip-stat">
-              <span className="strip-num">120<sup>+</sup></span>
-              <span className="strip-lbl">Players Placed</span>
+              <span className="strip-icon">🎓</span>
+              <span className="strip-num" data-target="120">0<sup>+</sup></span>
+              <span className="strip-lbl">Graduates Placed</span>
+              <span className="strip-verify">verified</span>
             </div>
             <div className="strip-sep" />
             <div className="strip-stat">
-              <span className="strip-num">95<sup>%</sup></span>
+              <span className="strip-icon">✅</span>
+              <span className="strip-num" data-target="95">0<sup>%</sup></span>
               <span className="strip-lbl">Success Rate</span>
+              <span className="strip-verify">across Europe</span>
             </div>
             <div className="strip-sep" />
             <div className="strip-stat">
-              <span className="strip-num">18</span>
-              <span className="strip-lbl">Partner Clubs</span>
+              <span className="strip-icon">🏅</span>
+              <span className="strip-num">UEFA B</span>
+              <span className="strip-lbl">Coaching Staff</span>
+              <span className="strip-verify">licensed</span>
             </div>
             <div className="strip-sep" />
             <div className="strip-stat">
-              <span className="strip-num">12</span>
-              <span className="strip-lbl">Countries</span>
+              <span className="strip-icon">🇬🇭</span>
+              <span className="strip-num">GFA</span>
+              <span className="strip-lbl">Certified</span>
+              <span className="strip-verify">national compliance</span>
             </div>
           </div>
 

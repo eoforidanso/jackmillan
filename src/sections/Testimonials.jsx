@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import './Testimonials.css';
 
@@ -52,10 +52,33 @@ const testimonials = [
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const stageRef = useRef(null);
 
   const prev = () => setActive((a) => (a === 0 ? testimonials.length - 1 : a - 1));
   const next = () => setActive((a) => (a === testimonials.length - 1 ? 0 : a + 1));
   const t = testimonials[active];
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    setTouchEnd(e.changedTouches[0].clientX);
+    if (touchStart !== null) {
+      const distance = touchStart - e.changedTouches[0].clientX;
+      if (Math.abs(distance) > 50) {
+        if (distance > 0) {
+          next(); // Swiped left → next
+        } else {
+          prev(); // Swiped right → previous
+        }
+      }
+    }
+    setTouchStart(null);
+  };
 
   return (
     <section id="testimonials" className="testimonials">
@@ -71,10 +94,10 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="testi-stage">
+        <div className="testi-stage" ref={stageRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <div className="testi-quote-icon"><Quote size={40} /></div>
 
-          <div className="testi-card">
+          <div className="testi-card" role="region" aria-label="Testimonial">
             <div
               className="testi-avatar"
               style={{ background: `linear-gradient(135deg, ${t.color}22, ${t.color}44)`, border: `2px solid ${t.color}88` }}

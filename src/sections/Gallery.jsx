@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
 import './Gallery.css';
 
 const BASE = import.meta.env.BASE_URL;
-const photos = [
+const defaultPhotos = [
   { src: `${BASE}images/team.jpg`, alt: 'Jackmillan Football Academy squad on the pitch', wide: true },
   { src: `${BASE}images/about.jpg`, alt: 'Training session in Accra' },
   { src: `${BASE}images/a.jpg`, alt: 'Team talk on the pitch', wide: true },
@@ -19,6 +20,22 @@ const photos = [
 ];
 
 export default function Gallery() {
+  const [photos, setPhotos] = useState(defaultPhotos);
+
+  useEffect(() => {
+    // Load admin-uploaded images from localStorage
+    const stored = localStorage.getItem('jm-gallery-images');
+    if (stored) {
+      try {
+        const adminImages = JSON.parse(stored);
+        // Add admin images to the beginning
+        setPhotos([...adminImages, ...defaultPhotos]);
+      } catch (e) {
+        console.error('Failed to load admin images:', e);
+      }
+    }
+  }, []);
+
   return (
     <section id="gallery" className="gallery">
       <div className="container">

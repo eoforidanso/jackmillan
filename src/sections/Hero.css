@@ -15,17 +15,23 @@
   overflow: hidden;
 }
 
-/* ── Bottom "stage" gradient — anchors headline in darkness ── */
+/* ── Cinematic gradient — bottom-to-top headline pop ── */
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(2,9,8,0.97) 0%,
-    rgba(2,9,8,0.84) 22%,
-    rgba(2,9,8,0.44) 50%,
-    rgba(2,9,8,0.10) 70%,
-    transparent 88%
-  );
+  background:
+    linear-gradient(to top,
+      rgba(2,9,8,1.0)  0%,
+      rgba(2,9,8,0.94) 20%,
+      rgba(2,9,8,0.70) 42%,
+      rgba(2,9,8,0.28) 62%,
+      rgba(2,9,8,0.08) 78%,
+      transparent      92%
+    ),
+    linear-gradient(to bottom,
+      rgba(2,9,8,0.82) 0%,
+      rgba(2,9,8,0.35) 18%,
+      transparent      44%
+    );
   z-index: 1;
 }
 
@@ -148,16 +154,16 @@
   to   { opacity: 0.35; transform: translateY(0); }
 }
 
-/* ── Hero title ── */
+/* ── Hero title — UEFA-academy feel ── */
 .hero-title {
-  font-size: clamp(2.2rem, 4.5vw, 3rem);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.5px;
+  font-size: clamp(3.0rem, 6.5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -2px;
   color: #ffffff;
-  margin-bottom: 24px;
-  max-width: min(560px, 90vw);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.60), 0 3px 14px rgba(0,0,0,0.32);
+  margin-bottom: 26px;
+  max-width: min(660px, 93vw);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.80), 0 6px 28px rgba(0,0,0,0.50);
   animation: heroFadeUp 0.7s cubic-bezier(0.25,0.46,0.45,0.94) 2430ms both;
 }
 
@@ -410,4 +416,70 @@
   .strip-num { font-size: 1.3rem; }
   .cred-pill { font-size: 0.64rem; padding: 4px 10px; }
   .hero-scroll-cue { margin-top: 36px; }
+  .hero-title { font-size: clamp(2.2rem, 9vw, 2.8rem); }
+}
+
+/* ══════════════════════════════
+   GLASSMORPHISM BUTTONS
+   ══════════════════════════════ */
+
+.btn-glass {
+  background: rgba(26, 79, 255, 0.18) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 0 0 0 rgba(26, 79, 255, 0) !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease !important;
+}
+
+.btn-glass:hover {
+  background: rgba(26, 79, 255, 0.32) !important;
+  box-shadow:
+    0 0 18px rgba(26, 79, 255, 0.45),
+    0 0 36px rgba(26, 79, 255, 0.20) !important;
+  transform: scale(1.03) !important;
+}
+
+.btn-glass-outline {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.28) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease !important;
+}
+
+.btn-glass-outline:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.15) !important;
+  transform: scale(1.03) !important;
+}
+
+/* ══════════════════════════════
+   PARALLAX HERO IMAGE
+   ══════════════════════════════ */
+
+.hero {
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  /* Fixed background causes issues on iOS */
+  .hero { background-attachment: scroll; }
+}
+
+/* ══════════════════════════════
+   STAT GRID SLIDE-IN
+   ══════════════════════════════ */
+
+.strip-stat {
+  animation: slideInStat 0.5s cubic-bezier(0.25,0.46,0.45,0.94) both;
+}
+.strip-stat:nth-child(1) { animation-delay: 2700ms; }
+.strip-stat:nth-child(3) { animation-delay: 2800ms; }
+.strip-stat:nth-child(5) { animation-delay: 2900ms; }
+.strip-stat:nth-child(7) { animation-delay: 3000ms; }
+
+@keyframes slideInStat {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

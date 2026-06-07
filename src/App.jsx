@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Preloader from './components/Preloader';
 import CookieBanner from './components/CookieBanner';
 import WhatsAppButton from './components/WhatsAppButton';
+import AdminDashboard from './components/AdminDashboard';
 import Hero from './sections/Hero';
 import TrustBar from './sections/TrustBar';
 import About from './sections/About';
@@ -13,6 +15,7 @@ import HowItWorks from './sections/HowItWorks';
 import Players from './sections/Players';
 import Testimonials from './sections/Testimonials';
 import Gallery from './sections/Gallery';
+import Booking from './sections/Booking';
 import Team from './sections/Team';
 import FAQ from './sections/FAQ';
 import Contact from './sections/Contact';
@@ -21,7 +24,7 @@ import { initScrollReveal } from './utils/scrollReveal';
 import { initCardTilt } from './utils/cardTilt';
 import './index.css';
 
-export default function App() {
+function HomePage() {
   useEffect(() => {
     const t = setTimeout(() => {
       const cleanReveal = initScrollReveal();
@@ -45,6 +48,7 @@ export default function App() {
         <HowItWorks />
         <Players />
         <Testimonials />
+        <Booking />
         <Gallery />
         <Team />
         <FAQ />
@@ -54,5 +58,16 @@ export default function App() {
       <WhatsAppButton />
       <CookieBanner />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </Router>
   );
 }

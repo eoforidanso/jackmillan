@@ -195,25 +195,30 @@ h3, .service-title,
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
-  background: var(--jm-blue);
+  background: rgba(26, 79, 255, 0.92);
   color: #fff;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 700;
   font-size: var(--text-base);
-  padding: 12px 20px;
+  padding: 13px 26px;
   border-radius: var(--radius-btn);
-  border: none;
+  border: 0.5px solid rgba(255, 255, 255, 0.30);
   cursor: pointer;
-  letter-spacing: 0.2px;
-  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
-  box-shadow: 0 4px 16px rgba(26,79,255,0.35);
+  letter-spacing: 0.3px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  box-shadow: 0 4px 20px rgba(26,79,255,0.40), inset 0 1px 0 rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
 }
 .btn-primary:hover {
-  filter: brightness(1.08);
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 8px 28px rgba(26,79,255,0.5);
+  background: rgba(26, 79, 255, 1);
+  transform: translateY(-1px) scale(1.03);
+  box-shadow:
+    0 0 20px rgba(26,79,255,0.55),
+    0 0 42px rgba(26,79,255,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.20);
 }
 .btn-primary:active::after {
   opacity: 1;
@@ -225,26 +230,28 @@ h3, .service-title,
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
-  border: 1.5px solid rgba(10,61,46,0.45);
-  color: var(--jm-green);
+  border: 0.5px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255,255,255,0.80);
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--text-base);
-  padding: 11px 20px;
+  padding: 13px 26px;
   border-radius: var(--radius-btn);
-  background: rgba(10,61,46,0.05);
-  backdrop-filter: var(--blur-sm);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
-  transition: all var(--transition);
+  letter-spacing: 0.2px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
   position: relative;
   overflow: hidden;
 }
 .btn-outline:hover {
-  background: rgba(10,61,46,0.12);
-  border-color: rgba(10,61,46,0.75);
-  color: var(--jm-green);
-  box-shadow: 0 0 20px rgba(10,61,46,0.18);
-  transform: translateY(-1px) scale(1.02);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px) scale(1.03);
 }
 
 /* Ripple micro-interaction */
