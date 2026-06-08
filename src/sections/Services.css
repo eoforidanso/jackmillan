@@ -48,7 +48,7 @@
   transform: translateY(-5px) scale(1.01);
   background: var(--glass-md);
   border-color: rgba(10,61,46,0.4);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(10,61,46,0.15), 0 0 30px rgba(10,61,46,0.1);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(10,61,46,0.15), 0 0 30px rgba(10,61,46,0.1);
 }
 
 .service-icon {

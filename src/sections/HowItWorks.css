@@ -54,7 +54,7 @@
   text-align: center;
   position: relative;
   z-index: 1;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
@@ -62,7 +62,7 @@
   transform: translateY(-8px);
   background: #1c2550;
   border-color: rgba(10,61,46,0.7);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(10,61,46,0.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 30px rgba(10,61,46,0.2);
 }
 
 .hiw-step-num {
