@@ -65,8 +65,9 @@
   --glass-shadow:    0 4px 16px rgba(0,0,0,0.08);
 
   /* ── Section gradients (light theme) ── */
-  --dark-grad: linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 45%, #F5F5F5 100%);
-  --mid-grad:  linear-gradient(135deg, #F9F9F9 0%, rgba(26,79,255,0.04) 50%, #FFFFFF 100%);
+  --light-bg:  #EEF2F7;   /* light blue-gray */
+  --dark-grad: linear-gradient(135deg, #FFFFFF 0%, #EEF2F7 45%, #FFFFFF 100%);
+  --mid-grad:  linear-gradient(135deg, #FFFFFF 0%, rgba(26,79,255,0.04) 50%, #EEF2F7 100%);
 
   /* ── Accent gradients ── */
   --grad-green: linear-gradient(135deg, #0A3D2E, #062818);
@@ -103,7 +104,7 @@ body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: var(--text-base);
   color: var(--text);
-  background: var(--jm-white);
+  background: #EEF2F7;   /* light blue-gray - creates intentional contrast */
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;

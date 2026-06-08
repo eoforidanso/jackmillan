@@ -1,5 +1,5 @@
 .contact {
-  background: linear-gradient(160deg, #030805 0%, #040e09 50%, #030805 100%);
+  background: linear-gradient(160deg, #EEF2F7 0%, #FFFFFF 50%, #EEF2F7 100%);
   position: relative;
   overflow: hidden;
 }
@@ -10,7 +10,7 @@
   top: 0; left: 50%;
   transform: translateX(-50%);
   width: 800px; height: 500px;
-  background: radial-gradient(ellipse, rgba(10,61,46,0.1) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(26,79,255,0.08) 0%, transparent 65%);
   pointer-events: none;
 }
 
