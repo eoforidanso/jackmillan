@@ -2,14 +2,17 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <title>Redirect</title>
   <script>
-    // GitHub Pages SPA redirect
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 2).join('/') +
-      '/?/' + l.pathname.slice(1) + (l.search ? '&' + l.search.slice(1) : '') + l.hash
-    );
+    // Redirect all 404s to index.html with the original path preserved
+    var path = window.location.pathname;
+    var search = window.location.search;
+    var hash = window.location.hash;
+
+    // Redirect to index.html with the path in hash for React Router to handle
+    if (!path.endsWith('/index.html') && !path.match(/\.\w+$/)) {
+      window.location.replace('/jackmillan/?' + path.substring(1) + search + hash);
+    }
   </script>
 </head>
 <body></body>
