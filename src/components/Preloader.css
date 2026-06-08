@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #020610;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +46,7 @@
 .preloader-name {
   font-size: 1.75rem;
   font-weight: 900;
-  color: #fff;
+  color: #1A1A1A;
   letter-spacing: -0.5px;
   font-family: 'Inter', sans-serif;
   line-height: 1;

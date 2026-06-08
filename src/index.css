@@ -44,29 +44,29 @@
   --shadow-lg: 0 16px 48px rgba(0,0,0,0.18);
   --transition: 0.3s ease;
 
-  /* ── Dark surfaces (green-black) ── */
-  --surface-0: #020908;   /* Deepest */
-  --surface-1: #040e09;   /* Primary dark */
-  --surface-2: #071411;   /* Secondary dark */
-  --surface-3: #0a1a14;   /* Card surface */
+  /* ── Light surfaces ── */
+  --surface-0: #FFFFFF;   /* Brightest */
+  --surface-1: #F9F9F9;   /* Primary light */
+  --surface-2: #F3F3F3;   /* Secondary light */
+  --surface-3: #EBEBEB;   /* Card surface */
 
-  /* ── Glass tokens ── */
-  --glass:           rgba(10,61,46,0.07);
-  --glass-md:        rgba(10,61,46,0.13);
-  --glass-light:     rgba(255,255,255,0.85);
-  --glass-border:    rgba(10,61,46,0.22);
-  --glass-border-md: rgba(10,61,46,0.36);
-  --glass-gold:      rgba(212,168,87,0.15);
-  --glass-blue:      rgba(26,79,255,0.1);
-  --glass-green:     rgba(10,61,46,0.14);
+  /* ── Glass tokens (light theme) ── */
+  --glass:           rgba(26,79,255,0.04);
+  --glass-md:        rgba(26,79,255,0.08);
+  --glass-light:     rgba(255,255,255,0.95);
+  --glass-border:    rgba(26,79,255,0.12);
+  --glass-border-md: rgba(26,79,255,0.2);
+  --glass-gold:      rgba(212,168,87,0.08);
+  --glass-blue:      rgba(26,79,255,0.08);
+  --glass-green:     rgba(10,61,46,0.06);
   --blur-sm:         blur(8px);
   --blur-md:         blur(16px);
   --blur-lg:         blur(28px);
-  --glass-shadow:    0 8px 40px rgba(0,0,0,0.35);
+  --glass-shadow:    0 4px 16px rgba(0,0,0,0.08);
 
-  /* ── Section gradients ── */
-  --dark-grad: linear-gradient(135deg, #020908 0%, #040e09 45%, #030a07 100%);
-  --mid-grad:  linear-gradient(135deg, #040e09 0%, rgba(10,61,46,0.18) 50%, #040e09 100%);
+  /* ── Section gradients (light theme) ── */
+  --dark-grad: linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 45%, #F5F5F5 100%);
+  --mid-grad:  linear-gradient(135deg, #F9F9F9 0%, rgba(26,79,255,0.04) 50%, #FFFFFF 100%);
 
   /* ── Accent gradients ── */
   --grad-green: linear-gradient(135deg, #0A3D2E, #062818);
