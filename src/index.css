@@ -51,24 +51,28 @@
   --surface-2: #F3F6F9;     /* Secondary light */
   --surface-3: #EDF0F5;     /* Subtle accent */
 
-  /* ── Glass tokens (light theme) — Enhanced elevation ── */
-  --glass:           rgba(26,79,255,0.03);
-  --glass-md:        rgba(26,79,255,0.06);
-  --glass-light:     rgba(255,255,255,0.98);
-  --glass-border:    rgba(26,79,255,0.08);
-  --glass-border-md: rgba(26,79,255,0.14);
-  --glass-gold:      rgba(212,168,87,0.06);
-  --glass-blue:      rgba(26,79,255,0.06);
-  --glass-green:     rgba(10,61,46,0.04);
+  /* ── Glass tokens (dark sections) ── */
+  --glass:           rgba(10,61,46,0.07);
+  --glass-md:        rgba(10,61,46,0.14);
+  --glass-light:     rgba(255,255,255,0.85);
+  --glass-border:    rgba(10,61,46,0.22);
+  --glass-border-md: rgba(10,61,46,0.36);
+  --glass-gold:      rgba(212,168,87,0.15);
+  --glass-blue:      rgba(26,79,255,0.10);
+  --glass-green:     rgba(10,61,46,0.14);
   --blur-sm:         blur(8px);
   --blur-md:         blur(16px);
   --blur-lg:         blur(28px);
-  --glass-shadow:    0 4px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+  --glass-shadow:    0 8px 40px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.04);
+  /* ── Light section card tokens ── */
+  --card-bg:         #ffffff;
+  --card-border:     rgba(0,0,0,0.07);
+  --card-shadow:     0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
 
-  /* ── Section gradients (light theme) — Cinematic ── */
-  --light-bg:  #F7F9FC;   /* Softer blue-gray */
-  --dark-grad: linear-gradient(135deg, #FFFFFF 0%, #F7F9FC 45%, #FFFFFF 100%);
-  --mid-grad:  linear-gradient(135deg, #FFFFFF 0%, rgba(26,79,255,0.03) 50%, #F7F9FC 100%);
+  /* ── Section gradients ── */
+  --light-bg:  #F7F9FC;
+  --dark-grad: linear-gradient(135deg, #080f08 0%, #060d07 45%, #050b06 100%);
+  --mid-grad:  linear-gradient(135deg, #060d07 0%, rgba(10,61,46,0.22) 50%, #060d07 100%);
 
   /* ── Accent gradients ── */
   --grad-green: linear-gradient(135deg, #0A3D2E, #062818);

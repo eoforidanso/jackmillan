@@ -1,5 +1,5 @@
 .players {
-  background: linear-gradient(160deg, #FFFFFF 0%, #EEF2F7 55%, #FFFFFF 100%);
+  background: linear-gradient(160deg, #F7F9FC 0%, #FFFFFF 55%, #F7F9FC 100%);
   position: relative;
   overflow: hidden;
 }
@@ -10,7 +10,7 @@
   top: 50%; left: -100px;
   transform: translateY(-50%);
   width: 400px; height: 600px;
-  background: radial-gradient(ellipse, rgba(212,168,87,0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(26,79,255,0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -20,9 +20,9 @@
   margin: 0 auto 48px;
   position: relative;
 }
-.players-header .section-title { color: var(--white); }
-.players-header .section-title span { color: var(--blue); }
-.players-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
+.players-header .section-title { color: var(--text); }
+.players-header .section-title span { color: var(--green); }
+.players-header .section-subtitle { color: var(--muted); margin: 12px auto 0; }
 
 .players-grid {
   display: grid;
@@ -35,17 +35,16 @@
 .player-card {
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--glass);
-  backdrop-filter: var(--blur-sm);
-  -webkit-backdrop-filter: var(--blur-sm);
-  border: 1px solid var(--glass-border);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .player-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 30px rgba(10,61,46,0.12);
-  border-color: rgba(10,61,46,0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(26,79,255,0.06);
+  border-color: rgba(26,79,255,0.15);
 }
 
 .player-img-wrap { position: relative; }
@@ -77,19 +76,19 @@
 
 .player-info {
   padding: 16px 18px 20px;
-  background: rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 
-.player-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: var(--white); }
-.player-age { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+.player-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: #0f172a; }
+.player-age { font-size: 0.82rem; color: #64748b; margin-bottom: 8px; }
 .player-dest { font-size: 0.85rem; font-weight: 600; color: var(--blue); }
 
 /* Destinations */
 .destinations {
-  background: var(--glass);
-  backdrop-filter: var(--blur-md);
-  -webkit-backdrop-filter: var(--blur-md);
-  border: 1px solid var(--glass-border-md);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   border-radius: 16px;
   padding: 40px;
   position: relative;
@@ -100,7 +99,7 @@
   font-weight: 700;
   margin-bottom: 28px;
   text-align: center;
-  color: var(--white);
+  color: #0f172a;
 }
 
 .destinations-grid {
@@ -110,20 +109,20 @@
 }
 
 .dest-item {
-  background: rgba(0,0,0,0.08);
-  border: 1px solid var(--glass-border);
+  background: #f8fafc;
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 10px;
   padding: 16px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  transition: background var(--transition), border-color var(--transition);
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.dest-item:hover { background: var(--glass-md); border-color: rgba(10,61,46,0.35); }
+.dest-item:hover { background: #eff6ff; border-color: rgba(26,79,255,0.15); box-shadow: 0 4px 12px rgba(26,79,255,0.06); }
 
 .dest-flag { font-size: 1.8rem; }
-.dest-country { font-weight: 700; font-size: 0.85rem; color: var(--white); }
+.dest-country { font-weight: 700; font-size: 0.85rem; color: #0f172a; }
 .dest-clubs { font-size: 0.75rem; color: var(--blue); font-weight: 600; }
 
 @media (max-width: 900px) {
