@@ -1,5 +1,5 @@
 .about {
-  background: linear-gradient(160deg, #FFFFFF 0%, #EEF2F7 50%, #FFFFFF 100%);
+  background: linear-gradient(160deg, #FFFFFF 0%, #EEF4FF 50%, #FFFFFF 100%);
   position: relative;
   overflow: hidden;
 }
@@ -9,7 +9,7 @@
   position: absolute;
   top: -80px; right: -80px;
   width: 500px; height: 500px;
-  background: radial-gradient(ellipse, rgba(10,61,46,0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(26,79,255,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -30,33 +30,28 @@
   object-fit: cover;
   border-radius: 20px;
   display: block;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+  box-shadow: 0 24px 64px rgba(26,79,255,0.18), 0 8px 24px rgba(0,0,0,0.12);
 }
 
-/* Soft gradient overlay for readability */
 .about-img-overlay {
   position: absolute;
   inset: 0;
   border-radius: 20px;
-  background: linear-gradient(
-    to bottom,
-    transparent 40%,
-    rgba(6, 7, 14, 0.55) 100%
-  );
+  background: linear-gradient(to bottom, transparent 40%, rgba(1,11,30,0.52) 100%);
   pointer-events: none;
 }
 
 .about-badge {
   position: absolute;
   bottom: 28px; left: -24px;
-  background: rgba(3,8,5,0.82);
+  background: rgba(5,15,40,0.90);
   backdrop-filter: var(--blur-lg);
   -webkit-backdrop-filter: var(--blur-lg);
-  border: 1px solid rgba(10,61,46,0.3);
+  border: 1px solid rgba(26,79,255,0.30);
   border-radius: 16px;
   padding: 18px 24px;
   text-align: center;
-  box-shadow: var(--glass-shadow), 0 0 30px rgba(10,61,46,0.15);
+  box-shadow: var(--glass-shadow), 0 0 30px rgba(26,79,255,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +60,7 @@
 .badge-num {
   font-size: 2.8rem;
   font-weight: 900;
-  background: var(--grad-green);
+  background: linear-gradient(135deg, var(--jm-blue), var(--jm-blue-lt));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -74,7 +69,7 @@
 .badge-text {
   font-size: 0.78rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.70);
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: center;
@@ -87,33 +82,26 @@
   flex-direction: column;
   gap: 18px;
 }
+.about-content .section-title { margin: 0; color: var(--text); }
+.about-content .section-title span { color: var(--jm-blue); }
 
-.about-content .section-title { margin: 0; }
-.about-content .section-title span { color: var(--green); }
-
-/* Mission statement */
 .about-mission {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
   line-height: 1.6;
-  border-left: 3px solid var(--green);
+  border-left: 3px solid var(--jm-blue);
   padding-left: 16px;
   margin: 0;
 }
 
 .about-body {
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--muted);
   line-height: 1.8;
 }
 
-.about-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.about-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
 .about-list-item {
   display: flex;
@@ -123,8 +111,7 @@
   color: var(--text);
   font-weight: 500;
 }
-
-.check-icon { color: var(--green); flex-shrink: 0; }
+.check-icon { color: var(--jm-blue); flex-shrink: 0; }
 
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -135,6 +122,4 @@
   .about-img { height: 250px; }
   .about-badge { padding: 14px 18px; }
   .badge-num { font-size: 2rem; }
-  .about-cta { flex-direction: column; }
-  .about-cta a { width: 100%; text-align: center; justify-content: center; }
 }

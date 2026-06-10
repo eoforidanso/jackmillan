@@ -1,9 +1,9 @@
 .trust-bar {
-  background: rgba(3,8,5,0.98);
+  background: rgba(1,11,30,0.98);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
-  border-bottom: 1px solid rgba(10,61,46,0.12);
-  border-top: 1px solid rgba(10,61,46,0.18);
+  border-bottom: 1px solid rgba(26,79,255,0.12);
+  border-top: 1px solid rgba(26,79,255,0.18);
   overflow: hidden;
   padding: 0;
 }
@@ -17,19 +17,16 @@
 }
 
 .trust-label {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.65);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.trust-scroll {
-  flex: 1;
-  overflow: hidden;
-}
+.trust-scroll { flex: 1; overflow: hidden; }
 
 .trust-track {
   display: flex;
@@ -38,11 +35,10 @@
   animation: trust-scroll 22s linear infinite;
   white-space: nowrap;
 }
-
 .trust-bar:hover .trust-track { animation-play-state: paused; }
 
 @keyframes trust-scroll {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
@@ -53,24 +49,24 @@
   padding: 6px 18px;
   margin: 0 4px;
   border-radius: 20px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+  background: rgba(26,79,255,0.07);
+  border: 1px solid rgba(26,79,255,0.20);
   cursor: default;
   transition: background var(--transition), border-color var(--transition);
   flex-shrink: 0;
 }
-.trust-item:hover { background: var(--glass-md); border-color: rgba(26,79,255,0.3); }
+.trust-item:hover { background: rgba(26,79,255,0.14); border-color: rgba(26,79,255,0.35); }
 
 .trust-abbr {
   font-size: 0.78rem;
   font-weight: 800;
-  color: var(--blue);
+  color: var(--jm-blue-lt);
   letter-spacing: 0.5px;
 }
 .trust-name {
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.50);
 }
 
 @media (max-width: 640px) {

@@ -1,5 +1,5 @@
 .players {
-  background: linear-gradient(160deg, #F7F9FC 0%, #FFFFFF 55%, #F7F9FC 100%);
+  background: linear-gradient(160deg, #F0F5FF 0%, #FFFFFF 55%, #F0F5FF 100%);
   position: relative;
   overflow: hidden;
 }
@@ -21,7 +21,7 @@
   position: relative;
 }
 .players-header .section-title { color: var(--text); }
-.players-header .section-title span { color: var(--green); }
+.players-header .section-title span { color: var(--jm-blue); }
 .players-header .section-subtitle { color: var(--muted); margin: 12px auto 0; }
 
 .players-grid {
@@ -40,11 +40,10 @@
   box-shadow: var(--card-shadow);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
-
 .player-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(26,79,255,0.06);
-  border-color: rgba(26,79,255,0.15);
+  box-shadow: 0 12px 32px rgba(26,79,255,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  border-color: rgba(26,79,255,0.18);
 }
 
 .player-img-wrap { position: relative; }
@@ -77,12 +76,12 @@
 .player-info {
   padding: 16px 18px 20px;
   background: #ffffff;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(26,79,255,0.06);
 }
 
 .player-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: #0f172a; }
-.player-age { font-size: 0.82rem; color: #64748b; margin-bottom: 8px; }
-.player-dest { font-size: 0.85rem; font-weight: 600; color: var(--blue); }
+.player-age  { font-size: 0.82rem; color: #64748b; margin-bottom: 6px; }
+.player-dest { font-size: 0.85rem; font-weight: 600; color: var(--jm-blue); }
 
 /* Destinations */
 .destinations {
@@ -109,8 +108,8 @@
 }
 
 .dest-item {
-  background: #f8fafc;
-  border: 1px solid rgba(0,0,0,0.06);
+  background: #f5f8ff;
+  border: 1px solid rgba(26,79,255,0.08);
   border-radius: 10px;
   padding: 16px 12px;
   display: flex;
@@ -119,11 +118,15 @@
   gap: 4px;
   transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.dest-item:hover { background: #eff6ff; border-color: rgba(26,79,255,0.15); box-shadow: 0 4px 12px rgba(26,79,255,0.06); }
+.dest-item:hover {
+  background: #eef3ff;
+  border-color: rgba(26,79,255,0.20);
+  box-shadow: 0 4px 12px rgba(26,79,255,0.08);
+}
 
-.dest-flag { font-size: 1.8rem; }
+.dest-flag    { font-size: 1.8rem; }
 .dest-country { font-weight: 700; font-size: 0.85rem; color: #0f172a; }
-.dest-clubs { font-size: 0.75rem; color: var(--blue); font-weight: 600; }
+.dest-clubs   { font-size: 0.75rem; color: var(--jm-blue); font-weight: 600; }
 
 @media (max-width: 900px) {
   .players-grid { grid-template-columns: repeat(2, 1fr); }

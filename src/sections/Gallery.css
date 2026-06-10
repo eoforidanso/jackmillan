@@ -7,9 +7,8 @@
 .gallery::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(10,61,46,0.07) 0%, transparent 60%);
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(26,79,255,0.07) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -19,9 +18,7 @@
   margin: 0 auto 48px;
   position: relative;
 }
-.gallery-header .section-title { color: var(--white); }
-.gallery-header .section-title span { color: var(--blue); }
-.gallery-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
+.gallery-header .section-subtitle { color: rgba(255,255,255,0.68); margin: 12px auto 0; }
 
 .gallery-grid {
   display: grid;
@@ -35,10 +32,14 @@
   position: relative;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--glass-border);
-  transition: transform var(--transition), border-color var(--transition);
+  border: 1px solid rgba(26,79,255,0.18);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.gallery-item:hover { transform: scale(1.02); border-color: rgba(10,61,46,0.4); }
+.gallery-item:hover {
+  transform: scale(1.02);
+  border-color: rgba(26,79,255,0.38);
+  box-shadow: 0 8px 32px rgba(26,79,255,0.15);
+}
 .gallery-item.wide { grid-column: span 2; }
 
 .gallery-item img {
@@ -48,35 +49,30 @@
   object-position: center top;
   display: block;
   transition: transform 0.5s ease, filter 0.5s ease;
-  image-rendering: auto;
-  filter: contrast(1.05) saturate(1.1) brightness(1.02);
+  filter: contrast(1.05) saturate(1.08) brightness(1.0);
 }
-.gallery-item:hover img { transform: scale(1.07); filter: contrast(1.08) saturate(1.18) brightness(1.05); }
+.gallery-item:hover img { transform: scale(1.07); filter: contrast(1.08) saturate(1.15) brightness(1.04); }
 
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(3,8,5,0.88) 0%, rgba(3,8,5,0.2) 50%, transparent 100%);
-  backdrop-filter: var(--blur-sm);
-  -webkit-backdrop-filter: var(--blur-sm);
+  background: linear-gradient(to top, rgba(1,11,30,0.88) 0%, rgba(1,11,30,0.20) 50%, transparent 100%);
   opacity: 0;
   transition: opacity var(--transition);
   display: flex;
   align-items: flex-end;
   padding: 20px;
 }
-/* Remove blur from non-hover state so images look clean */
-.gallery-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
 .gallery-item:hover .gallery-overlay { opacity: 1; }
 
 .gallery-overlay span {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--white);
-  background: var(--glass);
+  background: rgba(26,79,255,0.15);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(26,79,255,0.28);
   border-radius: 20px;
   padding: 5px 14px;
 }

@@ -1,82 +1,74 @@
 /* ═══════════════════════════════════════════════════
-   JM DESIGN SYSTEM — Global Tokens & Base Styles
+   JACKMILLAN — Blue Theme Design System
    ═══════════════════════════════════════════════════ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── JM Brand Palette ── */
-  --jm-green:       #0A3D2E;   /* Primary — deep trustworthy green */
-  --jm-green-dark:  #062818;   /* Deep green for gradients / hover */
-  --jm-green-mid:   #0D5240;   /* Mid green for glass layers */
-  --jm-gold:        #D4A857;   /* Prestige gold — decorative only */
-  --jm-gold-light:  #E8C07A;   /* Lighter gold */
-  --jm-blue:        #1A4FFF;   /* Accent — Royal Blue */
-  --jm-blue-dark:   #1340D4;   /* Deep blue for hover/active */
-  --jm-blue-light:  #4D74FF;   /* Lighter blue for gradients */
-  --jm-white:       #FFFFFF;
-  --jm-ash:         #F4F4F4;   /* Soft section backgrounds */
-  --jm-slate:       #6A6A6A;   /* Secondary / dim text */
-  --jm-black:       #0A0A0A;
+  /* ── Brand Palette ── */
+  --jm-navy-1:   #010B1E;   /* deepest dark */
+  --jm-navy-2:   #050F28;   /* dark section bg */
+  --jm-navy-3:   #0B1D40;   /* mid dark */
+  --jm-blue:     #1A4FFF;   /* royal blue — primary */
+  --jm-blue-dk:  #1340D4;   /* deep blue — hover/active */
+  --jm-blue-lt:  #4D74FF;   /* light blue — gradient/accent */
+  --jm-blue-xl:  #93B4FF;   /* extra-light — text on dark */
+  --jm-gold:     #D4A857;   /* prestige gold */
+  --jm-gold-lt:  #E8C07A;   /* lighter gold */
+  --jm-white:    #FFFFFF;
+  --jm-ash:      #F0F5FF;   /* light blue-tinted bg */
+  --jm-slate:    #64748B;   /* muted text */
+  --jm-black:    #010810;   /* near-black */
 
-  /* ── Semantic aliases (used throughout component CSS) ── */
-  --green:       var(--jm-green);
-  --green-dark:  var(--jm-green-dark);
-  --green-vivid: var(--jm-green-mid);
-  --gold:        var(--jm-gold);
-  --gold-light:  var(--jm-gold-light);
-  --blue:        var(--jm-blue);
-  --blue-dark:   var(--jm-blue-dark);
-  --black:       var(--jm-black);
-  --white:       var(--jm-white);
-  --gray:        var(--jm-ash);
-  --text:        #1A1A1A;
-  --muted:       var(--jm-slate);
+  /* ── Semantic aliases ── */
+  --blue:    var(--jm-blue);
+  --blue-dk: var(--jm-blue-dk);
+  --blue-lt: var(--jm-blue-lt);
+  --gold:    var(--jm-gold);
+  --gold-lt: var(--jm-gold-lt);
+  --white:   var(--jm-white);
+  --black:   var(--jm-black);
+  --gray:    var(--jm-ash);
+  --text:    #0F172A;
+  --muted:   var(--jm-slate);
 
   /* ── Radii ── */
-  --radius:      12px;   /* Cards */
-  --radius-btn:  8px;    /* Buttons */
-  --radius-pill: 50px;   /* Pills / badges */
+  --radius:      12px;
+  --radius-btn:  8px;
+  --radius-pill: 50px;
 
-  /* ── Shadows — Premium elevation ── */
-  --shadow:    0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md: 0 6px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.1);
-  --shadow-xl: 0 20px 48px rgba(0,0,0,0.12);
+  /* ── Shadows — Blue-tinted elevation ── */
+  --shadow:    0 2px 8px rgba(26,79,255,0.08);
+  --shadow-md: 0 6px 16px rgba(26,79,255,0.10);
+  --shadow-lg: 0 12px 32px rgba(26,79,255,0.12);
+  --shadow-xl: 0 20px 48px rgba(26,79,255,0.15);
   --transition: 0.3s ease;
 
-  /* ── Light surfaces — Softer, premium grays ── */
-  --surface-0: #FFFFFF;     /* Pure white cards */
-  --surface-1: #FAFBFC;     /* Softest background */
-  --surface-2: #F3F6F9;     /* Secondary light */
-  --surface-3: #EDF0F5;     /* Subtle accent */
+  /* ── Light surfaces ── */
+  --surface-0: #FFFFFF;
+  --surface-1: #F5F8FF;
+  --surface-2: #EEF3FF;
+  --surface-3: #E5EDFF;
 
-  /* ── Glass tokens (dark sections) ── */
-  --glass:           rgba(10,61,46,0.07);
-  --glass-md:        rgba(10,61,46,0.14);
-  --glass-light:     rgba(255,255,255,0.85);
-  --glass-border:    rgba(10,61,46,0.22);
-  --glass-border-md: rgba(10,61,46,0.36);
-  --glass-gold:      rgba(212,168,87,0.15);
-  --glass-blue:      rgba(26,79,255,0.10);
-  --glass-green:     rgba(10,61,46,0.14);
-  --blur-sm:         blur(8px);
-  --blur-md:         blur(16px);
-  --blur-lg:         blur(28px);
-  --glass-shadow:    0 8px 40px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.04);
+  /* ── Glass tokens (for dark navy sections) ── */
+  --glass:           rgba(26,79,255,0.07);
+  --glass-md:        rgba(26,79,255,0.13);
+  --glass-border:    rgba(26,79,255,0.22);
+  --glass-border-md: rgba(26,79,255,0.38);
+  --glass-shadow:    0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+  --blur-sm:  blur(8px);
+  --blur-md:  blur(16px);
+  --blur-lg:  blur(28px);
+
   /* ── Light section card tokens ── */
-  --card-bg:         #ffffff;
-  --card-border:     rgba(0,0,0,0.07);
-  --card-shadow:     0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --card-bg:     #ffffff;
+  --card-border: rgba(26,79,255,0.08);
+  --card-shadow: 0 2px 8px rgba(26,79,255,0.06), 0 1px 2px rgba(0,0,0,0.04);
 
   /* ── Section gradients ── */
-  --light-bg:  #F7F9FC;
-  --dark-grad: linear-gradient(135deg, #080f08 0%, #060d07 45%, #050b06 100%);
-  --mid-grad:  linear-gradient(135deg, #060d07 0%, rgba(10,61,46,0.22) 50%, #060d07 100%);
-
-  /* ── Accent gradients ── */
-  --grad-green: linear-gradient(135deg, #0A3D2E, #062818);
-  --grad-gold:  linear-gradient(135deg, #D4A857, #E8C07A);
+  --light-bg:  #F0F5FF;
+  --dark-grad: linear-gradient(135deg, #010B1E 0%, #050F28 50%, #010B1E 100%);
+  --mid-grad:  linear-gradient(135deg, #050F28 0%, rgba(26,79,255,0.10) 50%, #050F28 100%);
 
   /* ── Spacing scale (8-point) ── */
   --sp-1:  8px;
@@ -88,28 +80,25 @@
   --sp-7:  64px;
   --sp-8:  96px;
 
-  /* ── Type scale — Premium hierarchy ── */
-  --text-xs:   0.8125rem;  /* 13px — metadata / labels */
-  --text-sm:   0.875rem;   /* 14px */
-  --text-base: 1rem;       /* 16px — body */
-  --text-lg:   1.125rem;   /* 18px — lead copy */
-  --text-xl:   1.25rem;    /* 20px — H3 card titles */
-  --text-2xl:  1.5rem;     /* 24px */
-  --text-3xl:  2.25rem;    /* 36px — H2 section titles (improved) */
-  --text-4xl:  3.5rem;     /* 56px — H1 hero (improved) */
+  /* ── Type scale ── */
+  --text-xs:   0.8125rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2.25rem;
+  --text-4xl:  3.5rem;
 }
 
 /* ── Base ── */
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: var(--text-base);
   color: var(--text);
-  background: #F7F9FC;   /* Softer blue-gray background */
+  background: #F0F5FF;
   line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -121,7 +110,6 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 section { padding: 6rem 0; }
 
-/* ── Container (1280px max, 32px gutters) ── */
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -130,14 +118,12 @@ section { padding: 6rem 0; }
 
 /* ════════════════════════════════════
    TYPOGRAPHY SYSTEM
-   H1 & H2 → Playfair Display (prestige)
-   H3 & below → Inter (clean)
    ════════════════════════════════════ */
 
 h1, .hero-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: var(--text-4xl);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.6px;
   color: #0a0a0a;
@@ -151,38 +137,49 @@ h2, .section-title {
   letter-spacing: -0.4px;
   color: var(--text);
 }
-.section-title span { color: var(--green); }
+.section-title span { color: var(--jm-blue); }
 
-h3, .service-title,
-.team-name, .hiw-step-title, .req-title,
-.faq-question, .testi-name, .form-title {
+h3 {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: var(--text-xl);
   font-weight: 600;
   line-height: 1.3;
 }
 
-/* Impact / stat numbers — Playfair for prestige feel */
+/* Prestige number display */
 .impact-num, .strip-num {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* ── Section typography helpers ── */
+/* ── Section label pill ── */
 .section-label {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--jm-blue);
-  background: rgba(26,79,255,0.07);
+  background: rgba(26,79,255,0.08);
   border: 1px solid rgba(26,79,255,0.28);
   padding: 4px 14px;
   border-radius: var(--radius-pill);
   margin-bottom: var(--sp-2);
+}
+
+/* Dark section label override */
+.services .section-label,
+.impact .section-label,
+.testimonials .section-label,
+.booking .section-label,
+.gallery .section-label,
+.faq .section-label,
+.contact .section-label {
+  color: var(--jm-blue-lt);
+  background: rgba(26,79,255,0.12);
+  border-color: rgba(26,79,255,0.35);
 }
 
 .section-subtitle {
@@ -194,6 +191,24 @@ h3, .service-title,
   font-weight: 400;
 }
 
+/* ── Dark section title overrides (navy bg sections) ── */
+.services .section-title,
+.impact .section-title,
+.testimonials .section-title,
+.booking .section-title,
+.gallery .section-title,
+.contact .section-title {
+  color: var(--jm-white);
+}
+.services .section-title span,
+.impact .section-title span,
+.testimonials .section-title span,
+.booking .section-title span,
+.gallery .section-title span,
+.contact .section-title span {
+  color: var(--jm-blue-lt);
+}
+
 /* ════════════════════════════════════
    BUTTONS
    ════════════════════════════════════ */
@@ -202,66 +217,71 @@ h3, .service-title,
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
-  background: rgba(26, 79, 255, 0.92);
+  background: linear-gradient(135deg, var(--jm-blue), var(--jm-blue-dk));
   color: #fff;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 700;
   font-size: var(--text-base);
   padding: 13px 26px;
   border-radius: var(--radius-btn);
-  border: 0.5px solid rgba(255, 255, 255, 0.30);
+  border: none;
   cursor: pointer;
   letter-spacing: 0.3px;
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
   box-shadow: 0 4px 20px rgba(26,79,255,0.40), inset 0 1px 0 rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
 }
 .btn-primary:hover {
-  background: rgba(26, 79, 255, 1);
-  transform: translateY(-1px) scale(1.03);
-  box-shadow:
-    0 0 20px rgba(26,79,255,0.55),
-    0 0 42px rgba(26,79,255,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.20);
+  background: linear-gradient(135deg, var(--jm-blue-lt), var(--jm-blue));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(26,79,255,0.50), inset 0 1px 0 rgba(255,255,255,0.20);
 }
-.btn-primary:active::after {
-  opacity: 1;
-  transform: scale(2.5);
-  transition: none;
+.btn-primary:active { transform: translateY(0) scale(1); }
+
+.btn-glass {
+  background: rgba(26,79,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.20);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
-  border: 0.5px solid rgba(255, 255, 255, 0.28);
-  color: rgba(255,255,255,0.80);
+  border: 1.5px solid rgba(255,255,255,0.32);
+  color: rgba(255,255,255,0.85);
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 600;
   font-size: var(--text-base);
   padding: 13px 26px;
   border-radius: var(--radius-btn);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
   letter-spacing: 0.2px;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.22s ease;
 }
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.60);
   color: #fff;
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
-  transform: translateY(-1px) scale(1.03);
+  transform: translateY(-1px);
 }
 
-/* Ripple micro-interaction */
+.btn-glass-outline {
+  border-color: rgba(26,79,255,0.45);
+  color: rgba(255,255,255,0.88);
+  background: rgba(26,79,255,0.10);
+}
+.btn-glass-outline:hover {
+  background: rgba(26,79,255,0.20);
+  border-color: rgba(26,79,255,0.70);
+}
+
+/* Ripple */
 .btn-primary::after,
 .btn-outline::after {
   content: '';
@@ -281,65 +301,13 @@ h3, .service-title,
   transition: none;
 }
 
-/* ── Dark-section override: outline button shows as white ── */
-.hero .btn-outline,
-.services .btn-outline,
-.impact .btn-outline {
-  border-color: rgba(255,255,255,0.45);
-  color: #fff;
-  background: rgba(255,255,255,0.07);
-}
-.hero .btn-outline:hover,
-.services .btn-outline:hover,
-.impact .btn-outline:hover {
-  border-color: rgba(255,255,255,0.8);
-  background: rgba(255,255,255,0.15);
-}
-
-/* ════════════════════════════════════
-   DARK SECTION TITLE ACCENTS
-   ════════════════════════════════════ */
-
-.services .section-title,
-.hiw .section-title,
-.impact .section-title,
-.players .section-title,
-.testimonials .section-title,
-.gallery .section-title,
-.faq .section-title {
-  color: var(--jm-white);
-}
-
-.services .section-title span,
-.hiw .section-title span,
-.players .section-title span,
-.testimonials .section-title span,
-.gallery .section-title span,
-.faq .section-title span {
-  color: var(--jm-blue);
-  position: relative;
-}
-.services .section-title span::after,
-.hiw .section-title span::after,
-.players .section-title span::after,
-.testimonials .section-title span::after,
-.gallery .section-title span::after,
-.faq .section-title span::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -3px;
-  width: 100%; height: 2px;
-  background: linear-gradient(90deg, var(--jm-blue), rgba(26,79,255,0));
-  border-radius: 2px;
-}
-
 /* ════════════════════════════════════
    SCROLLBAR
    ════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--surface-0); }
+::-webkit-scrollbar-track { background: #F0F5FF; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--jm-green), var(--jm-green-dark));
+  background: linear-gradient(var(--jm-blue), var(--jm-blue-dk));
   border-radius: 4px;
 }
 
@@ -352,19 +320,13 @@ h3, .service-title,
   transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.sr-hidden.sr-visible {
-  opacity: 1;
-  transform: none;
-}
+.sr-hidden.sr-visible { opacity: 1; transform: none; }
 
 /* ════════════════════════════════════
    3-D TILT CARDS
    ════════════════════════════════════ */
-.service-card,
-.team-card,
-.player-card,
-.impact-stat,
-.req-card {
+.service-card, .team-card, .player-card,
+.impact-stat, .req-card {
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -379,7 +341,6 @@ h3, .service-title,
   .section-subtitle { font-size: 0.95rem; }
   .btn-primary, .btn-outline { padding: 12px 18px; font-size: 0.95rem; }
 }
-
 @media (max-width: 480px) {
   section { padding: 48px 0; }
   .container { padding: 0 var(--sp-3); }

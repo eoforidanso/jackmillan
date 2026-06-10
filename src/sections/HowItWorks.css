@@ -1,5 +1,5 @@
 .hiw {
-  background: #0d1117;
+  background: linear-gradient(160deg, #F0F5FF 0%, #FFFFFF 55%, #F0F5FF 100%);
   position: relative;
   overflow: hidden;
 }
@@ -10,7 +10,7 @@
   top: 0; left: 50%;
   transform: translateX(-50%);
   width: 700px; height: 700px;
-  background: radial-gradient(ellipse, rgba(10,61,46,0.08) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(26,79,255,0.05) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -20,9 +20,9 @@
   margin: 0 auto 48px;
   position: relative;
 }
-.hiw-header .section-title { color: var(--white); }
-.hiw-header .section-title span { color: var(--blue); }
-.hiw-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
+.hiw-header .section-title { color: var(--text); }
+.hiw-header .section-title span { color: var(--jm-blue); }
+.hiw-header .section-subtitle { color: var(--muted); margin: 12px auto 0; }
 
 .hiw-steps {
   display: grid;
@@ -32,7 +32,7 @@
   margin-bottom: 44px;
 }
 
-/* Connector line between steps */
+/* Connector line */
 .hiw-steps::before {
   content: '';
   position: absolute;
@@ -40,80 +40,69 @@
   left: 10%;
   right: 10%;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(10,61,46,0.4) 15%, rgba(10,61,46,0.4) 85%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(26,79,255,0.25) 15%, rgba(26,79,255,0.25) 85%, transparent 100%);
   pointer-events: none;
   z-index: 0;
 }
 
 .hiw-step {
-  background: #151832;
-  border: 1px solid rgba(10,61,46,0.45);
-  border-top: 3px solid #0A3D2E;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 3px solid var(--jm-blue);
   border-radius: var(--radius);
   padding: 32px 24px 28px;
   text-align: center;
   position: relative;
   z-index: 1;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
-
 .hiw-step:hover {
   transform: translateY(-8px);
-  background: #1c2550;
-  border-color: rgba(10,61,46,0.7);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 30px rgba(10,61,46,0.2);
+  border-top-color: var(--jm-blue-lt);
+  border-color: rgba(26,79,255,0.20);
+  box-shadow: 0 16px 40px rgba(26,79,255,0.12), 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .hiw-step-num {
   width: 44px; height: 44px;
   border-radius: 50%;
-  background: rgba(10,61,46,0.12);
-  border: 2px solid rgba(10,61,46,0.45);
-  color: var(--green);
+  background: rgba(26,79,255,0.08);
+  border: 2px solid rgba(26,79,255,0.25);
+  color: var(--jm-blue);
   font-size: 1.1rem;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 14px;
-  position: relative;
-}
-
-.hiw-step-icon {
-  display: none;
 }
 
 .hiw-step-title {
   font-size: 1rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text);
   margin-bottom: 10px;
 }
 
 .hiw-step-desc {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.85);
+  color: var(--muted);
   line-height: 1.7;
 }
 
 /* CTA bar */
 .hiw-cta {
-  background: rgba(10,61,46,0.07);
-  backdrop-filter: var(--blur-lg);
-  -webkit-backdrop-filter: var(--blur-lg);
-  border: 1px solid rgba(10,61,46,0.22);
+  background: linear-gradient(135deg, rgba(26,79,255,0.05) 0%, rgba(26,79,255,0.02) 100%);
+  border: 1px solid rgba(26,79,255,0.14);
   border-radius: 20px;
   padding: 44px;
   text-align: center;
-  box-shadow: var(--glass-shadow), 0 0 60px rgba(10,61,46,0.08);
+  box-shadow: 0 4px 24px rgba(26,79,255,0.06);
   position: relative;
 }
 
-.hiw-cta h3 { font-size: 1.6rem; font-weight: 900; color: var(--white); margin-bottom: 10px; }
-.hiw-cta h3 span { color: var(--blue); }
-.hiw-cta p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 28px; }
-.hiw-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hiw-cta p { color: var(--muted); max-width: 500px; margin: 0 auto 28px; }
 
 @media (max-width: 900px) {
   .hiw-steps { grid-template-columns: repeat(2, 1fr); }
@@ -123,8 +112,4 @@
 @media (max-width: 500px) {
   .hiw-steps { grid-template-columns: 1fr; }
   .hiw-cta { padding: 28px 20px; }
-  .hiw-cta h3 { font-size: 1.3rem; }
-  .hiw-cta-btns { flex-direction: column; width: 100%; }
-  .hiw-cta-btns .btn-primary,
-  .hiw-cta-btns .btn-outline { width: 100%; justify-content: center; }
 }

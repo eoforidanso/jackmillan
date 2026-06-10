@@ -4,14 +4,13 @@
   overflow: hidden;
 }
 
-/* Subtle radial glow */
 .services::before {
   content: '';
   position: absolute;
   top: -120px; left: 50%;
   transform: translateX(-50%);
   width: 700px; height: 500px;
-  background: radial-gradient(ellipse, rgba(10,61,46,0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(26,79,255,0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -21,9 +20,7 @@
   margin: 0 auto 48px;
   position: relative;
 }
-.services-header .section-title { color: var(--white); }
-.services-header .section-title span { color: var(--blue); }
-.services-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
+.services-header .section-subtitle { color: rgba(255,255,255,0.72); margin: 12px auto 0; }
 
 .services-grid {
   display: grid;
@@ -33,36 +30,37 @@
 }
 
 .service-card {
-  background: var(--glass);
+  background: rgba(26,79,255,0.06);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(26,79,255,0.20);
   border-radius: var(--radius);
   padding: 36px 28px;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition), background var(--transition),
+              border-color var(--transition), box-shadow var(--transition);
 }
 
 .service-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  background: var(--glass-md);
-  border-color: rgba(10,61,46,0.4);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(10,61,46,0.15), 0 0 30px rgba(10,61,46,0.1);
+  transform: translateY(-6px) scale(1.01);
+  background: rgba(26,79,255,0.12);
+  border-color: rgba(26,79,255,0.40);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25), 0 0 30px rgba(26,79,255,0.12);
 }
 
 .service-icon {
   width: 56px; height: 56px;
-  background: rgba(10,61,46,0.1);
-  border: 1px solid rgba(10,61,46,0.22);
+  background: rgba(26,79,255,0.12);
+  border: 1px solid rgba(26,79,255,0.28);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--green);
+  color: var(--jm-blue-lt);
   margin-bottom: 20px;
   flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(10,61,46,0.08);
+  box-shadow: 0 0 20px rgba(26,79,255,0.10);
 }
 
 .service-title {
@@ -73,7 +71,7 @@
 }
 
 .service-desc {
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.68);
   font-size: 0.92rem;
   line-height: 1.75;
   flex: 1;

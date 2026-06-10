@@ -1,5 +1,5 @@
 .team {
-  background: var(--mid-grad);
+  background: linear-gradient(160deg, #F0F5FF 0%, #FFFFFF 55%, #F0F5FF 100%);
   position: relative;
   overflow: hidden;
 }
@@ -10,7 +10,7 @@
   bottom: -60px; left: 50%;
   transform: translateX(-50%);
   width: 800px; height: 300px;
-  background: radial-gradient(ellipse, rgba(10,61,46,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(26,79,255,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -20,54 +20,48 @@
   margin: 0 auto 48px;
   position: relative;
 }
-.team-header .section-title { color: var(--white); }
-.team-header .section-title span { color: var(--blue); }
-.team-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 12px auto 0; }
+.team-header .section-title  { color: var(--text); }
+.team-header .section-title span { color: var(--jm-blue); }
+.team-header .section-subtitle { color: var(--muted); margin: 12px auto 0; }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   position: relative;
 }
 
 .team-card {
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--glass);
-  backdrop-filter: var(--blur-md);
-  -webkit-backdrop-filter: var(--blur-md);
-  border: 1px solid var(--glass-border);
-  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
-
 .team-card:hover {
-  transform: translateY(-7px);
-  background: var(--glass-md);
-  border-color: rgba(10,61,46,0.4);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 30px rgba(10,61,46,0.1);
+  transform: translateY(-8px);
+  border-color: rgba(26,79,255,0.20);
+  box-shadow: 0 16px 48px rgba(26,79,255,0.12), 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .team-img-wrap { position: relative; overflow: hidden; }
 
 .team-img {
   width: 100%;
-  height: 220px;
+  height: 260px;
   object-fit: cover;
   object-position: top center;
   transition: transform 0.4s ease, filter 0.4s ease;
   display: block;
-  image-rendering: auto;
   filter: contrast(1.05) saturate(1.08) brightness(1.02);
 }
-
 .team-initial-avatar {
   display: flex !important;
   align-items: center;
   justify-content: center;
   object-fit: unset;
 }
-
 .team-card:hover .team-img { transform: scale(1.06); }
 
 .team-socials {
@@ -82,34 +76,46 @@
 
 .team-socials a {
   width: 32px; height: 32px;
-  background: rgba(10,61,46,0.85);
+  background: rgba(26,79,255,0.85);
   backdrop-filter: var(--blur-sm);
-  color: var(--black);
+  color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background var(--transition);
 }
-.team-socials a:hover { background: var(--white); }
+.team-socials a:hover { background: var(--jm-blue-dk); }
 
-.team-body { padding: 20px; }
-.team-name { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 3px; }
-.team-role { font-size: 0.78rem; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-.team-bio { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 14px; }
+.team-body { padding: 24px; }
+.team-name { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+.team-role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--jm-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.team-bio {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.68;
+  margin-bottom: 16px;
+}
 
 .team-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .team-tag {
   font-size: 0.7rem;
   font-weight: 600;
-  background: var(--glass-blue);
-  border: 1px solid rgba(26,79,255,0.25);
-  color: var(--blue);
+  background: rgba(26,79,255,0.07);
+  border: 1px solid rgba(26,79,255,0.18);
+  color: var(--jm-blue);
   padding: 3px 10px;
   border-radius: 20px;
 }
 
-@media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) {
   .team-grid { grid-template-columns: 1fr; }
   .team-img { height: 260px; }
