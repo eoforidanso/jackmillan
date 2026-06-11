@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Upload, Trash2, Lock, LogOut, Image as ImageIcon, AlertCircle, Plus, Edit3, Users, Award } from 'lucide-react';
+import { Upload, Trash2, Lock, LogOut, Image as ImageIcon, AlertCircle, Plus, Edit3, Users, Award, GripVertical } from 'lucide-react';
 import ImageCropper from './ImageCropper';
 import './AdminDashboard.css';
 
@@ -414,7 +414,7 @@ export default function AdminDashboard() {
           </div>
 
           <div className="images-section">
-            <h2>Manage Images ({images.length})</h2>
+            <h2>Gallery Items ({images.length})</h2>
 
             {images.length === 0 ? (
               <div className="empty-state">
@@ -422,24 +422,58 @@ export default function AdminDashboard() {
                 <p>No images yet. Upload some to get started!</p>
               </div>
             ) : (
-              <div className="images-grid">
-                {images.map((img) => (
-                  <div key={img.id} className="image-card">
-                    <div className="image-wrapper">
-                      <img src={img.src} alt={img.alt} />
-                      <div className="image-overlay">
-                        <button
-                          onClick={() => deleteImage(img.id)}
-                          className="delete-btn"
-                          title="Delete image"
-                        >
-                          <Trash2 size={20} />
-                        </button>
-                      </div>
+              <div className="gallery-manage-table">
+                <div className="table-header">
+                  <div className="col-drag"></div>
+                  <div className="col-preview">Preview</div>
+                  <div className="col-caption">Caption</div>
+                  <div className="col-layout">Layout</div>
+                  <div className="col-date">Uploaded</div>
+                  <div className="col-actions">Actions</div>
+                </div>
+                {images.map((img, idx) => (
+                  <div key={img.id} className="gallery-row">
+                    <div className="col-drag">
+                      <GripVertical size={16} />
                     </div>
-                    <div className="image-info">
-                      <p className="image-name">{img.alt}</p>
-                      <p className="image-meta">{img.uploadedAt} • {img.size}</p>
+                    <div className="col-preview">
+                      <img src={img.src} alt={img.alt} />
+                    </div>
+                    <div className="col-caption">
+                      <input
+                        type="text"
+                        value={img.alt}
+                        onChange={(e) => {
+                          const updated = [...images];
+                          updated[idx].alt = e.target.value;
+                          setImages(updated);
+                        }}
+                        placeholder="Image caption"
+                      />
+                    </div>
+                    <div className="col-layout">
+                      <label className="checkbox">
+                        <input
+                          type="checkbox"
+                          checked={img.wide || false}
+                          onChange={(e) => {
+                            const updated = [...images];
+                            updated[idx].wide = e.target.checked;
+                            setImages(updated);
+                          }}
+                        />
+                        <span>Wide</span>
+                      </label>
+                    </div>
+                    <div className="col-date">{img.uploadedAt}</div>
+                    <div className="col-actions">
+                      <button
+                        onClick={() => deleteImage(img.id)}
+                        className="delete-btn"
+                        title="Delete"
+                      >
+                        <Trash2 size={16} />
+                      </button>
                     </div>
                   </div>
                 ))}

@@ -641,6 +641,121 @@
   border-color: rgba(255, 107, 107, 0.5);
 }
 
+/* Gallery Management Table */
+.gallery-manage-table {
+  background: var(--surface-3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 40px 100px 1fr 100px 100px 80px;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: rgba(10, 61, 46, 0.3);
+  border-bottom: 1px solid var(--glass-border);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.gallery-row {
+  display: grid;
+  grid-template-columns: 40px 100px 1fr 100px 100px 80px;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-bottom: 1px solid var(--glass-border);
+  align-items: center;
+  transition: var(--transition);
+}
+
+.gallery-row:hover {
+  background: rgba(212, 168, 87, 0.05);
+}
+
+.gallery-row:last-child {
+  border-bottom: none;
+}
+
+.col-drag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  cursor: grab;
+  transition: var(--transition);
+}
+
+.col-drag:active {
+  cursor: grabbing;
+}
+
+.col-preview {
+  width: 100px;
+  height: 70px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(10, 61, 46, 0.3);
+}
+
+.col-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.col-caption input {
+  width: 100%;
+  padding: var(--sp-2) var(--sp-3);
+  background: rgba(10, 61, 46, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: var(--text-sm);
+}
+
+.col-caption input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(10, 61, 46, 0.5);
+}
+
+.col-layout {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--gold);
+}
+
+.checkbox span {
+  color: var(--white);
+  font-size: var(--text-sm);
+}
+
+.col-date {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.col-actions {
+  display: flex;
+  justify-content: center;
+}
+
 /* Data Tables */
 .data-table {
   background: var(--surface-3);
