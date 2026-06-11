@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Preloader from './components/Preloader';
+import BouncingFootball from './components/BouncingFootball';
 import CookieBanner from './components/CookieBanner';
 import WhatsAppButton from './components/WhatsAppButton';
 import AdminDashboard from './components/AdminDashboard';
@@ -40,6 +41,7 @@ function HomePage() {
   return (
     <>
       <Preloader />
+      <BouncingFootball />
       <Navbar />
       <main>
         <Hero />

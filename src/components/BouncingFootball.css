@@ -1,0 +1,96 @@
+.bouncing-football-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  pointer-events: none;
+  animation: fadeOut 0.5s ease-in-out 2s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+}
+
+.football-svg {
+  width: 120px;
+  height: 72px;
+  filter: drop-shadow(0 15px 30px rgba(26, 79, 255, 0.4));
+  animation: bounce-real 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes bounce-real {
+  0% {
+    transform: translateY(0) scaleY(1) rotateZ(0deg);
+  }
+  25% {
+    transform: translateY(-80px) scaleY(0.95) rotateZ(-5deg);
+  }
+  50% {
+    transform: translateY(-120px) scaleY(0.9) rotateZ(-8deg);
+  }
+  75% {
+    transform: translateY(-80px) scaleY(0.95) rotateZ(-3deg);
+  }
+  100% {
+    transform: translateY(0) scaleY(1) rotateZ(0deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .football-svg {
+    width: 90px;
+    height: 54px;
+  }
+
+  @keyframes bounce-real {
+    0% {
+      transform: translateY(0) scaleY(1) rotateZ(0deg);
+    }
+    25% {
+      transform: translateY(-60px) scaleY(0.95) rotateZ(-5deg);
+    }
+    50% {
+      transform: translateY(-90px) scaleY(0.9) rotateZ(-8deg);
+    }
+    75% {
+      transform: translateY(-60px) scaleY(0.95) rotateZ(-3deg);
+    }
+    100% {
+      transform: translateY(0) scaleY(1) rotateZ(0deg);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .football-svg {
+    width: 70px;
+    height: 42px;
+  }
+
+  @keyframes bounce-real {
+    0% {
+      transform: translateY(0) scaleY(1) rotateZ(0deg);
+    }
+    25% {
+      transform: translateY(-45px) scaleY(0.95) rotateZ(-5deg);
+    }
+    50% {
+      transform: translateY(-70px) scaleY(0.9) rotateZ(-8deg);
+    }
+    75% {
+      transform: translateY(-45px) scaleY(0.95) rotateZ(-3deg);
+    }
+    100% {
+      transform: translateY(0) scaleY(1) rotateZ(0deg);
+    }
+  }
+}

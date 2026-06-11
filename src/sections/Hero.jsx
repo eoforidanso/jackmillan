@@ -35,11 +35,6 @@ export default function Hero() {
       <div className="hero-grid-bg" />
       <div className="hero-text-scrim" />
 
-      {/* Bouncing Football */}
-      <div className="bouncing-football">
-        <div className="football">⚽</div>
-      </div>
-
       {/* ── LAYER 1: Focal Content ── */}
       <div className="hero-focal">
         <div className="hero-live-badge">
