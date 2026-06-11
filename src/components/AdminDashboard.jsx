@@ -471,6 +471,24 @@ function PlayerForm({ player, onSave, onCancel }) {
     flag: '🇬🇭',
     img: '',
   });
+  const [imagePreview, setImagePreview] = useState(player?.img || '');
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Image must be less than 5MB');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData({ ...formData, img: reader.result });
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -484,6 +502,25 @@ function PlayerForm({ player, onSave, onCancel }) {
   return (
     <form className="form-section" onSubmit={handleSubmit}>
       <div className="form-grid">
+        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+          <label>Player Image</label>
+          <div className="image-upload-section">
+            {imagePreview && (
+              <div className="image-preview">
+                <img src={imagePreview} alt="Preview" />
+              </div>
+            )}
+            <label className="file-input-label">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                style={{ display: 'none' }}
+              />
+              <span className="file-input-btn">Choose Image</span>
+            </label>
+          </div>
+        </div>
         <div className="form-group">
           <label>Name *</label>
           <input
@@ -530,15 +567,6 @@ function PlayerForm({ player, onSave, onCancel }) {
             maxLength="2"
           />
         </div>
-        <div className="form-group">
-          <label>Image URL</label>
-          <input
-            type="text"
-            value={formData.img}
-            onChange={(e) => setFormData({ ...formData, img: e.target.value })}
-            placeholder="Image URL"
-          />
-        </div>
       </div>
       <div className="form-actions">
         <button type="submit" className="save-btn">
@@ -561,6 +589,24 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
     tags: [],
   });
   const [tagInput, setTagInput] = useState('');
+  const [imagePreview, setImagePreview] = useState(executive?.img || '');
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Image must be less than 5MB');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData({ ...formData, img: reader.result });
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -585,6 +631,25 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
   return (
     <form className="form-section" onSubmit={handleSubmit}>
       <div className="form-grid">
+        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+          <label>Executive Image</label>
+          <div className="image-upload-section">
+            {imagePreview && (
+              <div className="image-preview">
+                <img src={imagePreview} alt="Preview" />
+              </div>
+            )}
+            <label className="file-input-label">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                style={{ display: 'none' }}
+              />
+              <span className="file-input-btn">Choose Image</span>
+            </label>
+          </div>
+        </div>
         <div className="form-group">
           <label>Name *</label>
           <input
@@ -610,15 +675,6 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
             onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
             placeholder="Executive bio"
             rows="3"
-          />
-        </div>
-        <div className="form-group">
-          <label>Image URL</label>
-          <input
-            type="text"
-            value={formData.img}
-            onChange={(e) => setFormData({ ...formData, img: e.target.value })}
-            placeholder="Image URL"
           />
         </div>
         <div className="form-group" style={{ gridColumn: '1 / -1' }}>
