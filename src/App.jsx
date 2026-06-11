@@ -15,6 +15,7 @@ import HowItWorks from './sections/HowItWorks';
 import Players from './sections/Players';
 import PlayerProfiles from './sections/PlayerProfiles';
 import ExecutiveProfiles from './sections/ExecutiveProfiles';
+import GalleryProfiles from './sections/GalleryProfiles';
 import Testimonials from './sections/Testimonials';
 import Gallery from './sections/Gallery';
 import Booking from './sections/Booking';
@@ -73,6 +74,7 @@ export default function App() {
         <Route path="/players/:id" element={<PlayerProfiles />} />
         <Route path="/executives" element={<ExecutiveProfiles />} />
         <Route path="/executives/:id" element={<ExecutiveProfiles />} />
+        <Route path="/gallery" element={<GalleryProfiles />} />
       </Routes>
     </Router>
   );
