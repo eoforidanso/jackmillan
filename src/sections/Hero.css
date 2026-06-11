@@ -378,6 +378,83 @@
   transform: translateY(-2px) scale(1.02) !important;
 }
 
+/* ── Bouncing Football ── */
+.bouncing-football {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.football {
+  font-size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 2s ease-in-out infinite, float 4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(26, 79, 255, 0.3));
+  transform-origin: center;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+  45% {
+    transform: translateY(-60px) scaleY(0.95);
+  }
+  50% {
+    transform: translateY(-70px) scaleY(0.9);
+  }
+  55% {
+    transform: translateY(-60px) scaleY(0.95);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .bouncing-football {
+    top: 20%;
+    right: 2%;
+  }
+
+  .football {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bouncing-football {
+    top: 25%;
+    right: 5%;
+  }
+
+  .football {
+    font-size: 50px;
+    animation: bounce 2s ease-in-out infinite, float 4s ease-in-out infinite;
+  }
+}
+
+@media (max-width: 480px) {
+  .bouncing-football {
+    top: 30%;
+    right: 8%;
+  }
+
+  .football {
+    font-size: 40px;
+  }
+}
+
 /* ── Parallax ── */
 .hero { background-attachment: fixed; }
 @media (max-width: 768px) { .hero { background-attachment: scroll; } }
