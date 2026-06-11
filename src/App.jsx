@@ -13,6 +13,8 @@ import Services from './sections/Services';
 import Requirements from './sections/Requirements';
 import HowItWorks from './sections/HowItWorks';
 import Players from './sections/Players';
+import PlayerProfiles from './sections/PlayerProfiles';
+import ExecutiveProfiles from './sections/ExecutiveProfiles';
 import Testimonials from './sections/Testimonials';
 import Gallery from './sections/Gallery';
 import Booking from './sections/Booking';
@@ -67,6 +69,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/players" element={<PlayerProfiles />} />
+        <Route path="/players/:id" element={<PlayerProfiles />} />
+        <Route path="/executives" element={<ExecutiveProfiles />} />
+        <Route path="/executives/:id" element={<ExecutiveProfiles />} />
       </Routes>
     </Router>
   );

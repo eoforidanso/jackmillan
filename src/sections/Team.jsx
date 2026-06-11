@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import { FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 import './Team.css';
 
 const BASE = import.meta.env.BASE_URL;
-const team = [
+
+const defaultTeam = [
   {
     name: 'Jack Millan',
     role: 'Founder & Head Scout',
@@ -27,6 +29,21 @@ const team = [
 ];
 
 export default function Team() {
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('jm-executives');
+    if (stored) {
+      try {
+        setTeam(JSON.parse(stored));
+      } catch (e) {
+        setTeam(defaultTeam);
+      }
+    } else {
+      setTeam(defaultTeam);
+    }
+  }, []);
+
   return (
     <section id="team" className="team">
       <div className="container">

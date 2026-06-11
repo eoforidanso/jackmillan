@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import './Players.css';
 
 const BASE = import.meta.env.BASE_URL;
-const players = [
+
+const defaultPlayers = [
   {
     name: 'Kwame Asante',
     position: 'Striker',
@@ -64,6 +66,21 @@ const destinations = [
 ];
 
 export default function Players() {
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('jm-players');
+    if (stored) {
+      try {
+        setPlayers(JSON.parse(stored));
+      } catch (e) {
+        setPlayers(defaultPlayers);
+      }
+    } else {
+      setPlayers(defaultPlayers);
+    }
+  }, []);
+
   return (
     <section id="players" className="players">
       <div className="container">
