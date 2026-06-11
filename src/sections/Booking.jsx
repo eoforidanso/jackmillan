@@ -2,6 +2,8 @@ import { Calendar, Clock, User, Mail, Phone, MessageSquare } from 'lucide-react'
 import { useState } from 'react';
 import './Booking.css';
 
+const FORMSPREE_BOOKING_URL = 'https://formspree.io/f/xdkqwpvb';
+
 export default function Booking() {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,29 +15,52 @@ export default function Booking() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send this to your backend or email service
-    console.log('Booking submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-        time: '',
-        sessionType: 'consultation',
-        message: '',
+    setError('');
+    setSending(true);
+
+    try {
+      const res = await fetch(FORMSPREE_BOOKING_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New booking request from ${formData.name}`,
+        }),
       });
-    }, 3000);
+
+      if (res.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          date: '',
+          time: '',
+          sessionType: 'consultation',
+          message: '',
+        });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        setError('Failed to submit booking. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -92,6 +117,12 @@ export default function Booking() {
             {submitted && (
               <div className="success-message">
                 ✅ Booking request submitted! We'll contact you within 24 hours.
+              </div>
+            )}
+
+            {error && (
+              <div className="error-message">
+                ❌ {error}
               </div>
             )}
 
@@ -211,9 +242,9 @@ export default function Booking() {
                 />
               </div>
 
-              <button type="submit" className="booking-submit">
+              <button type="submit" className="booking-submit" disabled={sending}>
                 <Calendar size={18} />
-                Confirm Booking
+                {sending ? 'Submitting...' : 'Confirm Booking'}
               </button>
             </form>
           </div>
