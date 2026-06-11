@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Upload, Trash2, Lock, LogOut, Image as ImageIcon, AlertCircle, Plus, Edit3, Users, Award } from 'lucide-react';
+import ImageCropper from './ImageCropper';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {
@@ -472,6 +473,8 @@ function PlayerForm({ player, onSave, onCancel }) {
     img: '',
   });
   const [imagePreview, setImagePreview] = useState(player?.img || '');
+  const [showCropper, setShowCropper] = useState(false);
+  const [cropImage, setCropImage] = useState('');
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
@@ -484,10 +487,16 @@ function PlayerForm({ player, onSave, onCancel }) {
 
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFormData({ ...formData, img: reader.result });
-      setImagePreview(reader.result);
+      setCropImage(reader.result);
+      setShowCropper(true);
     };
     reader.readAsDataURL(file);
+  };
+
+  const handleCropComplete = (croppedImage) => {
+    setFormData({ ...formData, img: croppedImage });
+    setImagePreview(croppedImage);
+    setShowCropper(false);
   };
 
   const handleSubmit = (e) => {
@@ -500,27 +509,35 @@ function PlayerForm({ player, onSave, onCancel }) {
   };
 
   return (
-    <form className="form-section" onSubmit={handleSubmit}>
-      <div className="form-grid">
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label>Player Image</label>
-          <div className="image-upload-section">
-            {imagePreview && (
-              <div className="image-preview">
-                <img src={imagePreview} alt="Preview" />
-              </div>
-            )}
-            <label className="file-input-label">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                style={{ display: 'none' }}
-              />
-              <span className="file-input-btn">Choose Image</span>
-            </label>
+    <>
+      {showCropper && (
+        <ImageCropper
+          image={cropImage}
+          onCrop={handleCropComplete}
+          onCancel={() => setShowCropper(false)}
+        />
+      )}
+      <form className="form-section" onSubmit={handleSubmit}>
+        <div className="form-grid">
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Player Image</label>
+            <div className="image-upload-section">
+              {imagePreview && (
+                <div className="image-preview">
+                  <img src={imagePreview} alt="Preview" />
+                </div>
+              )}
+              <label className="file-input-label">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  style={{ display: 'none' }}
+                />
+                <span className="file-input-btn">Choose Image</span>
+              </label>
+            </div>
           </div>
-        </div>
         <div className="form-group">
           <label>Name *</label>
           <input
@@ -568,15 +585,16 @@ function PlayerForm({ player, onSave, onCancel }) {
           />
         </div>
       </div>
-      <div className="form-actions">
-        <button type="submit" className="save-btn">
-          {player ? 'Update Player' : 'Add Player'}
-        </button>
-        <button type="button" onClick={onCancel} className="cancel-btn">
-          Cancel
-        </button>
-      </div>
-    </form>
+        <div className="form-actions">
+          <button type="submit" className="save-btn">
+            {player ? 'Update Player' : 'Add Player'}
+          </button>
+          <button type="button" onClick={onCancel} className="cancel-btn">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
 
@@ -590,6 +608,8 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
   });
   const [tagInput, setTagInput] = useState('');
   const [imagePreview, setImagePreview] = useState(executive?.img || '');
+  const [showCropper, setShowCropper] = useState(false);
+  const [cropImage, setCropImage] = useState('');
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
@@ -602,10 +622,16 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
 
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFormData({ ...formData, img: reader.result });
-      setImagePreview(reader.result);
+      setCropImage(reader.result);
+      setShowCropper(true);
     };
     reader.readAsDataURL(file);
+  };
+
+  const handleCropComplete = (croppedImage) => {
+    setFormData({ ...formData, img: croppedImage });
+    setImagePreview(croppedImage);
+    setShowCropper(false);
   };
 
   const handleSubmit = (e) => {
@@ -629,27 +655,35 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
   };
 
   return (
-    <form className="form-section" onSubmit={handleSubmit}>
-      <div className="form-grid">
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label>Executive Image</label>
-          <div className="image-upload-section">
-            {imagePreview && (
-              <div className="image-preview">
-                <img src={imagePreview} alt="Preview" />
-              </div>
-            )}
-            <label className="file-input-label">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                style={{ display: 'none' }}
-              />
-              <span className="file-input-btn">Choose Image</span>
-            </label>
+    <>
+      {showCropper && (
+        <ImageCropper
+          image={cropImage}
+          onCrop={handleCropComplete}
+          onCancel={() => setShowCropper(false)}
+        />
+      )}
+      <form className="form-section" onSubmit={handleSubmit}>
+        <div className="form-grid">
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Executive Image</label>
+            <div className="image-upload-section">
+              {imagePreview && (
+                <div className="image-preview">
+                  <img src={imagePreview} alt="Preview" />
+                </div>
+              )}
+              <label className="file-input-label">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  style={{ display: 'none' }}
+                />
+                <span className="file-input-btn">Choose Image</span>
+              </label>
+            </div>
           </div>
-        </div>
         <div className="form-group">
           <label>Name *</label>
           <input
@@ -701,14 +735,15 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
           )}
         </div>
       </div>
-      <div className="form-actions">
-        <button type="submit" className="save-btn">
-          {executive ? 'Update Executive' : 'Add Executive'}
-        </button>
-        <button type="button" onClick={onCancel} className="cancel-btn">
-          Cancel
-        </button>
-      </div>
-    </form>
+        <div className="form-actions">
+          <button type="submit" className="save-btn">
+            {executive ? 'Update Executive' : 'Add Executive'}
+          </button>
+          <button type="button" onClick={onCancel} className="cancel-btn">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
