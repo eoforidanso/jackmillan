@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Team.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -28,20 +30,30 @@ const defaultTeam = [
   },
 ];
 
+const AVATAR_COLORS = [
+  '#1a4fff', '#e63946', '#2a9d8f', '#e76f51',
+  '#457b9d', '#8338ec', '#fb5607', '#06d6a0',
+];
+
+function getAvatarProps(name = '') {
+  const words = name.trim().split(' ');
+  const initials = words.length >= 2
+    ? words[0][0] + words[words.length - 1][0]
+    : (words[0]?.[0] || '?');
+  const color = AVATAR_COLORS[name.charCodeAt(0) % AVATAR_COLORS.length];
+  return { initials: initials.toUpperCase(), color };
+}
+
 export default function Team() {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem('jm-executives');
-    if (stored) {
-      try {
-        setTeam(JSON.parse(stored));
-      } catch (e) {
-        setTeam(defaultTeam);
-      }
-    } else {
-      setTeam(defaultTeam);
-    }
+    getDocs(collection(db, 'executives'))
+      .then((snap) => {
+        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setTeam(data.length > 0 ? [...defaultTeam, ...data] : defaultTeam);
+      })
+      .catch(() => setTeam(defaultTeam));
   }, []);
 
   return (
@@ -59,7 +71,9 @@ export default function Team() {
         </div>
 
         <div className="team-grid">
-          {team.map((m) => (
+          {team.map((m) => {
+            const { initials, color } = getAvatarProps(m.name);
+            return (
             <div key={m.name} className="team-card">
               <div className="team-img-wrap">
                 {m.img ? (
@@ -67,10 +81,10 @@ export default function Team() {
                 ) : (
                   <div
                     className="team-img team-initial-avatar"
-                    style={{ background: `linear-gradient(135deg, ${m.color}18, ${m.color}35)` }}
+                    style={{ background: `linear-gradient(135deg, ${color}22, ${color}44)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
-                    <span style={{ color: m.color, fontSize: '2.2rem', fontWeight: 900, fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-1px' }}>
-                      {m.initials}
+                    <span style={{ color, fontSize: '2.2rem', fontWeight: 900, fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-1px' }}>
+                      {initials}
                     </span>
                   </div>
                 )}
@@ -90,7 +104,7 @@ export default function Team() {
                 </div>
               </div>
             </div>
-          ))}
+          );})}
         </div>
       </div>
     </section>
