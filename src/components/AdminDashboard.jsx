@@ -5,6 +5,7 @@ import './AdminDashboard.css';
 
 export default function AdminDashboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [tab, setTab] = useState('players');
   const [images, setImages] = useState([]);
@@ -18,7 +19,8 @@ export default function AdminDashboard() {
   const [editingPlayer, setEditingPlayer] = useState(null);
   const [editingExecutive, setEditingExecutive] = useState(null);
 
-  const ADMIN_PASSWORD = 'JM2024!'; // Change this to your desired password
+  const ADMIN_USERNAME = 'jackmillan';
+  const ADMIN_PASSWORD = 'Mauri2026';
 
   // Load data from localStorage
   useEffect(() => {
@@ -61,14 +63,15 @@ export default function AdminDashboard() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
       setIsLoggedIn(true);
+      setUsername('');
       setPassword('');
       setError('');
       setSuccess('✅ Logged in successfully!');
       setTimeout(() => setSuccess(''), 3000);
     } else {
-      setError('❌ Invalid password');
+      setError('❌ Invalid username or password');
       setPassword('');
     }
   };
@@ -191,12 +194,19 @@ export default function AdminDashboard() {
 
           <form onSubmit={handleLogin}>
             <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="login-input"
+              autoFocus
+            />
+            <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="login-input"
-              autoFocus
             />
             <button type="submit" className="login-btn">
               Sign In

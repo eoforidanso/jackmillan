@@ -68,7 +68,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Router basename="/jackmillan/">
+    <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/admin" element={<AdminDashboard />} />
