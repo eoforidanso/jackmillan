@@ -45,9 +45,6 @@ function HomePage() {
       <Navbar />
       <main>
         <Hero />
-        <TrustBar />
-        <About />
-        <ImpactStats />
         <Services />
         <Requirements />
         <HowItWorks />
