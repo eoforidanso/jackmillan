@@ -1,7 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Upload, Trash2, Lock, LogOut, Image as ImageIcon, AlertCircle, Plus, Edit3, Users, Award, GripVertical } from 'lucide-react';
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { db, storage } from '../firebase';
 import ImageCropper from './ImageCropper';
 import './AdminDashboard.css';
+
+async function uploadToStorage(base64OrBlob, path) {
+  let blob;
+  if (typeof base64OrBlob === 'string' && base64OrBlob.startsWith('data:')) {
+    const res = await fetch(base64OrBlob);
+    blob = await res.blob();
+  } else {
+    blob = base64OrBlob;
+  }
+  const storageRef = ref(storage, path);
+  await uploadBytes(storageRef, blob);
+  return getDownloadURL(storageRef);
+}
 
 export default function AdminDashboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,44 +38,21 @@ export default function AdminDashboard() {
   const ADMIN_USERNAME = 'jackmillan';
   const ADMIN_PASSWORD = 'Mauri2026';
 
-  // Load data from localStorage
   useEffect(() => {
-    const stored = localStorage.getItem('jm-gallery-images');
-    if (stored) {
-      try {
-        setImages(JSON.parse(stored));
-      } catch (e) {
-        console.error('Failed to load images:', e);
-      }
-    }
+    if (!isLoggedIn) return;
 
-    const storedPlayers = localStorage.getItem('jm-players');
-    if (storedPlayers) {
-      try {
-        setPlayers(JSON.parse(storedPlayers));
-      } catch (e) {
-        console.error('Failed to load players:', e);
-      }
-    }
+    const unsubGallery = onSnapshot(collection(db, 'gallery'), (snap) => {
+      setImages(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    });
+    const unsubPlayers = onSnapshot(collection(db, 'players'), (snap) => {
+      setPlayers(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    });
+    const unsubExecutives = onSnapshot(collection(db, 'executives'), (snap) => {
+      setExecutives(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    });
 
-    const storedExecutives = localStorage.getItem('jm-executives');
-    if (storedExecutives) {
-      try {
-        setExecutives(JSON.parse(storedExecutives));
-      } catch (e) {
-        console.error('Failed to load executives:', e);
-      }
-    }
-  }, []);
-
-  // Save data to localStorage
-  useEffect(() => {
-    if (isLoggedIn) {
-      localStorage.setItem('jm-gallery-images', JSON.stringify(images));
-      localStorage.setItem('jm-players', JSON.stringify(players));
-      localStorage.setItem('jm-executives', JSON.stringify(executives));
-    }
-  }, [images, players, executives, isLoggedIn]);
+    return () => { unsubGallery(); unsubPlayers(); unsubExecutives(); };
+  }, [isLoggedIn]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -79,6 +72,8 @@ export default function AdminDashboard() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setImages([]);
+    setPlayers([]);
+    setExecutives([]);
   };
 
   const handleFileUpload = async (e) => {
@@ -90,95 +85,122 @@ export default function AdminDashboard() {
 
     try {
       for (const file of files) {
-        // Check file size (max 5MB)
         if (file.size > 5 * 1024 * 1024) {
           setError(`❌ ${file.name} is too large (max 5MB)`);
           continue;
         }
 
-        // Convert to base64
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          const newImage = {
-            id: Date.now() + Math.random(),
-            src: reader.result,
-            alt: file.name.replace(/\.[^/.]+$/, ''),
-            uploadedAt: new Date().toLocaleDateString(),
-            size: (file.size / 1024).toFixed(2) + ' KB',
-          };
-          setImages((prev) => [newImage, ...prev]);
-          setSuccess(`✅ ${file.name} uploaded successfully!`);
-          setTimeout(() => setSuccess(''), 2000);
-        };
-        reader.readAsDataURL(file);
+        const storagePath = `gallery/${Date.now()}-${file.name}`;
+        const url = await uploadToStorage(file, storagePath);
+
+        await addDoc(collection(db, 'gallery'), {
+          src: url,
+          storagePath,
+          alt: file.name.replace(/\.[^/.]+$/, ''),
+          wide: false,
+          uploadedAt: new Date().toLocaleDateString(),
+          size: (file.size / 1024).toFixed(2),
+          createdAt: serverTimestamp(),
+        });
+
+        setSuccess(`✅ ${file.name} uploaded successfully!`);
+        setTimeout(() => setSuccess(''), 2000);
       }
     } catch (err) {
       setError('❌ Upload failed: ' + err.message);
     } finally {
       setUploading(false);
-      e.target.value = ''; // Reset input
+      e.target.value = '';
     }
   };
 
-  const deleteImage = (id) => {
-    if (window.confirm('Delete this image? This cannot be undone.')) {
-      setImages((prev) => prev.filter((img) => img.id !== id));
+  const deleteImage = async (img) => {
+    if (!window.confirm('Delete this image? This cannot be undone.')) return;
+    try {
+      await deleteDoc(doc(db, 'gallery', img.id));
+      if (img.storagePath) await deleteObject(ref(storage, img.storagePath)).catch(() => {});
       setSuccess('✅ Image deleted');
       setTimeout(() => setSuccess(''), 2000);
+    } catch (err) {
+      setError('❌ Delete failed: ' + err.message);
     }
   };
 
-  const handleAddPlayer = (playerData) => {
-    if (editingPlayer) {
-      setPlayers((prev) =>
-        prev.map((p) => (p.id === editingPlayer.id ? { ...playerData, id: p.id } : p))
-      );
-      setSuccess('✅ Player updated successfully!');
-      setEditingPlayer(null);
-    } else {
-      const newPlayer = {
-        ...playerData,
-        id: Date.now(),
-      };
-      setPlayers((prev) => [newPlayer, ...prev]);
-      setSuccess('✅ Player added successfully!');
+  const handleAddPlayer = async (playerData) => {
+    try {
+      let imgUrl = playerData.img || '';
+      let imgPath = playerData.imgPath || '';
+
+      if (imgUrl.startsWith('data:')) {
+        imgPath = `players/${Date.now()}-player.jpg`;
+        imgUrl = await uploadToStorage(imgUrl, imgPath);
+      }
+
+      const data = { ...playerData, img: imgUrl, imgPath, updatedAt: serverTimestamp() };
+
+      if (editingPlayer) {
+        await updateDoc(doc(db, 'players', editingPlayer.id), data);
+        setSuccess('✅ Player updated successfully!');
+        setEditingPlayer(null);
+      } else {
+        await addDoc(collection(db, 'players'), { ...data, createdAt: serverTimestamp() });
+        setSuccess('✅ Player added successfully!');
+      }
+      setShowPlayerForm(false);
+      setTimeout(() => setSuccess(''), 2000);
+    } catch (err) {
+      setError('❌ Failed: ' + err.message);
     }
-    setShowPlayerForm(false);
-    setTimeout(() => setSuccess(''), 2000);
   };
 
-  const deletePlayer = (id) => {
-    if (window.confirm('Delete this player? This cannot be undone.')) {
-      setPlayers((prev) => prev.filter((p) => p.id !== id));
+  const deletePlayer = async (player) => {
+    if (!window.confirm('Delete this player? This cannot be undone.')) return;
+    try {
+      await deleteDoc(doc(db, 'players', player.id));
+      if (player.imgPath) await deleteObject(ref(storage, player.imgPath)).catch(() => {});
       setSuccess('✅ Player deleted');
       setTimeout(() => setSuccess(''), 2000);
+    } catch (err) {
+      setError('❌ Delete failed: ' + err.message);
     }
   };
 
-  const handleAddExecutive = (execData) => {
-    if (editingExecutive) {
-      setExecutives((prev) =>
-        prev.map((e) => (e.id === editingExecutive.id ? { ...execData, id: e.id } : e))
-      );
-      setSuccess('✅ Executive updated successfully!');
-      setEditingExecutive(null);
-    } else {
-      const newExecutive = {
-        ...execData,
-        id: Date.now(),
-      };
-      setExecutives((prev) => [newExecutive, ...prev]);
-      setSuccess('✅ Executive added successfully!');
+  const handleAddExecutive = async (execData) => {
+    try {
+      let imgUrl = execData.img || '';
+      let imgPath = execData.imgPath || '';
+
+      if (imgUrl.startsWith('data:')) {
+        imgPath = `executives/${Date.now()}-exec.jpg`;
+        imgUrl = await uploadToStorage(imgUrl, imgPath);
+      }
+
+      const data = { ...execData, img: imgUrl, imgPath, updatedAt: serverTimestamp() };
+
+      if (editingExecutive) {
+        await updateDoc(doc(db, 'executives', editingExecutive.id), data);
+        setSuccess('✅ Executive updated successfully!');
+        setEditingExecutive(null);
+      } else {
+        await addDoc(collection(db, 'executives'), { ...data, createdAt: serverTimestamp() });
+        setSuccess('✅ Executive added successfully!');
+      }
+      setShowExecutiveForm(false);
+      setTimeout(() => setSuccess(''), 2000);
+    } catch (err) {
+      setError('❌ Failed: ' + err.message);
     }
-    setShowExecutiveForm(false);
-    setTimeout(() => setSuccess(''), 2000);
   };
 
-  const deleteExecutive = (id) => {
-    if (window.confirm('Delete this executive? This cannot be undone.')) {
-      setExecutives((prev) => prev.filter((e) => e.id !== id));
+  const deleteExecutive = async (exec) => {
+    if (!window.confirm('Delete this executive? This cannot be undone.')) return;
+    try {
+      await deleteDoc(doc(db, 'executives', exec.id));
+      if (exec.imgPath) await deleteObject(ref(storage, exec.imgPath)).catch(() => {});
       setSuccess('✅ Executive deleted');
       setTimeout(() => setSuccess(''), 2000);
+    } catch (err) {
+      setError('❌ Delete failed: ' + err.message);
     }
   };
 
@@ -221,7 +243,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="admin-dashboard" style={{ paddingBottom: '40px' }}>
-      {/* Header */}
       <div className="admin-header">
         <div className="header-left">
           <h1>🎯 Content Management</h1>
@@ -233,7 +254,6 @@ export default function AdminDashboard() {
         </button>
       </div>
 
-      {/* Tabs */}
       <div className="admin-tabs">
         <button
           className={`tab-btn ${tab === 'players' ? 'active' : ''}`}
@@ -255,7 +275,6 @@ export default function AdminDashboard() {
         </button>
       </div>
 
-      {/* Messages */}
       {error && (
         <div className="alert alert-error">
           <AlertCircle size={18} />
@@ -268,7 +287,6 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* Players Tab */}
       {tab === 'players' && (
         <div className="tab-content">
           <div className="section-header">
@@ -320,7 +338,7 @@ export default function AdminDashboard() {
                       <Edit3 size={16} />
                     </button>
                     <button
-                      onClick={() => deletePlayer(player.id)}
+                      onClick={() => deletePlayer(player)}
                       className="delete-btn"
                       title="Delete"
                     >
@@ -334,7 +352,6 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* Executives Tab */}
       {tab === 'executives' && (
         <div className="tab-content">
           <div className="section-header">
@@ -384,7 +401,7 @@ export default function AdminDashboard() {
                       <Edit3 size={16} />
                     </button>
                     <button
-                      onClick={() => deleteExecutive(exec.id)}
+                      onClick={() => deleteExecutive(exec)}
                       className="delete-btn"
                       title="Delete"
                     >
@@ -398,7 +415,6 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      {/* Gallery Tab */}
       {tab === 'gallery' && (
         <div className="tab-content">
           <div className="upload-section">
@@ -441,7 +457,7 @@ export default function AdminDashboard() {
                   <div className="col-date">Uploaded</div>
                   <div className="col-actions">Actions</div>
                 </div>
-                {images.map((img, idx) => (
+                {images.map((img) => (
                   <div key={img.id} className="gallery-row">
                     <div className="col-drag">
                       <GripVertical size={16} />
@@ -452,12 +468,8 @@ export default function AdminDashboard() {
                     <div className="col-caption">
                       <input
                         type="text"
-                        value={img.alt}
-                        onChange={(e) => {
-                          const updated = [...images];
-                          updated[idx].alt = e.target.value;
-                          setImages(updated);
-                        }}
+                        defaultValue={img.alt}
+                        onBlur={(e) => updateDoc(doc(db, 'gallery', img.id), { alt: e.target.value })}
                         placeholder="Image caption"
                       />
                     </div>
@@ -466,11 +478,7 @@ export default function AdminDashboard() {
                         <input
                           type="checkbox"
                           checked={img.wide || false}
-                          onChange={(e) => {
-                            const updated = [...images];
-                            updated[idx].wide = e.target.checked;
-                            setImages(updated);
-                          }}
+                          onChange={(e) => updateDoc(doc(db, 'gallery', img.id), { wide: e.target.checked })}
                         />
                         <span>Wide</span>
                       </label>
@@ -478,7 +486,7 @@ export default function AdminDashboard() {
                     <div className="col-date">{img.uploadedAt}</div>
                     <div className="col-actions">
                       <button
-                        onClick={() => deleteImage(img.id)}
+                        onClick={() => deleteImage(img)}
                         className="delete-btn"
                         title="Delete"
                       >
@@ -498,7 +506,9 @@ export default function AdminDashboard() {
             </div>
             <div className="stat-box">
               <span className="stat-label">Storage Used</span>
-              <span className="stat-value">{(images.reduce((sum, img) => sum + parseFloat(img.size), 0)).toFixed(1)} KB</span>
+              <span className="stat-value">
+                {(images.reduce((sum, img) => sum + parseFloat(img.size || 0), 0)).toFixed(1)} KB
+              </span>
             </div>
           </div>
         </div>
@@ -515,6 +525,7 @@ function PlayerForm({ player, onSave, onCancel }) {
     destination: '',
     flag: '🇬🇭',
     img: '',
+    imgPath: '',
   });
   const [imagePreview, setImagePreview] = useState(player?.img || '');
   const [showCropper, setShowCropper] = useState(false);
@@ -523,17 +534,9 @@ function PlayerForm({ player, onSave, onCancel }) {
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Image must be less than 5MB');
-      return;
-    }
-
+    if (file.size > 5 * 1024 * 1024) { alert('Image must be less than 5MB'); return; }
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setCropImage(reader.result);
-      setShowCropper(true);
-    };
+    reader.onloadend = () => { setCropImage(reader.result); setShowCropper(true); };
     reader.readAsDataURL(file);
   };
 
@@ -572,70 +575,35 @@ function PlayerForm({ player, onSave, onCancel }) {
                 </div>
               )}
               <label className="file-input-label">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  style={{ display: 'none' }}
-                />
+                <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
                 <span className="file-input-btn">Choose Image</span>
               </label>
             </div>
           </div>
-        <div className="form-group">
-          <label>Name *</label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="Player name"
-          />
+          <div className="form-group">
+            <label>Name *</label>
+            <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Player name" />
+          </div>
+          <div className="form-group">
+            <label>Position *</label>
+            <input type="text" value={formData.position} onChange={(e) => setFormData({ ...formData, position: e.target.value })} placeholder="e.g. Striker" />
+          </div>
+          <div className="form-group">
+            <label>Age</label>
+            <input type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} placeholder="Age" />
+          </div>
+          <div className="form-group">
+            <label>Destination *</label>
+            <input type="text" value={formData.destination} onChange={(e) => setFormData({ ...formData, destination: e.target.value })} placeholder="e.g. FC Brondby, Denmark" />
+          </div>
+          <div className="form-group">
+            <label>Flag Emoji</label>
+            <input type="text" value={formData.flag} onChange={(e) => setFormData({ ...formData, flag: e.target.value })} placeholder="🇬🇭" maxLength="2" />
+          </div>
         </div>
-        <div className="form-group">
-          <label>Position *</label>
-          <input
-            type="text"
-            value={formData.position}
-            onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-            placeholder="e.g. Striker"
-          />
-        </div>
-        <div className="form-group">
-          <label>Age</label>
-          <input
-            type="number"
-            value={formData.age}
-            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-            placeholder="Age"
-          />
-        </div>
-        <div className="form-group">
-          <label>Destination *</label>
-          <input
-            type="text"
-            value={formData.destination}
-            onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-            placeholder="e.g. FC Brondby, Denmark"
-          />
-        </div>
-        <div className="form-group">
-          <label>Flag Emoji</label>
-          <input
-            type="text"
-            value={formData.flag}
-            onChange={(e) => setFormData({ ...formData, flag: e.target.value })}
-            placeholder="🇬🇭"
-            maxLength="2"
-          />
-        </div>
-      </div>
         <div className="form-actions">
-          <button type="submit" className="save-btn">
-            {player ? 'Update Player' : 'Add Player'}
-          </button>
-          <button type="button" onClick={onCancel} className="cancel-btn">
-            Cancel
-          </button>
+          <button type="submit" className="save-btn">{player ? 'Update Player' : 'Add Player'}</button>
+          <button type="button" onClick={onCancel} className="cancel-btn">Cancel</button>
         </div>
       </form>
     </>
@@ -648,6 +616,7 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
     role: '',
     bio: '',
     img: '',
+    imgPath: '',
     tags: [],
   });
   const [tagInput, setTagInput] = useState('');
@@ -658,17 +627,9 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Image must be less than 5MB');
-      return;
-    }
-
+    if (file.size > 5 * 1024 * 1024) { alert('Image must be less than 5MB'); return; }
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setCropImage(reader.result);
-      setShowCropper(true);
-    };
+    reader.onloadend = () => { setCropImage(reader.result); setShowCropper(true); };
     reader.readAsDataURL(file);
   };
 
@@ -718,74 +679,50 @@ function ExecutiveForm({ executive, onSave, onCancel }) {
                 </div>
               )}
               <label className="file-input-label">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  style={{ display: 'none' }}
-                />
+                <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
                 <span className="file-input-btn">Choose Image</span>
               </label>
             </div>
           </div>
-        <div className="form-group">
-          <label>Name *</label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="Executive name"
-          />
-        </div>
-        <div className="form-group">
-          <label>Role *</label>
-          <input
-            type="text"
-            value={formData.role}
-            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-            placeholder="e.g. Founder & Head Scout"
-          />
-        </div>
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label>Bio *</label>
-          <textarea
-            value={formData.bio}
-            onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-            placeholder="Executive bio"
-            rows="3"
-          />
-        </div>
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label>Tags</label>
-          <div className="tag-input">
-            <input
-              type="text"
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
-              placeholder="Add a tag and press Enter"
-            />
-            <button type="button" onClick={addTag} className="add-tag-btn">Add</button>
+          <div className="form-group">
+            <label>Name *</label>
+            <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Executive name" />
           </div>
-          {formData.tags.length > 0 && (
-            <div className="tags-list">
-              {formData.tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                  <button type="button" onClick={() => removeTag(tag)}>×</button>
-                </span>
-              ))}
+          <div className="form-group">
+            <label>Role *</label>
+            <input type="text" value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} placeholder="e.g. Founder & Head Scout" />
+          </div>
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Bio *</label>
+            <textarea value={formData.bio} onChange={(e) => setFormData({ ...formData, bio: e.target.value })} placeholder="Executive bio" rows="3" />
+          </div>
+          <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+            <label>Tags</label>
+            <div className="tag-input">
+              <input
+                type="text"
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
+                placeholder="Add a tag and press Enter"
+              />
+              <button type="button" onClick={addTag} className="add-tag-btn">Add</button>
             </div>
-          )}
+            {formData.tags.length > 0 && (
+              <div className="tags-list">
+                {formData.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                    <button type="button" onClick={() => removeTag(tag)}>×</button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
         <div className="form-actions">
-          <button type="submit" className="save-btn">
-            {executive ? 'Update Executive' : 'Add Executive'}
-          </button>
-          <button type="button" onClick={onCancel} className="cancel-btn">
-            Cancel
-          </button>
+          <button type="submit" className="save-btn">{executive ? 'Update Executive' : 'Add Executive'}</button>
+          <button type="button" onClick={onCancel} className="cancel-btn">Cancel</button>
         </div>
       </form>
     </>

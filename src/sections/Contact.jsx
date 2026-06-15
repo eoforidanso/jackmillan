@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Contact.css';
-
-const FORMSPREE_URL = 'https://formspree.io/f/jackmillan2018@gmail.com';
 const positions = ['Goalkeeper', 'Defender', 'Midfielder', 'Winger', 'Striker'];
 
 function validate(form) {
@@ -41,19 +41,14 @@ export default function Contact() {
 
     setSending(true);
     try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, _subject: `New player application: ${form.name}` }),
+      await addDoc(collection(db, 'contacts'), {
+        ...form,
+        submittedAt: serverTimestamp(),
       });
-      if (res.ok) {
-        setSubmitted(true);
-        setForm({ name: '', email: '', phone: '', position: '', age: '', message: '' });
-      } else {
-        setServerError('Something went wrong. Please try WhatsApp or email us directly.');
-      }
+      setSubmitted(true);
+      setForm({ name: '', email: '', phone: '', position: '', age: '', message: '' });
     } catch {
-      setServerError('Network error. Please check your connection and try again.');
+      setServerError('Something went wrong. Please try WhatsApp or email us directly.');
     } finally {
       setSending(false);
     }

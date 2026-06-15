@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Players.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -69,16 +71,12 @@ export default function Players() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem('jm-players');
-    if (stored) {
-      try {
-        setPlayers(JSON.parse(stored));
-      } catch (e) {
-        setPlayers(defaultPlayers);
-      }
-    } else {
-      setPlayers(defaultPlayers);
-    }
+    getDocs(collection(db, 'players'))
+      .then((snap) => {
+        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setPlayers(data.length > 0 ? data : defaultPlayers);
+      })
+      .catch(() => setPlayers(defaultPlayers));
   }, []);
 
   return (

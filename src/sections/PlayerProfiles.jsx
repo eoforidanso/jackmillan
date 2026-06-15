@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './PlayerProfiles.css';
 
 export default function PlayerProfiles() {
@@ -8,19 +10,13 @@ export default function PlayerProfiles() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('jm-players');
-    if (stored) {
-      try {
-        const data = JSON.parse(stored);
+    getDocs(collection(db, 'players'))
+      .then((snap) => {
+        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
         setPlayers(data);
-        if (id) {
-          const player = data.find(p => p.id === parseInt(id));
-          setSelectedPlayer(player);
-        }
-      } catch (e) {
-        console.error('Failed to load players:', e);
-      }
-    }
+        if (id) setSelectedPlayer(data.find(p => p.id === id) || null);
+      })
+      .catch(() => {});
   }, [id]);
 
   return (

@@ -1,8 +1,8 @@
 import { Calendar, Clock, User, Mail, Phone, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Booking.css';
-
-const FORMSPREE_BOOKING_URL = 'https://formspree.io/f/xdkqwpvb';
 
 export default function Booking() {
   const [formData, setFormData] = useState({
@@ -30,34 +30,15 @@ export default function Booking() {
     setSending(true);
 
     try {
-      const res = await fetch(FORMSPREE_BOOKING_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `New booking request from ${formData.name}`,
-        }),
+      await addDoc(collection(db, 'bookings'), {
+        ...formData,
+        submittedAt: serverTimestamp(),
       });
-
-      if (res.ok) {
-        setSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          date: '',
-          time: '',
-          sessionType: 'consultation',
-          message: '',
-        });
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 5000);
-      } else {
-        setError('Failed to submit booking. Please try again.');
-      }
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', date: '', time: '', sessionType: 'consultation', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
     } catch {
-      setError('Network error. Please check your connection and try again.');
+      setError('Failed to submit booking. Please try again.');
     } finally {
       setSending(false);
     }

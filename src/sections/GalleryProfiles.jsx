@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './GalleryProfiles.css';
 
 export default function GalleryProfiles() {
@@ -6,15 +8,9 @@ export default function GalleryProfiles() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('jm-gallery-images');
-    if (stored) {
-      try {
-        const data = JSON.parse(stored);
-        setImages(data);
-      } catch (e) {
-        console.error('Failed to load gallery images:', e);
-      }
-    }
+    getDocs(collection(db, 'gallery'))
+      .then((snap) => setImages(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .catch(() => {});
   }, []);
 
   return (

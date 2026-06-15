@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './Gallery.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -24,17 +26,12 @@ export default function Gallery() {
   const [photos, setPhotos] = useState(defaultPhotos);
 
   useEffect(() => {
-    // Load admin-uploaded images from localStorage
-    const stored = localStorage.getItem('jm-gallery-images');
-    if (stored) {
-      try {
-        const adminImages = JSON.parse(stored);
-        // Add admin images to the beginning
+    getDocs(collection(db, 'gallery'))
+      .then((snap) => {
+        const adminImages = snap.docs.map(d => ({ id: d.id, ...d.data() }));
         setPhotos([...adminImages, ...defaultPhotos]);
-      } catch (e) {
-        console.error('Failed to load admin images:', e);
-      }
-    }
+      })
+      .catch(() => {});
   }, []);
 
   return (

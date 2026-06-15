@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './ExecutiveProfiles.css';
 
 export default function ExecutiveProfiles() {
@@ -8,19 +10,13 @@ export default function ExecutiveProfiles() {
   const [selectedExecutive, setSelectedExecutive] = useState(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('jm-executives');
-    if (stored) {
-      try {
-        const data = JSON.parse(stored);
+    getDocs(collection(db, 'executives'))
+      .then((snap) => {
+        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
         setExecutives(data);
-        if (id) {
-          const exec = data.find(e => e.id === parseInt(id));
-          setSelectedExecutive(exec);
-        }
-      } catch (e) {
-        console.error('Failed to load executives:', e);
-      }
-    }
+        if (id) setSelectedExecutive(data.find(e => e.id === id) || null);
+      })
+      .catch(() => {});
   }, [id]);
 
   return (
