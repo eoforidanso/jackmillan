@@ -20,8 +20,8 @@
 }
 
 .football-svg {
-  width: 120px;
-  height: 72px;
+  width: 100px;
+  height: 100px;
   filter: drop-shadow(0 15px 30px rgba(26, 79, 255, 0.4));
   animation: bounce-real 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
@@ -47,8 +47,8 @@
 /* Responsive */
 @media (max-width: 768px) {
   .football-svg {
-    width: 90px;
-    height: 54px;
+    width: 80px;
+    height: 80px;
   }
 
   @keyframes bounce-real {
@@ -72,8 +72,8 @@
 
 @media (max-width: 480px) {
   .football-svg {
-    width: 70px;
-    height: 42px;
+    width: 60px;
+    height: 60px;
   }
 
   @keyframes bounce-real {
