@@ -8,6 +8,7 @@ const testimonials = [
     name: 'Kofi Agyemang',
     initials: 'KA',
     color: '#00c896',
+    img: `${BASE}images/player1.png`,
     role: 'Midfielder · Now at FC Midtjylland, Denmark',
     flag: '🇩🇰',
     quote:
@@ -18,6 +19,7 @@ const testimonials = [
     name: 'Samuel Nkrumah',
     initials: 'SN',
     color: '#f5a623',
+    img: `${BASE}images/player2.png`,
     role: 'Striker · Now at Górnik Zabrze, Poland',
     flag: '🇵🇱',
     quote:
@@ -31,6 +33,7 @@ const testimonials = [
     name: 'Abena Mensah',
     initials: 'AM',
     color: '#7c6ff7',
+    img: `${BASE}images/player6.jpeg`,
     role: 'Coach · Elite Stars Academy, Accra',
     flag: '🏫',
     quote:
@@ -42,6 +45,7 @@ const testimonials = [
     name: 'Eric Darko',
     initials: 'ED',
     color: '#00c896',
+    img: `${BASE}images/player3.png`,
     role: 'Winger · Now at Vejle BK, Denmark',
     flag: '🇩🇰',
     quote:
@@ -103,9 +107,13 @@ export default function Testimonials() {
               style={{ background: `linear-gradient(135deg, ${t.color}22, ${t.color}44)`, border: `2px solid ${t.color}88` }}
               aria-label={t.name}
             >
-              <span className="testi-initials" style={{ color: t.color }}>
-                {t.fromParent ? t.parentInitials : t.initials}
-              </span>
+              {t.img ? (
+                <img src={t.img} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+              ) : (
+                <span className="testi-initials" style={{ color: t.color }}>
+                  {t.fromParent ? t.parentInitials : t.initials}
+                </span>
+              )}
             </div>
             <div className="testi-body">
               <p className="testi-text">&ldquo;{t.quote}&rdquo;</p>
@@ -151,9 +159,13 @@ export default function Testimonials() {
                 className="testi-mini-avatar"
                 style={{ background: `linear-gradient(135deg, ${t2.color}22, ${t2.color}44)`, border: `1.5px solid ${t2.color}88` }}
               >
-                <span style={{ color: t2.color, fontSize: '0.72rem', fontWeight: 800 }}>
-                  {t2.fromParent ? t2.parentInitials : t2.initials}
-                </span>
+                {t2.img ? (
+                  <img src={t2.img} alt={t2.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+                ) : (
+                  <span style={{ color: t2.color, fontSize: '0.72rem', fontWeight: 800 }}>
+                    {t2.fromParent ? t2.parentInitials : t2.initials}
+                  </span>
+                )}
               </div>
               <div>
                 <p>{t2.fromParent ? t2.parentName : t2.name}</p>

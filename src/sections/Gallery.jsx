@@ -22,8 +22,11 @@ const defaultPhotos = [
   { src: `${BASE}images/player7.jpeg`, alt: 'Academy player portrait' },
 ];
 
+const PAGE_SIZE = 6;
+
 export default function Gallery() {
   const [photos, setPhotos] = useState(defaultPhotos);
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
   useEffect(() => {
     getDocs(collection(db, 'gallery'))
@@ -33,6 +36,9 @@ export default function Gallery() {
       })
       .catch(() => {});
   }, []);
+
+  const shown = photos.slice(0, visible);
+  const hasMore = visible < photos.length;
 
   return (
     <section id="gallery" className="gallery">
@@ -49,8 +55,8 @@ export default function Gallery() {
         </div>
 
         <div className="gallery-grid">
-          {photos.map((p) => (
-            <div key={p.src} className={`gallery-item ${p.wide ? 'wide' : ''}`}>
+          {shown.map((p) => (
+            <div key={p.src || p.id} className={`gallery-item ${p.wide ? 'wide' : ''}`}>
               <img src={p.src} alt={p.alt} loading="lazy" />
               <div className="gallery-overlay">
                 <span>{p.alt}</span>
@@ -58,6 +64,14 @@ export default function Gallery() {
             </div>
           ))}
         </div>
+
+        {hasMore && (
+          <div className="gallery-load-more">
+            <button className="btn-outline" onClick={() => setVisible(v => v + PAGE_SIZE)}>
+              Load More Photos
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

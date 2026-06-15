@@ -6,6 +6,7 @@ import BouncingFootball from './components/BouncingFootball';
 import CookieBanner from './components/CookieBanner';
 import WhatsAppButton from './components/WhatsAppButton';
 import AdminDashboard from './components/AdminDashboard';
+import StickyApply from './components/StickyApply';
 import Hero from './sections/Hero';
 import TrustBar from './sections/TrustBar';
 import About from './sections/About';
@@ -60,6 +61,7 @@ function HomePage() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <StickyApply />
       <CookieBanner />
     </>
   );

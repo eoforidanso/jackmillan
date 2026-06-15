@@ -54,7 +54,7 @@ export default function Hero() {
         </p>
 
         <div className="hero-actions">
-          <a href="#contact" className="btn-primary btn-glass">Apply for Scouting</a>
+          <a href="#contact" className="btn-primary btn-glass hero-cta-pulse">Apply for Scouting</a>
           <a href="#players" className="btn-outline btn-glass-outline">View Our Placements</a>
         </div>
 
