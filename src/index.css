@@ -346,3 +346,23 @@ h3 {
   .container { padding: 0 var(--sp-3); }
   .btn-primary, .btn-outline { width: 100%; justify-content: center; }
 }
+
+/* ════════════════════════════════════
+   FAQ + CONTACT COMBINED LAYOUT
+   ════════════════════════════════════ */
+.faq-contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.faq-contact-wrapper .faq,
+.faq-contact-wrapper .contact {
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .faq-contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

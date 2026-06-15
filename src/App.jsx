@@ -53,8 +53,10 @@ function HomePage() {
         <Booking />
         <Gallery />
         <Team />
-        <FAQ />
-        <Contact />
+        <div className="faq-contact-wrapper">
+          <FAQ />
+          <Contact />
+        </div>
       </main>
       <Footer />
       <WhatsAppButton />
