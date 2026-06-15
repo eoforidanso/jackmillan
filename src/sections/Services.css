@@ -17,25 +17,25 @@
 .services-header {
   text-align: center;
   max-width: 640px;
-  margin: 0 auto 48px;
+  margin: 0 auto 56px;
   position: relative;
 }
-.services-header .section-subtitle { color: rgba(255,255,255,0.72); margin: 12px auto 0; }
+.services-header .section-subtitle { color: rgba(255,255,255,0.68); margin: 14px auto 0; }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
   position: relative;
 }
 
 .service-card {
-  background: rgba(26,79,255,0.06);
+  background: rgba(255,255,255,0.04);
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
-  border: 1px solid rgba(26,79,255,0.20);
-  border-radius: var(--radius);
-  padding: 36px 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-card);
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
   transition: transform var(--transition), background var(--transition),
@@ -43,37 +43,37 @@
 }
 
 .service-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  background: rgba(26,79,255,0.12);
-  border-color: rgba(26,79,255,0.40);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.25), 0 0 30px rgba(26,79,255,0.12);
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.30), 0 0 0 1px rgba(26,79,255,0.15);
 }
 
 .service-icon {
-  width: 56px; height: 56px;
-  background: rgba(26,79,255,0.12);
-  border: 1px solid rgba(26,79,255,0.28);
+  width: 52px; height: 52px;
+  background: rgba(26,79,255,0.18);
+  border: 1px solid rgba(26,79,255,0.30);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--jm-blue-lt);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(26,79,255,0.10);
 }
 
 .service-title {
-  font-size: 1.08rem;
+  font-size: 1.0625rem;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--white);
+  margin-bottom: 10px;
+  color: rgba(255,255,255,0.96);
+  letter-spacing: -0.02em;
 }
 
 .service-desc {
-  color: rgba(255,255,255,0.68);
-  font-size: 0.92rem;
-  line-height: 1.75;
+  color: rgba(255,255,255,0.60);
+  font-size: 0.9375rem;
+  line-height: 1.70;
   flex: 1;
 }
 

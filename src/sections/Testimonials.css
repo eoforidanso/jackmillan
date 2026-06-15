@@ -16,10 +16,10 @@
 .testi-header {
   text-align: center;
   max-width: 640px;
-  margin: 0 auto 48px;
+  margin: 0 auto 56px;
   position: relative;
 }
-.testi-header .section-subtitle { color: rgba(255,255,255,0.68); margin: 12px auto 0; }
+.testi-header .section-subtitle { color: rgba(255,255,255,0.60); margin: 14px auto 0; }
 
 .testi-stage { position: relative; max-width: 860px; margin: 0 auto 36px; }
 
@@ -33,18 +33,17 @@
 .testi-quote-icon svg { width: 80px; height: 80px; }
 
 .testi-card {
-  background: rgba(26,79,255,0.07);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: var(--blur-lg);
   -webkit-backdrop-filter: var(--blur-lg);
-  border: 1px solid rgba(26,79,255,0.25);
-  border-left: 4px solid var(--jm-blue);
-  border-radius: 20px;
-  padding: 40px 44px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 24px;
+  padding: 44px 48px;
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 32px;
+  grid-template-columns: 100px 1fr;
+  gap: 36px;
   align-items: start;
-  box-shadow: var(--glass-shadow), 0 0 40px rgba(26,79,255,0.06);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .testi-avatar {
@@ -67,12 +66,13 @@
 }
 
 .testi-text {
-  font-size: 0.98rem;
-  line-height: 1.85;
-  color: rgba(255,255,255,0.75);
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  color: rgba(255,255,255,0.80);
   font-style: italic;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .testi-meta {
@@ -148,20 +148,20 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(26,79,255,0.06);
+  background: rgba(255,255,255,0.04);
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
-  border: 1px solid rgba(26,79,255,0.18);
-  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
   padding: 12px 14px;
   cursor: pointer;
   transition: all var(--transition);
 }
 .testi-mini:hover,
 .testi-mini.active {
-  background: rgba(26,79,255,0.14);
-  border-color: rgba(26,79,255,0.38);
-  box-shadow: 0 4px 16px rgba(26,79,255,0.12);
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.20);
 }
 .testi-mini-avatar {
   width: 40px; height: 40px;

@@ -17,33 +17,32 @@
 .players-header {
   text-align: center;
   max-width: 640px;
-  margin: 0 auto 48px;
+  margin: 0 auto 56px;
   position: relative;
 }
 .players-header .section-title { color: var(--text); }
 .players-header .section-title span { color: var(--jm-blue); }
-.players-header .section-subtitle { color: var(--muted); margin: 12px auto 0; }
+.players-header .section-subtitle { color: var(--muted); margin: 14px auto 0; }
 
 .players-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 48px;
   position: relative;
 }
 
 .player-card {
-  border-radius: var(--radius);
+  border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 .player-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(26,79,255,0.12), 0 2px 8px rgba(0,0,0,0.06);
-  border-color: rgba(26,79,255,0.18);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .player-img-wrap { position: relative; }
@@ -74,22 +73,22 @@
 }
 
 .player-info {
-  padding: 16px 18px 20px;
+  padding: 18px 20px 22px;
   background: #ffffff;
-  border-top: 1px solid rgba(26,79,255,0.06);
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 
-.player-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: #0f172a; }
-.player-age  { font-size: 0.82rem; color: #64748b; margin-bottom: 6px; }
-.player-dest { font-size: 0.85rem; font-weight: 600; color: var(--jm-blue); }
+.player-name { font-size: 1rem; font-weight: 700; margin-bottom: 3px; color: #0f172a; letter-spacing: -0.02em; }
+.player-age  { font-size: 0.8125rem; color: #64748b; margin-bottom: 6px; }
+.player-dest { font-size: 0.8125rem; font-weight: 600; color: var(--jm-blue); }
 
 /* Destinations */
 .destinations {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
-  border-radius: 16px;
-  padding: 40px;
+  border-radius: var(--radius-card);
+  padding: 44px;
   position: relative;
 }
 
