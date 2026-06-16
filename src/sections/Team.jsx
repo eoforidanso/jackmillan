@@ -1,34 +1,8 @@
 import { useEffect, useState } from 'react';
 import { FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import './Team.css';
-
-const BASE = import.meta.env.BASE_URL;
-
-const defaultTeam = [
-  {
-    name: 'Jack Millan',
-    role: 'Founder & Head Scout',
-    bio: 'Former GFA-licensed coach with 15 years in African football development. Built Jackmillan Football Academy from the ground up to give Ghana\'s players a genuine path to Europe.',
-    img: `${BASE}images/player5.jpeg`,
-    tags: ['FIFA Intermediary', 'UEFA B License'],
-  },
-  {
-    name: 'Kwabena Asante',
-    role: 'Head of Player Welfare',
-    bio: 'A former professional player who experienced the challenges of moving abroad first-hand. Now dedicated to ensuring every player settles confidently into their new club and country.',
-    img: `${BASE}images/player6.jpeg`,
-    tags: ['Mental Health', 'Pastoral Care'],
-  },
-  {
-    name: 'Edwin Eekhof',
-    role: 'Scout Partner — Netherlands',
-    bio: 'Based in the Netherlands, Edwin leads our European scouting network through Sports Networking, connecting Ghanaian talent with clubs across the Netherlands and beyond.',
-    img: `${BASE}images/player7.jpeg`,
-    tags: ['Sports Networking', 'Netherlands'],
-  },
-];
 
 const AVATAR_COLORS = [
   '#1a4fff', '#e63946', '#2a9d8f', '#e76f51',
@@ -48,12 +22,10 @@ export default function Team() {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
-    getDocs(collection(db, 'executives'))
-      .then((snap) => {
-        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        setTeam(data.length > 0 ? [...defaultTeam, ...data] : defaultTeam);
-      })
-      .catch(() => setTeam(defaultTeam));
+    const unsub = onSnapshot(collection(db, 'executives'), (snap) => {
+      setTeam(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    });
+    return unsub;
   }, []);
 
   return (
@@ -69,6 +41,12 @@ export default function Team() {
             welfare officers — all committed to one mission: your career.
           </p>
         </div>
+
+        {team.length === 0 && (
+          <p style={{ textAlign: 'center', color: 'var(--text-muted, #888)', marginTop: '2rem' }}>
+            Team profiles coming soon.
+          </p>
+        )}
 
         <div className="team-grid">
           {team.map((m) => {
